@@ -44,7 +44,7 @@ export default function News() {
               hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_35px_80px_-20px_rgba(4,121,62,0.3)]"
           >
             <div className="relative overflow-hidden aspect-[16/9] lg:aspect-auto min-h-[300px]">
-              <img
+              <img loading="lazy" decoding="async"
                 src={articles[0].image}
                 alt={locale === 'ar' ? articles[0].titleAr : articles[0].title}
                 className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
@@ -90,7 +90,7 @@ export default function News() {
               >
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-[16/9]">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={article.image}
                     alt={locale === 'ar' ? article.titleAr : article.title}
                     className={`w-full h-full transition-transform duration-[1200ms] ease-out group-hover:scale-105 ${article.image.includes('logo') ? 'object-contain bg-brand-ink p-8' : 'object-cover'}`}

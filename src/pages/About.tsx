@@ -16,7 +16,7 @@ export default function About() {
           <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-center">
             <div className="relative">
               <div className="img-card cursor-orange rounded-2xl aspect-[4/5]">
-                <img src="/images/citrus-orchard.jpg" alt="" />
+                <img loading="lazy" decoding="async" src="/images/citrus-orchard.jpg" alt="" />
               </div>
               <div className="absolute -bottom-6 -end-6 px-7 py-5 rounded-2xl bg-brand-green/30 backdrop-blur-2xl backdrop-saturate-200 border border-brand-green/50 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_20px_50px_-12px_rgba(4,121,62,0.5)]">
                 <div className="font-display text-3xl leading-none">{p.intro.statBadge}</div>
@@ -278,7 +278,7 @@ export default function About() {
               <div className="relative rounded-sm border border-brand-ink/15 p-3 bg-white/60 backdrop-blur-xl shadow-[0_25px_60px_-25px_rgba(13,31,23,0.25)] rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500">
                 {/* Inner hairline frame */}
                 <div className="relative border border-brand-ink/10 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/images/team-meeting.svg"
                     alt=""
                     className="w-full block"

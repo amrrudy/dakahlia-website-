@@ -49,7 +49,7 @@ export default function Sustainability() {
                 {/* Image */}
                 <div className={`${reversed ? 'lg:order-2' : ''}`}>
                   <div className="img-card rounded-2xl aspect-[5/3]">
-                    <img src={pillarImages[i]} alt={pillar.title} />
+                    <img loading="lazy" decoding="async" src={pillarImages[i]} alt={pillar.title} />
                   </div>
                 </div>
 

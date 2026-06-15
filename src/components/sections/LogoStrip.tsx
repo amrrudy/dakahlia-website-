@@ -29,7 +29,7 @@ export default function LogoStrip() {
       <div className="flex items-center gap-10 logo-strip-track">
         {items.map((logo, i) => (
           <div key={i} className="flex-shrink-0 flex items-center gap-10">
-            <img
+            <img loading="lazy" decoding="async"
               src={logo.src}
               alt={logo.alt}
               className="h-16 sm:h-24 lg:h-[12.3rem] w-auto object-contain"

@@ -48,13 +48,13 @@ export default function Companies() {
                     {companyImages[i].isLogo ? (
                       /* Logo card — dark branded background */
                       <div className="rounded-2xl aspect-[5/4] bg-brand-ink flex items-center justify-center gap-6 p-10">
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={companyImages[i].src}
                           alt={item.name}
                           className={`object-contain ${companyImages[i].src2 ? 'max-w-[45%] max-h-[55%]' : 'max-w-[70%] max-h-[60%]'}`}
                         />
                         {companyImages[i].src2 && (
-                          <img
+                          <img loading="lazy" decoding="async"
                             src={companyImages[i].src2}
                             alt={item.name}
                             className="max-w-[45%] max-h-[75%] object-contain drop-shadow-2xl"
@@ -63,7 +63,7 @@ export default function Companies() {
                       </div>
                     ) : (
                       <div className="img-card rounded-2xl aspect-[5/4]">
-                        <img src={companyImages[i].src} alt={item.name} />
+                        <img loading="lazy" decoding="async" src={companyImages[i].src} alt={item.name} />
                       </div>
                     )}
                     <div className="absolute top-6 start-6 font-display text-7xl text-brand-yellow/90 leading-none">

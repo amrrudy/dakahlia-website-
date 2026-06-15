@@ -58,7 +58,7 @@ export default function NewsTeaser() {
           >
             {/* Background image */}
             <div className="absolute inset-0 overflow-hidden">
-              <img
+              <img loading="lazy" decoding="async"
                 src={article.image}
                 alt=""
                 className={`absolute inset-0 w-full h-full transition-all duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] scale-110 group-hover:scale-100 ${

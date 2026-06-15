@@ -138,6 +138,9 @@ export default function Header() {
     }
   }
 
+  // Bilingual helper: pick EN or AR based on current locale
+  const tr = (en: string, ar: string) => (locale === 'ar' ? ar : en)
+
   const navItems: NavItem[] = [
     {
       label: t.nav.about,
@@ -147,23 +150,23 @@ export default function Header() {
       label: t.nav.companies,
       to: '/companies',
       mega: [
-        { image: '/images/poultry-chicks.jpg',           label: 'Dakahlia Poultry',              desc: '40+ years integrated poultry',   to: '/companies' },
-        { image: '/images/agriculture-citrus.jpg',       label: 'Dakahlia Agriculture',           desc: '17,000+ feddans, global export', to: '/companies' },
-        { image: '/images/slaughterhouse-processing.jpg',label: 'Dakahlia Slaughterhouse',        desc: 'Temry · Al-Dar · 45M birds/yr',  to: '/companies' },
-        { image: '/images/people-real.jpg',              label: 'Shams Chemicals',                desc: 'Agricultural inputs & science',  to: '/companies' },
-        { image: '/images/foundation-sewing.jpg',        label: 'Al Anani Foundation',                                                    to: '/companies' },
+        { image: '/images/poultry-chicks.jpg',           label: tr('Dakahlia Poultry',       'الدقهلية للدواجن'),   desc: tr('40+ years integrated poultry',   'أكثر من 40 عاماً في الدواجن المتكاملة'), to: '/companies' },
+        { image: '/images/agriculture-citrus.jpg',       label: tr('Dakahlia Agriculture',    'الدقهلية للزراعة'),   desc: tr('17,000+ feddans, global export', 'أكثر من 17,000 فدان وتصدير عالمي'),    to: '/companies' },
+        { image: '/images/slaughterhouse-processing.jpg',label: tr('Dakahlia Slaughterhouse', 'مجازر الدقهلية'),     desc: tr('Temry · Al-Dar · 45M birds/yr',  'تمري · الدار · 45 مليون طير/سنوياً'),   to: '/companies' },
+        { image: '/images/people-real.jpg',              label: tr('Shams Chemicals',         'شمس للكيماويات'),     desc: tr('Agricultural inputs & science',  'مدخلات زراعية مدعومة بالعلم'),         to: '/companies' },
+        { image: '/images/foundation-sewing.jpg',        label: tr('Al Anani Foundation',     'مؤسسة العناني'),                                                                                   to: '/companies' },
       ],
-      megaCta: { label: 'Explore All Companies', to: '/companies' },
+      megaCta: { label: tr('Explore All Companies', 'استعرض جميع الشركات'), to: '/companies' },
     },
     {
       label: t.nav.sustainability,
       to: '/sustainability',
       mega: [
-        { image: '/images/people-real.jpg',       label: 'People',      desc: 'Training, education & workforce', to: '/sustainability' },
-        { image: '/images/solar-panels-real.jpg', label: 'Environment', desc: 'Solar, circular economy & water', to: '/sustainability' },
-        { image: '/images/community-real.jpg',    label: 'Community',   desc: 'Al Anani Foundation programs',    to: '/sustainability' },
+        { image: '/images/people-real.jpg',       label: tr('People',      'الأشخاص'), desc: tr('Training, education & workforce', 'التدريب والتعليم والقوى العاملة'),         to: '/sustainability' },
+        { image: '/images/solar-panels-real.jpg', label: tr('Environment', 'البيئة'),   desc: tr('Solar, circular economy & water', 'الطاقة الشمسية والاقتصاد الدائري والمياه'), to: '/sustainability' },
+        { image: '/images/community-real.jpg',    label: tr('Community',   'المجتمع'),  desc: tr('Al Anani Foundation programs',    'برامج مؤسسة العناني'),                       to: '/sustainability' },
       ],
-      megaCta: { label: 'See Our Impact', to: '/sustainability' },
+      megaCta: { label: tr('See Our Impact', 'استعرض أثرنا'), to: '/sustainability' },
     },
     { label: t.nav.news,    to: '/news' },
     { label: t.nav.careers, to: '/careers' },

@@ -74,11 +74,11 @@ export default function CompaniesGrid() {
                     >
                       {isLogo ? (
                         <div className="w-full h-full bg-brand-ink flex items-center justify-center p-14">
-                          <img src={companyImages[i]} alt={c.name}
+                          <img loading="lazy" decoding="async" src={companyImages[i]} alt={c.name}
                             className="max-w-[65%] max-h-[60%] object-contain" />
                         </div>
                       ) : (
-                        <img src={companyImages[i]} alt={c.name}
+                        <img loading="lazy" decoding="async" src={companyImages[i]} alt={c.name}
                           className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110" />
                       )}
                     </div>

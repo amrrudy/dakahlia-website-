@@ -13,7 +13,7 @@ export default function StoryTeaser() {
       <div className="block lg:hidden">
         {/* Image top */}
         <div className="relative w-full h-56 sm:h-72 overflow-hidden">
-          <img
+          <img loading="lazy" decoding="async"
             src="/images/chicken-skewers.jpg"
             alt=""
             className="w-full h-full object-cover object-center"
@@ -51,7 +51,7 @@ export default function StoryTeaser() {
       <div className="hidden lg:flex min-h-[680px] items-stretch">
         {/* Left — image bleeding from edge */}
         <div className="relative w-[38%] flex-shrink-0">
-          <img
+          <img loading="lazy" decoding="async"
             src="/images/chicken-skewers.jpg"
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-center"

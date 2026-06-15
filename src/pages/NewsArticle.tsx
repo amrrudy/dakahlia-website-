@@ -108,7 +108,7 @@ export default function NewsArticle() {
             <div className="relative rounded-3xl overflow-hidden
               border border-white/60
               shadow-[0_30px_70px_-20px_rgba(13,31,23,0.25)]">
-              <img
+              <img loading="lazy" decoding="async"
                 src={article.image}
                 alt={title}
                 className={`block w-full ${article.image.includes('logo') ? 'object-contain bg-brand-ink p-16 aspect-[16/9]' : 'object-cover aspect-[16/9]'}`}
@@ -189,7 +189,7 @@ export default function NewsArticle() {
                     hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_25px_55px_-15px_rgba(4,121,62,0.3)]"
                 >
                   <div className="aspect-[16/9] overflow-hidden">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={a.image}
                       alt=""
                       className={`w-full h-full transition-transform duration-[1200ms] ease-out group-hover:scale-105 ${a.image.includes('logo') ? 'object-contain bg-brand-ink p-6' : 'object-cover'}`}
