@@ -40,7 +40,9 @@ export default function Footer() {
 
             {/* Brand block */}
             <div>
-              <Logo variant="horizontal" tone="light" className="h-20 w-auto mb-4" />
+              <div className="mb-4 -ms-4">
+                <Logo variant="horizontal" tone="light" className="block h-28 w-auto" />
+              </div>
               <p className="text-white/65 text-xs leading-relaxed max-w-xs">
                 {t.footer.tagline}
               </p>
