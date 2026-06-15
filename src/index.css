@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-green: #04793e;
+    --brand-green-dark: #035a2e;
+    --brand-green-light: #62bc54;
+    --brand-yellow: #e2e01b;
+    --brand-cream: #faf8ee;
+    --brand-ink: #0d1f17;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-ink font-sans;
+    background-color: var(--brand-cream);
+  }
+
+  html[dir='rtl'] body {
+    @apply font-ar;
+  }
+
+  html[dir='rtl'] .font-display {
+    font-family: 'Noto Sans Arabic', sans-serif !important;
+  }
+
+  html[dir='rtl'] .font-sans {
+    font-family: 'Noto Sans Arabic', sans-serif !important;
+  }
+
+  ::selection {
+    background-color: var(--brand-green);
+    color: white;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-6 md:px-10 lg:px-14;
+  }
+
+  .display-text {
+    @apply font-display font-light leading-[0.95] tracking-[-0.02em];
+  }
+
+  /* Eyebrow: glass pill above section headings */
+  .eyebrow {
+    @apply inline-flex items-center px-3.5 py-1 rounded-full
+      text-[11px] uppercase tracking-[0.22em] font-semibold text-brand-green
+      bg-brand-green/[0.06] backdrop-blur-xl backdrop-saturate-200
+      border border-brand-green/20
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.5)];
+  }
+
+  html[dir='rtl'] .eyebrow {
+    letter-spacing: 0.15em;
+  }
+
+  /* Glass label: subtle frosted pill for form labels & micro labels */
+  .label-glass {
+    @apply inline-flex items-center px-3 py-1 rounded-md
+      bg-white/[0.04] backdrop-blur-xl backdrop-saturate-200
+      border border-white/20
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.3)];
+  }
+
+  /* Glass badge: reusable for tags / categories / achievement pills */
+  .badge-glass {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+      bg-white/[0.04] backdrop-blur-xl backdrop-saturate-200
+      border border-white/25
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]
+      text-xs font-bold uppercase tracking-wider;
+  }
+
+  /* ── Glassmorphism button design system ─────────────────────────── */
+
+  /* Primary: brand-green tinted glass — works on light & image backgrounds */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide uppercase text-white
+      bg-brand-green/80 backdrop-blur-xl backdrop-saturate-200
+      border border-white/25
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_24px_-8px_rgba(4,121,62,0.5)]
+      transition-all duration-300
+      hover:bg-brand-green/90 hover:scale-[1.02]
+      hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_14px_36px_-8px_rgba(4,121,62,0.6)]
+      active:scale-100;
+  }
+
+  /* Outline: frosted glass with brand-green border — for light backgrounds */
+  .btn-outline {
+    @apply relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide uppercase text-brand-green
+      bg-white/30 backdrop-blur-xl backdrop-saturate-200
+      border border-brand-green/40
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_4px_16px_-4px_rgba(4,121,62,0.2)]
+      transition-all duration-300
+      hover:bg-brand-green/15 hover:border-brand-green/70 hover:scale-[1.02]
+      active:scale-100;
+  }
+
+  /* Ghost: subtle text-link with arrow-grow hover */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-brand-green font-semibold text-sm tracking-wide uppercase transition-all hover:gap-3;
+  }
+
+  /* Glass light: bright frosted pill — for use over photos / hero (primary action) */
+  .btn-glass-light {
+    @apply relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm tracking-widest uppercase text-brand-ink
+      bg-white/40 backdrop-blur-xl backdrop-saturate-200
+      border border-white/60
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_10px_30px_-8px_rgba(0,0,0,0.3)]
+      transition-all duration-300
+      hover:bg-white/60 hover:scale-[1.02]
+      active:scale-100;
+  }
+
+  /* Glass dark: translucent pill — for use over photos / hero (secondary action) */
+  .btn-glass-dark {
+    @apply relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm tracking-widest uppercase text-white
+      bg-white/10 backdrop-blur-xl backdrop-saturate-200
+      border border-white/40
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_10px_30px_-8px_rgba(0,0,0,0.4)]
+      transition-all duration-300
+      hover:bg-white/20 hover:border-white/60 hover:scale-[1.02]
+      active:scale-100;
+  }
+
+  /* Glass icon: circular frosted icon button — caller sets size (e.g. w-10 h-10) */
+  .btn-glass-icon {
+    @apply inline-flex items-center justify-center rounded-full
+      bg-white/20 backdrop-blur-xl backdrop-saturate-200
+      border border-white/30
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_4px_12px_-4px_rgba(0,0,0,0.2)]
+      transition-all duration-300
+      hover:bg-white/35 hover:border-white/50 hover:scale-110
+      active:scale-100;
+  }
+
+  /* Glass pill: small text pill — for toggles like the lang switcher */
+  .btn-glass-pill {
+    @apply inline-flex items-center rounded-full
+      bg-white/15 backdrop-blur-xl backdrop-saturate-200
+      border border-white/30
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]
+      transition-all duration-300;
+  }
+
+  /* Decorative leaf/seed pattern */
+  .leaf-bg {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(98, 188, 84, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(226, 224, 27, 0.04) 0%, transparent 35%);
+  }
+
+  /* Editorial number marker like 01 / 02 / 03 */
+  .editorial-number {
+    @apply font-display text-[0.65em] align-super text-brand-green-light tracking-tight;
+  }
+
+  /* Image card with subtle hover */
+  .img-card {
+    @apply relative overflow-hidden rounded-lg bg-brand-ink/5;
+  }
+
+  .img-card img {
+    @apply h-full w-full object-cover transition-transform duration-[1200ms] ease-out;
+  }
+
+  .img-card:hover img {
+    @apply scale-105;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Grain texture overlay */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+}
+
+/* Animation utility classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Organic / soft motion system ──────────────────────────────── */
+
+/* Slow drifting blob movement */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33%      { transform: translate(3%, -4%) rotate(8deg) scale(1.04); }
+  66%      { transform: translate(-3%, 3%) rotate(-6deg) scale(0.97); }
+}
+.animate-blob-float {
+  animation: blob-float 18s ease-in-out infinite;
+}
+
+/* Gentle vertical bob for floating elements */
+@keyframes soft-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.animate-soft-bob {
+  animation: soft-bob 6s ease-in-out infinite;
+}
+
+/* Slow continuous rotation for ring/orbit accents */
+@keyframes slow-spin {
+  to { transform: rotate(360deg); }
+}
+.animate-slow-spin {
+  animation: slow-spin 40s linear infinite;
+}
+
+/* Marquee for scrolling text strips */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Orange-fruit cursor: inline-SVG cartoon orange used on hover for image showcases */
+.cursor-orange {
+  cursor: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='48' viewBox='0 0 44 48'%3E%3Cellipse cx='22' cy='44' rx='10' ry='1.6' fill='%23000' opacity='0.25'/%3E%3Cpath d='M22 11 Q28 5 33 8 Q30 13 24 12 Z' fill='%2342a838' stroke='%23388e3c' stroke-width='0.6'/%3E%3Cpath d='M23 11 Q27 10 31 9' fill='none' stroke='%23206f1d' stroke-width='0.6' opacity='0.7'/%3E%3Crect x='21' y='10' width='2.2' height='3' rx='0.6' fill='%235d4037'/%3E%3Ccircle cx='22' cy='27' r='15' fill='%23ff8a1a' stroke='%23d96612' stroke-width='1'/%3E%3Ccircle cx='16' cy='24' r='1' fill='%23d96612' opacity='0.55'/%3E%3Ccircle cx='27' cy='31' r='1' fill='%23d96612' opacity='0.55'/%3E%3Ccircle cx='25' cy='22' r='0.8' fill='%23d96612' opacity='0.55'/%3E%3Ccircle cx='18' cy='32' r='0.8' fill='%23d96612' opacity='0.55'/%3E%3Cellipse cx='17' cy='21' rx='5' ry='3.6' fill='%23ffffff' opacity='0.45'/%3E%3C/svg%3E") 22 27, pointer;
+}
+
+/* Progress ring for slider arrows — fills over slide duration */
+@keyframes ringFill {
+  from { stroke-dashoffset: 163.36; } /* 2 * PI * 26 ≈ 163.36 */
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Subtle idle bob — gentle in-place vertical float for floating buttons */
+@keyframes idle-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+.animate-idle-bob {
+  animation: idle-bob 2.8s ease-in-out infinite;
+}
+
+/* Pulse halo — soft expanding ring for attention */
+@keyframes pulse-halo {
+  0%   { transform: scale(1);    opacity: 0.45; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+.animate-pulse-halo {
+  animation: pulse-halo 2.4s ease-out infinite;
+}
+
+/* Typing cursor blink */
+@keyframes cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.animate-cursor-blink {
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+/* Reduced-motion: kill all decorative loops */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob-float,
+  .animate-soft-bob,
+  .animate-slow-spin,
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
+/* ─── Organic shape helpers ─────────────────────────────────────── */
+
+/* Asymmetric blobby border-radius for image masks & cards */
+.organic-mask-1 { border-radius: 62% 38% 46% 54% / 60% 49% 51% 40%; }
+.organic-mask-2 { border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%; }
+.organic-mask-3 { border-radius: 50% 50% 53% 47% / 36% 45% 55% 64%; }
+
+/* Soft pill blob */
+.blob-pill { border-radius: 100px 100px 100px 30px; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-green);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-green-dark);
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1200" viewBox="0 0 2400 1200">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8e0f0"/>
+      <stop offset="100%" stop-color="#62bc54"/>
+    </linearGradient>
+  </defs>
+  <rect width="2400" height="1200" fill="url(#sky)"/>
+  <rect y="800" width="2400" height="400" fill="#035a2e"/>
+  <!-- solar panels -->
+  <rect x="100" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <rect x="430" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <rect x="760" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <rect x="1090" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <rect x="1420" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <rect x="1750" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <rect x="2080" y="500" width="280" height="180" rx="6" fill="#1a3a22"/>
+  <!-- panel grid lines -->
+  <line x1="100" y1="590" x2="380" y2="590" stroke="#62bc54" stroke-width="3" opacity="0.5"/>
+  <line x1="240" y1="500" x2="240" y2="680" stroke="#62bc54" stroke-width="3" opacity="0.5"/>
+  <line x1="430" y1="590" x2="710" y2="590" stroke="#62bc54" stroke-width="3" opacity="0.5"/>
+  <line x1="570" y1="500" x2="570" y2="680" stroke="#62bc54" stroke-width="3" opacity="0.5"/>
+  <line x1="760" y1="590" x2="1040" y2="590" stroke="#62bc54" stroke-width="3" opacity="0.5"/>
+  <line x1="900" y1="500" x2="900" y2="680" stroke="#62bc54" stroke-width="3" opacity="0.5"/>
+  <!-- sun -->
+  <circle cx="2100" cy="200" r="110" fill="#e2e01b" opacity="0.75"/>
+  <circle cx="2100" cy="200" r="150" fill="#e2e01b" opacity="0.15"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#1a3a22"/>
+  <!-- conference table -->
+  <ellipse cx="450" cy="360" rx="340" ry="100" fill="#04793e" opacity="0.65"/>
+  <!-- seated people -->
+  <circle cx="160" cy="285" r="60" fill="#62bc54" opacity="0.6"/>
+  <ellipse cx="160" cy="400" rx="90" ry="90" fill="#62bc54" opacity="0.55"/>
+  <circle cx="450" cy="265" r="65" fill="#62bc54" opacity="0.65"/>
+  <ellipse cx="450" cy="388" rx="95" ry="95" fill="#62bc54" opacity="0.6"/>
+  <circle cx="740" cy="285" r="60" fill="#62bc54" opacity="0.6"/>
+  <ellipse cx="740" cy="400" rx="90" ry="90" fill="#62bc54" opacity="0.55"/>
+  <!-- laptop -->
+  <rect x="340" y="295" width="220" height="130" rx="8" fill="#035a2e"/>
+  <rect x="352" y="306" width="196" height="108" rx="4" fill="#0d1f17"/>
+  <rect x="380" y="320" width="140" height="70" rx="3" fill="#04793e" opacity="0.4"/>
+</svg>

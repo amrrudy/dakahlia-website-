@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <rect width="1400" height="1000" fill="#04793e"/>
+  <!-- background circle -->
+  <circle cx="700" cy="500" r="420" fill="#035a2e" opacity="0.4"/>
+  <!-- 3 person silhouettes -->
+  <circle cx="280" cy="340" r="90" fill="#faf8ee" opacity="0.2"/>
+  <ellipse cx="280" cy="640" rx="145" ry="200" fill="#faf8ee" opacity="0.18"/>
+  <circle cx="700" cy="310" r="100" fill="#faf8ee" opacity="0.22"/>
+  <ellipse cx="700" cy="630" rx="160" ry="220" fill="#faf8ee" opacity="0.2"/>
+  <circle cx="1120" cy="340" r="90" fill="#faf8ee" opacity="0.2"/>
+  <ellipse cx="1120" cy="640" rx="145" ry="200" fill="#faf8ee" opacity="0.18"/>
+  <!-- connecting arc -->
+  <path d="M180 580 Q700 380 1220 580" fill="none" stroke="#e2e01b" stroke-width="6" opacity="0.4"/>
+  <!-- hearts -->
+  <text x="280" y="240" font-size="70" text-anchor="middle" fill="#e2e01b" opacity="0.65" font-family="sans-serif">♥</text>
+  <text x="700" y="205" font-size="80" text-anchor="middle" fill="#e2e01b" opacity="0.7" font-family="sans-serif">♥</text>
+  <text x="1120" y="240" font-size="70" text-anchor="middle" fill="#e2e01b" opacity="0.65" font-family="sans-serif">♥</text>
+</svg>

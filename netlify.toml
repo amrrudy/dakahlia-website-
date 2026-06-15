@@ -1,0 +1,9 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# SPA fallback — every route serves index.html so React Router can handle it
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

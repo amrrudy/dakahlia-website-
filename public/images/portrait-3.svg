@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#035a2e"/>
+      <stop offset="100%" stop-color="#0d1f17"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="900" fill="url(#bg)"/>
+  <circle cx="350" cy="300" r="140" fill="#faf8ee" opacity="0.2"/>
+  <ellipse cx="350" cy="720" rx="260" ry="280" fill="#faf8ee" opacity="0.15"/>
+  <circle cx="350" cy="300" r="95" fill="#faf8ee" opacity="0.22"/>
+  <circle cx="350" cy="300" r="55" fill="#faf8ee" opacity="0.18"/>
+  <text x="350" y="860" font-family="sans-serif" font-size="30" fill="white" opacity="0.4" text-anchor="middle">Youssef · Dakahlia</text>
+</svg>
