@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
+import LazySection from '../components/LazySection'
 
 const pillarImages = [
   '/images/people-real.jpg',         // real Dakahlia worker — date harvest
@@ -62,6 +63,7 @@ export default function Sustainability() {
       </section>
 
       {/* Three Pillars */}
+      <LazySection>
       <section className="py-20 lg:py-28 bg-brand-cream leaf-bg">
         <div className="container-x space-y-10 lg:space-y-16">
           {p.pillars.map((pillar, i) => {
@@ -102,8 +104,10 @@ export default function Sustainability() {
           })}
         </div>
       </section>
+      </LazySection>
 
       {/* Dark CTA strip */}
+      <LazySection>
       <section className="py-20 lg:py-24 bg-brand-ink text-white relative overflow-hidden">
         <svg className="absolute -top-20 -right-20 w-[500px] h-[500px] opacity-5" viewBox="0 0 100 100">
           <path d="M50 5 C25 25, 25 60, 50 95 C75 60, 75 25, 50 5 Z" fill="white" />
@@ -130,6 +134,7 @@ export default function Sustainability() {
           </div>
         </div>
       </section>
+      </LazySection>
     </>
   )
 }

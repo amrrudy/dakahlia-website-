@@ -2,6 +2,7 @@ import { useState, useRef, useMemo } from 'react'
 import { Users, Shield, Heart, Upload, FileText, X, CheckCircle2, RotateCcw } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
+import LazySection from '../components/LazySection'
 
 const cultureIcons = [Users, Shield, Heart]
 
@@ -20,6 +21,10 @@ export default function Careers() {
   const p = t.pages.careers
 
   // --- Form state ---
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [cover, setCover] = useState('')
   const [cvFile, setCvFile] = useState<File | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -36,6 +41,14 @@ export default function Careers() {
   const captchaVerified =
     clickedOrder.length === cards.length &&
     clickedOrder.every((v, i) => v === sortedCards[i])
+
+  // Submit is enabled only when every required field is filled AND captcha passed
+  const isFormValid =
+    name.trim().length > 0 &&
+    email.trim().length > 0 &&
+    phone.trim().length > 0 &&
+    cvFile !== null &&
+    captchaVerified
 
   // Honeypot — bots will fill this; real users don't see it
   const [honeypot, setHoneypot] = useState('')
@@ -76,13 +89,15 @@ export default function Careers() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (honeypot) return // bot trap
-    if (!captchaVerified) {
-      setCaptchaError(true)
-      return
-    }
+    if (!isFormValid) return
     // Real submission would go here (POST to backend).
     setCaptchaError(false)
     alert('Application submitted!')
+    setName('')
+    setEmail('')
+    setPhone('')
+    setCover('')
+    clearCv()
     resetCaptcha()
   }
 
@@ -166,6 +181,7 @@ export default function Careers() {
       </section>
 
       {/* Open Positions */}
+      <LazySection>
       <section className="relative py-20 lg:py-28 bg-brand-cream overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/2 start-1/4 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full bg-brand-green-light/15 blur-3xl animate-blob-float" />
@@ -187,8 +203,10 @@ export default function Careers() {
           </div>
         </div>
       </section>
+      </LazySection>
 
       {/* Application Form */}
+      <LazySection minHeight={1000}>
       <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 end-1/4 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
@@ -213,21 +231,44 @@ export default function Careers() {
             >
               <div>
                 <label className="label-glass text-sm font-semibold text-brand-ink mb-2">{p.apply.fields.name}</label>
-                <input type="text" required className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all" />
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all"
+                />
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label className="label-glass text-sm font-semibold text-brand-ink mb-2">{p.apply.fields.email}</label>
-                  <input type="email" required className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all" />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all"
+                  />
                 </div>
                 <div>
                   <label className="label-glass text-sm font-semibold text-brand-ink mb-2">{p.apply.fields.phone}</label>
-                  <input type="tel" required className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all" />
+                  <input
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all"
+                  />
                 </div>
               </div>
               <div>
                 <label className="label-glass text-sm font-semibold text-brand-ink mb-2">{p.apply.fields.cover}</label>
-                <textarea rows={5} className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all resize-none" />
+                <textarea
+                  rows={5}
+                  value={cover}
+                  onChange={(e) => setCover(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-white/55 backdrop-blur-xl backdrop-saturate-200 border-2 border-brand-ink/8 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] focus:outline-none focus:bg-white/75 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all resize-none"
+                />
               </div>
 
               {/* ── CV upload ─────────────────────────────────────────── */}
@@ -352,13 +393,19 @@ export default function Careers() {
                 )}
               </div>
 
-              <button type="submit" className="btn-primary w-full justify-center !py-4">
+              <button
+                type="submit"
+                disabled={!isFormValid}
+                className="btn-primary w-full justify-center !py-4
+                  disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
+              >
                 {p.apply.button}
               </button>
             </form>
           </div>
         </div>
       </section>
+      </LazySection>
     </>
   )
 }

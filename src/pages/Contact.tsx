@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Navigation, Clock, Headphones } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
+import LazySection from '../components/LazySection'
 
 export default function Contact() {
   const { t, locale } = useI18n()
@@ -137,6 +138,7 @@ export default function Contact() {
       </section>
 
       {/* ── Global Reach — stylized world map with Egypt focal marker ──── */}
+      <LazySection>
       <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
         {/* Soft atmospheric glow */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -218,6 +220,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      </LazySection>
     </>
   )
 }

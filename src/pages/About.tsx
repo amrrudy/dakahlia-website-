@@ -1,6 +1,7 @@
 import { Check, Eye, Target } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
+import LazySection from '../components/LazySection'
 
 export default function About() {
   const { t } = useI18n()
@@ -61,6 +62,7 @@ export default function About() {
       </section>
 
       {/* Integration That Delivers */}
+      <LazySection>
       <section className="py-20 lg:py-28 bg-brand-ink text-white relative overflow-hidden">
         <svg className="absolute -top-20 -right-20 w-[500px] h-[500px] opacity-5" viewBox="0 0 100 100">
           <path d="M50 5 C25 25, 25 60, 50 95 C75 60, 75 25, 50 5 Z" fill="white" />
@@ -76,8 +78,10 @@ export default function About() {
           </div>
         </div>
       </section>
+      </LazySection>
 
       {/* What Drives Us */}
+      <LazySection>
       <section className="relative py-20 lg:py-28 bg-brand-cream overflow-hidden leaf-bg">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 end-1/4 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
@@ -107,8 +111,10 @@ export default function About() {
           </div>
         </div>
       </section>
+      </LazySection>
 
       {/* Vision + Mission */}
+      <LazySection>
       <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 -start-24 w-[30rem] h-[30rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
@@ -195,8 +201,10 @@ export default function About() {
           </div>
         </div>
       </section>
+      </LazySection>
 
       {/* Values */}
+      <LazySection>
       <section className="relative py-20 lg:py-28 bg-brand-cream overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 start-1/3 w-[28rem] h-[28rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
@@ -233,6 +241,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      </LazySection>
 
     </>
   )

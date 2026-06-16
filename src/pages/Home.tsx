@@ -6,18 +6,19 @@ import VisionStatement from '../components/sections/VisionStatement'
 import StoryTeaser from '../components/sections/StoryTeaser'
 import NewsTeaser from '../components/sections/NewsTeaser'
 import CareersTeaser from '../components/sections/CareersTeaser'
+import LazySection from '../components/LazySection'
 
 export default function Home() {
   return (
     <>
       <Hero />
       <TextStrip />
-      <StoryTeaser />
-      <CompaniesGrid />
-      <LogoStrip />
-      <VisionStatement />
-      <NewsTeaser />
-      <CareersTeaser />
+      <LazySection><StoryTeaser /></LazySection>
+      <LazySection><CompaniesGrid /></LazySection>
+      <LazySection minHeight={200}><LogoStrip /></LazySection>
+      <LazySection><VisionStatement /></LazySection>
+      <LazySection><NewsTeaser /></LazySection>
+      <LazySection><CareersTeaser /></LazySection>
     </>
   )
 }
