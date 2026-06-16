@@ -114,8 +114,8 @@ export default function Companies() {
                 ? 'rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-2xl rounded-br-2xl'
                 : 'rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-2xl rounded-bl-2xl'
               return (
-                <article key={item.index} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                  <div className={`group relative ${reversed ? 'lg:order-2' : ''} transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1`}>
+                <article key={item.index} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                  <div className={`group relative lg:mt-10 ${reversed ? 'lg:order-2' : ''} transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1`}>
                     {companyImages[i].isLogo ? (
                       /* Logo card — dark branded background */
                       <div
@@ -157,44 +157,6 @@ export default function Companies() {
                         />
                         {/* Soft inner ring for a refined edge against the photo */}
                         <div aria-hidden className={`absolute inset-0 ring-1 ring-inset ring-white/30 ${leafRadius} pointer-events-none`} />
-
-                        {/* Glass index plate — masked into the card, shares the leaf shape */}
-                        <div
-                          className={`absolute top-4 ${reversed ? 'end-4' : 'start-4'} z-10 pointer-events-none
-                            ${reversed
-                              ? 'rounded-tr-2xl rounded-bl-2xl rounded-tl-md rounded-br-md'
-                              : 'rounded-tl-2xl rounded-br-2xl rounded-tr-md rounded-bl-md'}
-                            bg-white/30 backdrop-blur-2xl backdrop-saturate-200
-                            border border-white/55
-                            shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_10px_24px_-8px_rgba(0,0,0,0.35)]
-                            px-4 py-2.5
-                            flex items-center gap-2`}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
-                          <span className="font-display text-xl lg:text-2xl text-white leading-none">
-                            {item.index}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* For logo cards (dark bg variant), keep an index plate too */}
-                    {companyImages[i].isLogo && (
-                      <div
-                        className={`absolute top-4 ${reversed ? 'end-4' : 'start-4'} z-10 pointer-events-none
-                          ${reversed
-                            ? 'rounded-tr-2xl rounded-bl-2xl rounded-tl-md rounded-br-md'
-                            : 'rounded-tl-2xl rounded-br-2xl rounded-tr-md rounded-bl-md'}
-                          bg-white/15 backdrop-blur-2xl backdrop-saturate-200
-                          border border-white/30
-                          shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]
-                          px-4 py-2.5
-                          flex items-center gap-2`}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
-                        <span className="font-display text-xl lg:text-2xl text-white leading-none">
-                          {item.index}
-                        </span>
                       </div>
                     )}
                   </div>
