@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import PageHero from '../components/PageHero'
 import { articles } from '../lib/news'
+import TypedHeading from '../components/TypedHeading'
 
 const glassChip = 'backdrop-blur-xl backdrop-saturate-200 border shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]'
 const categoryColors: Record<string, string> = {
@@ -20,7 +20,29 @@ export default function News() {
 
   return (
     <>
-      <PageHero title={p.hero.title} subtitle={p.hero.subtitle} />
+      {/* Custom News Hero — full-bleed background image */}
+      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+        <div className="absolute inset-0">
+          <img
+            src="/images/agriculture-citrus.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 40%' }}
+          />
+        </div>
+        {/* Dark gradient overlay — heavy at bottom for legibility, fades to top */}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
+
+        <div className="container-x relative z-10 pt-44 pb-14">
+          <TypedHeading
+            text={p.hero.title}
+            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+          />
+          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+            {p.hero.subtitle}
+          </p>
+        </div>
+      </section>
 
       <section className="relative py-16 lg:py-24 bg-gradient-to-b from-white via-white to-brand-cream overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">

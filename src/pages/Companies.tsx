@@ -1,6 +1,6 @@
 import { Check, ExternalLink } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import PageHero from '../components/PageHero'
+import TypedHeading from '../components/TypedHeading'
 
 const companyImages: Array<{ src: string; isLogo: boolean; src2?: string }> = [
   // 01 Dakahlia Poultry — day-old chicks at the hatchery
@@ -25,12 +25,79 @@ const companyWebsites: (string | null)[] = [
 ]
 
 export default function Companies() {
-  const { t } = useI18n()
+  const { t, dir } = useI18n()
   const p = t.pages.companies
+  const isRtl = dir === 'rtl'
 
   return (
     <>
-      <PageHero title={p.hero.title} subtitle={p.hero.subtitle} />
+      {/* Hero with scattered logo background */}
+      <section className="relative bg-brand-cream overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+
+        {/* Scattered brand logos — purely decorative, kept off the title column */}
+        {[
+          { src: '/images/Agriculture.png',     top: '12%', left: '84%', size: 110, rotate: 5   },
+          { src: '/images/Red.png',             top: '4%',  left: '55%', size: 90,  rotate: 15  },
+          { src: '/images/Desertgold.png',      top: '22%', left: '60%', size: 100, rotate: 6   },
+          { src: '/images/Cleos.png',           top: '28%', left: '90%', size: 95,  rotate: 12  },
+          { src: '/images/Foundation.png',      top: '42%', left: '76%', size: 110, rotate: 10  },
+          { src: '/images/Harvest.png',         top: '50%', left: '55%', size: 110, rotate: -4  },
+          { src: '/images/Shams.png',           top: '45%', left: '91%', size: 110, rotate: 11  },
+          { src: '/images/Saucetree.png',       top: '35%', left: '83%', size: 100, rotate: 7   },
+          { src: '/images/Aqua.png',            top: '60%', left: '62%', size: 105, rotate: -7  },
+          { src: '/images/Market.png',          top: '38%', left: '80%', size: 120, rotate: -5  },
+          { src: '/images/Pickletree.png',      top: '6%',  left: '70%', size: 95,  rotate: -6  },
+          { src: '/images/Poultry.png',         top: '6%',  left: '5%',  size: 115, rotate: 8   },
+          { src: '/images/Citrus.png',          top: '14%', left: '28%', size: 105, rotate: -10 },
+          { src: '/images/Sauce.png',           top: '8%',  left: '46%', size: 95,  rotate: -14 },
+          { src: '/images/Fayruze.png',         top: '2%',  left: '15%', size: 100, rotate: -8  },
+          { src: '/images/ALEEF-LOGO (1).png',  top: '18%', left: '72%', size: 110, rotate: 4   },
+        ].map((logo, i) => {
+          // Cycle through three drift variants so each logo flies on its own path
+          const driftClass = ['animate-drift-a', 'animate-drift-b', 'animate-drift-c'][i % 3]
+          return (
+          <span
+            key={i}
+            aria-hidden="true"
+            className={driftClass}
+            style={{
+              position: 'absolute',
+              top: logo.top,
+              // In RTL, mirror left → right so logos flip to the title-free side
+              ...(isRtl ? { right: logo.left } : { left: logo.left }),
+              width: logo.size,
+              height: logo.size,
+              transform: `rotate(${isRtl ? -logo.rotate : logo.rotate}deg)`,
+              animationDelay: `-${(i * 1.3) % 11}s`,
+              pointerEvents: 'none',
+              userSelect: 'none',
+              display: 'inline-block',
+              willChange: 'translate',
+            }}
+          >
+            <img
+              src={logo.src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-contain"
+            />
+          </span>
+          )
+        })}
+
+        {/* Foreground content */}
+        <div className="container-x relative z-10 pt-44 pb-14">
+          <TypedHeading
+            text={p.hero.title}
+            cursorClassName="bg-brand-green"
+            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-brand-ink text-balance max-w-3xl"
+          />
+          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-pretty text-brand-ink/65">
+            {p.hero.subtitle}
+          </p>
+        </div>
+      </section>
 
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-x">

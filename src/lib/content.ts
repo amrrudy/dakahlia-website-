@@ -99,8 +99,12 @@ export interface Dict {
         values: string[]
       }
       visionMission: {
+        eyebrow: string
+        tagline: string
+        visionLabel: string
         visionTitle: string
         visionBody: string
+        missionLabel: string
         missionTitle: string
         missionBody: string
       }
@@ -215,6 +219,12 @@ export interface Dict {
         title: string
         body: string
         directions: string
+      }
+      global: {
+        eyebrow: string
+        title: string
+        body: string
+        marker: string
       }
     }
     terms: {
@@ -388,9 +398,13 @@ const en: Dict = {
         ],
       },
       visionMission: {
+        eyebrow: 'Our Foundation',
+        tagline: 'Two perspectives, one purpose.',
+        visionLabel: 'Vision',
         visionTitle: 'Our Vision',
         visionBody:
           'To build a leading integrated agri-food group that contributes to food security while operating with discipline and responsibility across every market we serve.',
+        missionLabel: 'Mission',
         missionTitle: 'Our Mission',
         missionBody:
           'To deliver safe, high-quality products at scale by connecting every stage of the value chain within one coordinated system, supported by disciplined management and continuous innovation.',
@@ -655,6 +669,12 @@ const en: Dict = {
         title: 'Visit our headquarters',
         body: 'Our head office is based in Cairo, Egypt. We welcome partners, suppliers, and guests by appointment.',
         directions: 'Get Directions',
+      },
+      global: {
+        eyebrow: 'Global Reach',
+        title: 'From Egypt to the world',
+        body: 'Egypt is the heart of our operations — and the gateway to the markets we serve across Europe, Russia, Asia, Latin America, and the Gulf.',
+        marker: 'Dakahlia Group · Cairo, Egypt',
       },
     },
     terms: {
@@ -1027,8 +1047,12 @@ const ar: Dict = {
         ],
       },
       visionMission: {
+        eyebrow: 'أساسنا',
+        tagline: 'منظوران، هدفٌ واحد.',
+        visionLabel: 'الرؤية',
         visionTitle: 'رؤيتنا',
         visionBody: 'بناء مجموعة زراعية غذائية متكاملة رائدة تساهم في الأمن الغذائي مع العمل بانضباط ومسؤولية في كل سوق نخدمه.',
+        missionLabel: 'الرسالة',
         missionTitle: 'رسالتنا',
         missionBody: 'تقديم منتجات آمنة عالية الجودة على نطاق واسع من خلال ربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة، مدعومة بإدارة منضبطة وابتكار مستمر.',
       },
@@ -1269,7 +1293,7 @@ const ar: Dict = {
       },
       info: {
         officeLabel: 'المقر الرئيسي',
-        officeValue: '15 مبانى راموز، شارع النصر، مدينة نصر، القاهرة، مصر',
+        officeValue: '15 مباني رامو، شارع النصر، مدينة نصر، القاهرة، مصر',
         emailLabel: 'البريد الإلكتروني',
         emailValue: 'info@dakahlia.com',
         email2Value: 'cs@dakahlia.net',
@@ -1291,6 +1315,12 @@ const ar: Dict = {
         title: 'تفضّل بزيارة مقرّنا',
         body: 'يقع مقرّنا الرئيسي في القاهرة، مصر. نرحّب بالشركاء والمورّدين والضيوف بموعد مسبق.',
         directions: 'احصل على الاتجاهات',
+      },
+      global: {
+        eyebrow: 'حضور عالمي',
+        title: 'من مصر إلى العالم',
+        body: 'مصر قلب عملياتنا — وبوابتنا إلى الأسواق التي نخدمها في أوروبا وروسيا وآسيا وأمريكا اللاتينية والخليج.',
+        marker: 'مجموعة الدقهلية · القاهرة، مصر',
       },
     },
     terms: {

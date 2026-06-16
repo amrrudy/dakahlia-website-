@@ -232,6 +232,29 @@
   animation: soft-bob 6s ease-in-out infinite;
 }
 
+/* Free-floating "in space" drift — three variants so multiple elements move differently. */
+/* Uses the `translate` longhand so it stacks cleanly with inline `transform: rotate(...)` */
+@keyframes drift-a {
+  0%, 100% { translate:   0   0; }
+  25%      { translate: -22px -28px; }
+  50%      { translate:  28px -14px; }
+  75%      { translate:  16px  22px; }
+}
+@keyframes drift-b {
+  0%, 100% { translate:   0   0; }
+  33%      { translate:  30px  18px; }
+  66%      { translate: -20px  28px; }
+}
+@keyframes drift-c {
+  0%, 100% { translate:   0   0; }
+  20%      { translate: -28px  14px; }
+  55%      { translate:  24px -28px; }
+  80%      { translate: -14px  20px; }
+}
+.animate-drift-a { animation: drift-a 11s ease-in-out infinite; }
+.animate-drift-b { animation: drift-b 13s ease-in-out infinite; }
+.animate-drift-c { animation: drift-c 15s ease-in-out infinite; }
+
 /* Slow continuous rotation for ring/orbit accents */
 @keyframes slow-spin {
   to { transform: rotate(360deg); }
@@ -292,7 +315,10 @@
   .animate-blob-float,
   .animate-soft-bob,
   .animate-slow-spin,
-  .animate-marquee {
+  .animate-marquee,
+  .animate-drift-a,
+  .animate-drift-b,
+  .animate-drift-c {
     animation: none !important;
   }
 }

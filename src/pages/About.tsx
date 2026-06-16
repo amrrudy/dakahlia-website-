@@ -1,6 +1,6 @@
 import { Check, Eye, Target } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import PageHero from '../components/PageHero'
+import TypedHeading from '../components/TypedHeading'
 
 export default function About() {
   const { t } = useI18n()
@@ -8,7 +8,29 @@ export default function About() {
 
   return (
     <>
-      <PageHero eyebrow={p.hero.eyebrow} title={p.hero.title} subtitle={p.hero.subtitle} />
+      {/* Custom About Hero — full-bleed background image */}
+      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+        <div className="absolute inset-0">
+          <img
+            src="/images/hero-2-poultry-houses.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 50%' }}
+          />
+        </div>
+        {/* Dark gradient overlay — heavy at bottom for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
+
+        <div className="container-x relative z-10 pt-44 pb-14">
+          <TypedHeading
+            text={p.hero.title}
+            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+          />
+          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+            {p.hero.subtitle}
+          </p>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="py-20 lg:py-28 bg-white">
@@ -99,11 +121,11 @@ export default function About() {
           <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-brand-green" />
-              <span className="text-[11px] uppercase tracking-[0.32em] text-brand-green font-bold">Our Foundation</span>
+              <span className="text-[11px] uppercase tracking-[0.32em] text-brand-green font-bold">{p.visionMission.eyebrow}</span>
               <span className="h-px w-10 bg-brand-green" />
             </div>
             <p className="font-display italic text-brand-ink/60 text-lg md:text-xl">
-              Two perspectives, one purpose.
+              {p.visionMission.tagline}
             </p>
           </div>
 
@@ -127,7 +149,7 @@ export default function About() {
                   <div className="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green transition-colors group-hover:bg-brand-green group-hover:text-white">
                     <Eye size={17} strokeWidth={2} />
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-brand-green font-bold">Vision</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-brand-green font-bold">{p.visionMission.visionLabel}</span>
                 </div>
 
                 <h3 className="font-display text-2xl lg:text-3xl text-brand-ink leading-[1.1] text-balance">
@@ -158,7 +180,7 @@ export default function About() {
                   <div className="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-ink transition-colors group-hover:bg-brand-yellow">
                     <Target size={17} strokeWidth={2} />
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-brand-ink font-bold">Mission</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-brand-ink font-bold">{p.visionMission.missionLabel}</span>
                 </div>
 
                 <h3 className="font-display text-2xl lg:text-3xl text-brand-ink leading-[1.1] text-balance">

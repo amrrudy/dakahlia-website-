@@ -1,7 +1,7 @@
 import { useState, useRef, useMemo } from 'react'
 import { Users, Shield, Heart, Upload, FileText, X, CheckCircle2, RotateCcw } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import PageHero from '../components/PageHero'
+import TypedHeading from '../components/TypedHeading'
 
 const cultureIcons = [Users, Shield, Heart]
 
@@ -88,7 +88,28 @@ export default function Careers() {
 
   return (
     <>
-      <PageHero title={p.hero.title} subtitle={p.hero.subtitle} />
+      {/* Custom Careers Hero — full-bleed background image */}
+      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+        <div className="absolute inset-0">
+          <img
+            src="/images/careers.png"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 65%' }}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
+
+        <div className="container-x relative z-10 pt-44 pb-14">
+          <TypedHeading
+            text={p.hero.title}
+            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+          />
+          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+            {p.hero.subtitle}
+          </p>
+        </div>
+      </section>
 
       {/* Culture */}
       <section className="relative py-20 lg:py-28 bg-white overflow-hidden">

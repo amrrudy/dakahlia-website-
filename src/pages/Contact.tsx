@@ -1,14 +1,48 @@
 import { MapPin, Phone, Mail, Navigation, Clock, Headphones } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import PageHero from '../components/PageHero'
+import TypedHeading from '../components/TypedHeading'
 
 export default function Contact() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const p = t.pages.contact
 
   return (
     <>
-      <PageHero title={p.hero.title} subtitle={p.hero.subtitle} />
+      {/* Hero — full-bleed Google Maps background */}
+      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+        <div className="absolute inset-0">
+          <iframe
+            title="Dakahlia Group Location"
+            src="https://maps.google.com/maps?q=15%20Ramo%20Buildings%2C%20Nasr%20Road%2C%20Nasr%20City%2C%20Cairo%2C%20Egypt&z=16&output=embed"
+            className="w-full h-full border-0 grayscale-[0.3] contrast-[0.95]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+          {/* Dark gradient overlay for legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
+        </div>
+
+        <div className="container-x relative z-10 pt-44 pb-14">
+          <TypedHeading
+            text={p.hero.title}
+            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+          />
+          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+            {p.hero.subtitle}
+          </p>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=15%20Ramo%20Buildings%2C%20Nasr%20Road%2C%20Nasr%20City%2C%20Cairo%2C%20Egypt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 mt-7 text-brand-yellow text-sm font-semibold hover:gap-3 transition-all"
+          >
+            <MapPin size={15} />
+            {locale === 'ar' ? 'احصل على الاتجاهات' : 'Get Directions'}
+            <Navigation size={13} strokeWidth={2.25} className="transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </section>
 
       <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -102,76 +136,85 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── Map section — premium glass-framed location card ─────────────── */}
-      <section className="relative py-20 lg:py-28 bg-brand-cream overflow-hidden">
+      {/* ── Global Reach — stylized world map with Egypt focal marker ──── */}
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        {/* Soft atmospheric glow */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-32 -end-24 w-[28rem] h-[28rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
-          <div className="absolute -bottom-32 -start-24 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/15 blur-3xl animate-blob-float" style={{ animationDelay: '6s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[55%] rounded-full bg-brand-green/8 blur-3xl" />
         </div>
 
         <div className="container-x relative">
-          {/* Section header */}
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="eyebrow mb-5">{p.map.eyebrow}</p>
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="eyebrow mb-5">{p.global.eyebrow}</p>
             <h2 className="display-text text-3xl md:text-4xl lg:text-5xl text-brand-ink text-balance mb-5">
-              {p.map.title}
+              {p.global.title}
             </h2>
             <p className="text-lg text-brand-ink/65 leading-relaxed text-pretty">
-              {p.map.body}
+              {p.global.body}
             </p>
           </div>
 
-          {/* Map card — glass frame */}
-          <div className="relative max-w-6xl mx-auto rounded-3xl overflow-hidden
-            bg-white/45 backdrop-blur-2xl backdrop-saturate-200
-            border border-white/70
-            shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_30px_70px_-20px_rgba(13,31,23,0.2)]">
-            {/* Map iframe with custom styled overlay */}
-            <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-3xl">
-              <iframe
-                title="Dakahlia Group Head Office"
-                src="https://maps.google.com/maps?q=15%20Ramo%20Buildings%2C%20Nasr%20Road%2C%20Nasr%20City%2C%20Cairo%2C%20Egypt&z=15&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full grayscale-[0.4] contrast-[0.95] brightness-[1.02] border-0"
-              />
-              {/* Soft tint overlay — brand-green wash for theme cohesion */}
-              <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-green/[0.06] via-transparent to-brand-yellow/[0.08]" />
-              {/* Inner ring */}
-              <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/30 rounded-3xl" />
+          {/* Stylized world map — gray continents with Egypt focal marker */}
+          <div className="relative max-w-5xl mx-auto">
+            {/* Curved spherical perspective wrapper */}
+            <div
+              className="relative aspect-[16/9] flex items-center justify-center"
+              style={{ perspective: '1400px' }}
+            >
+              <div
+                className="relative w-full h-full"
+                style={{ transform: 'rotateX(12deg)', transformStyle: 'preserve-3d' }}
+              >
+                {/* Map image — public-domain world SVG, tinted gray */}
+                <img
+                  src="/images/world-map.svg"
+                  alt="World map"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-contain"
+                  style={{ filter: 'grayscale(1) brightness(1.05) opacity(0.85)' }}
+                />
 
-              {/* Floating address pill — bottom-left */}
-              <div className="absolute bottom-5 start-5 max-w-xs flex items-center gap-3 px-4 py-3 rounded-2xl
-                bg-white/70 backdrop-blur-2xl backdrop-saturate-200
-                border border-white/70
-                shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_12px_30px_-10px_rgba(13,31,23,0.25)]">
-                <div className="btn-glass-icon w-10 h-10 flex-shrink-0 text-brand-green !bg-brand-green/15 !border-brand-green/30">
-                  <MapPin size={18} />
+                {/* Egypt focal pulse marker — positioned over Egypt on the world map */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute z-10"
+                  style={{ left: '54.5%', top: '38%' }}
+                >
+                  {/* Outer halo */}
+                  <span className="absolute rounded-full bg-brand-green/25 blur-xl" style={{ width: '120px', height: '120px', left: '-60px', top: '-60px' }} />
+                  {/* Animated ping ring */}
+                  <span className="absolute rounded-full bg-brand-green/40 animate-ping" style={{ width: '32px', height: '32px', left: '-16px', top: '-16px' }} />
+                  {/* Core dot */}
+                  <span className="relative block rounded-full bg-brand-green ring-2 ring-white shadow-[0_0_24px_rgba(4,121,62,0.7)]" style={{ width: '14px', height: '14px', marginLeft: '-7px', marginTop: '-7px' }} />
                 </div>
-                <div className="min-w-0">
-                  <div className="text-[10px] uppercase tracking-[0.22em] text-brand-green font-bold mb-0.5">{p.info.officeLabel}</div>
-                  <div className="text-brand-ink text-sm leading-snug truncate">{p.info.officeValue}</div>
+
+                {/* Egypt marker label */}
+                <div
+                  className="absolute z-10"
+                  style={{ left: '54.5%', top: '38%' }}
+                >
+                  <div
+                    className="absolute inline-flex items-center gap-2 px-3 py-1.5 rounded-full whitespace-nowrap
+                      bg-white/55 backdrop-blur-2xl backdrop-saturate-200
+                      border border-white/60
+                      shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_10px_24px_-8px_rgba(4,121,62,0.35)]"
+                    style={{ left: '18px', top: '-28px' }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-green" />
+                    <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-brand-ink">{p.global.marker}</span>
+                  </div>
                 </div>
               </div>
-
-              {/* Floating "Get Directions" pill — top-right */}
-              <a
-                href="https://www.google.com/maps/dir/?api=1&destination=15%20Ramo%20Buildings%2C%20Nasr%20Road%2C%20Nasr%20City%2C%20Cairo%2C%20Egypt"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group absolute top-5 end-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-full
-                  bg-brand-green/85 backdrop-blur-xl backdrop-saturate-200
-                  border border-white/30
-                  shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_12px_30px_-10px_rgba(4,121,62,0.55)]
-                  text-white text-[11px] font-bold uppercase tracking-[0.22em]
-                  transition-all duration-300
-                  hover:bg-brand-green hover:scale-105
-                  hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_15px_40px_-10px_rgba(4,121,62,0.7)]"
-              >
-                <Navigation size={13} strokeWidth={2.5} className="transition-transform group-hover:translate-x-0.5" />
-                {p.map.directions}
-              </a>
             </div>
+
+            {/* Soft drop shadow under the map (the "globe shadow" from the inspiration) */}
+            <div
+              aria-hidden
+              className="pointer-events-none mx-auto -mt-6 h-6 rounded-[50%] bg-brand-ink/15 blur-2xl"
+              style={{ width: '70%' }}
+            />
           </div>
         </div>
       </section>
