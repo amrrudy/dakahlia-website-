@@ -100,6 +100,20 @@ export default function Companies() {
       </section>
 
       <section className="py-16 lg:py-24 bg-white">
+        {/* Leaf clip-path + gradient defs for stroke */}
+        <svg width="0" height="0" className="absolute pointer-events-none" aria-hidden="true">
+          <defs>
+            <clipPath id="dk-leaf-shape" clipPathUnits="objectBoundingBox">
+              <path d="M 0.5 0.02 C 0.92 0.22 0.92 0.78 0.5 0.98 C 0.08 0.78 0.08 0.22 0.5 0.02 Z" />
+            </clipPath>
+            <linearGradient id="dk-leaf-stroke" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#62bc54" />
+              <stop offset="50%" stopColor="#04793e" />
+              <stop offset="100%" stopColor="#035a2e" />
+            </linearGradient>
+          </defs>
+        </svg>
+
         <div className="container-x">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="eyebrow mb-5">{p.intro.eyebrow}</p>
@@ -109,56 +123,114 @@ export default function Companies() {
           <div className="space-y-16 lg:space-y-24">
             {p.items.map((item, i) => {
               const reversed = i % 2 === 1
-              // Asymmetric "leaf" radius — flips per card for visual rhythm
-              const leafRadius = reversed
-                ? 'rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-2xl rounded-br-2xl'
-                : 'rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-2xl rounded-bl-2xl'
+              // Each leaf gets its own tilt + vertical offset so the cards don't sit in a strict grid
+              const layoutVariants = [
+                { tilt: '-rotate-[8deg]', offset: 'lg:mt-0',  delay: '0s' },
+                { tilt:  'rotate-[7deg]', offset: 'lg:mt-16', delay: '1.4s' },
+                { tilt: '-rotate-[5deg]', offset: 'lg:-mt-4', delay: '2.8s' },
+                { tilt:  'rotate-[9deg]', offset: 'lg:mt-12', delay: '4.2s' },
+                { tilt: '-rotate-[6deg]', offset: 'lg:mt-4',  delay: '5.6s' },
+              ]
+              const v = layoutVariants[i % layoutVariants.length]
               return (
                 <article key={item.index} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-                  <div className={`group relative lg:mt-10 ${reversed ? 'lg:order-2' : ''} transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1`}>
+                  <div className={`group relative ${v.offset} ${reversed ? 'lg:order-2' : ''} transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1`}>
+                    {/* Sway wrapper — gentle floating loop, doesn't change position */}
+                    <div className="animate-leaf-sway" style={{ animationDelay: v.delay }}>
                     {companyImages[i].isLogo ? (
-                      /* Logo card — dark branded background */
-                      <div
-                        className={`relative aspect-[5/4] bg-brand-ink flex items-center justify-center gap-6 p-10 overflow-hidden
-                          ${leafRadius}
-                          shadow-[0_25px_50px_-15px_rgba(13,31,23,0.3)]
-                          transition-shadow duration-500
-                          group-hover:shadow-[0_35px_70px_-15px_rgba(4,121,62,0.35)]`}
-                        style={{ transform: 'translateZ(0)', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                      >
-                        <img loading="lazy" decoding="async"
-                          src={companyImages[i].src}
-                          alt={item.name}
-                          className={`object-contain transition-transform duration-700 group-hover:scale-[1.04] ${companyImages[i].src2 ? 'max-w-[45%] max-h-[55%]' : 'max-w-[70%] max-h-[60%]'}`}
-                        />
-                        {companyImages[i].src2 && (
+                      /* Logo card — leaf-clipped dark branded plate with gradient + stroke */
+                      <div className={`relative aspect-[4/5] ${v.tilt}`}>
+                        {/* Soft green glow as the shadow */}
+                        <div aria-hidden className="absolute inset-0 bg-brand-green/15 scale-[1.18] blur-2xl pointer-events-none" />
+
+                        <div
+                          className="absolute inset-0 bg-gradient-to-br from-brand-ink via-brand-ink to-brand-green-dark flex items-center justify-center gap-6 p-10 overflow-hidden"
+                          style={{
+                            clipPath: 'url(#dk-leaf-shape)',
+                            WebkitClipPath: 'url(#dk-leaf-shape)',
+                          }}
+                        >
                           <img loading="lazy" decoding="async"
-                            src={companyImages[i].src2}
+                            src={companyImages[i].src}
                             alt={item.name}
-                            className="max-w-[45%] max-h-[75%] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-[1.04]"
+                            className={`object-contain transition-transform duration-700 group-hover:scale-[1.04] ${companyImages[i].src2 ? 'max-w-[40%] max-h-[40%]' : 'max-w-[55%] max-h-[45%]'}`}
                           />
-                        )}
+                          {companyImages[i].src2 && (
+                            <img loading="lazy" decoding="async"
+                              src={companyImages[i].src2}
+                              alt={item.name}
+                              className="max-w-[40%] max-h-[55%] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-[1.04]"
+                            />
+                          )}
+                          {/* Light shine across the dark leaf */}
+                          <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-brand-green/15 pointer-events-none" />
+                        </div>
+
+                        {/* Gradient stroke around the leaf */}
+                        <svg
+                          className="absolute inset-0 w-full h-full pointer-events-none"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="none"
+                          aria-hidden
+                        >
+                          <path
+                            d="M 50 2 C 92 22 92 78 50 98 C 8 78 8 22 50 2 Z"
+                            fill="none"
+                            stroke="url(#dk-leaf-stroke)"
+                            strokeWidth="0.6"
+                            vectorEffect="non-scaling-stroke"
+                          />
+                        </svg>
                       </div>
                     ) : (
-                      <div
-                        className={`relative aspect-[5/4] bg-brand-cream isolate overflow-hidden
-                          ${leafRadius}
-                          shadow-[0_25px_50px_-15px_rgba(13,31,23,0.22)]
-                          transition-shadow duration-500
-                          group-hover:shadow-[0_35px_70px_-15px_rgba(4,121,62,0.3)]`}
-                        style={{ transform: 'translateZ(0)', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                      >
+                      <div className={`relative aspect-[4/5] ${v.tilt}`}>
+                        {/* Ghost shadow — translucent blurred copy of the image bleeds out behind the leaf */}
                         <img
-                          loading="lazy"
-                          decoding="async"
                           src={companyImages[i].src}
-                          alt={item.name}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                          alt=""
+                          aria-hidden
+                          className="absolute inset-0 w-full h-full object-cover scale-[1.18] opacity-10 blur-2xl pointer-events-none"
                         />
-                        {/* Soft inner ring for a refined edge against the photo */}
-                        <div aria-hidden className={`absolute inset-0 ring-1 ring-inset ring-white/30 ${leafRadius} pointer-events-none`} />
+
+                        {/* Leaf-clipped image with gradient overlay */}
+                        <div
+                          className="absolute inset-0 bg-brand-cream overflow-hidden"
+                          style={{
+                            clipPath: 'url(#dk-leaf-shape)',
+                            WebkitClipPath: 'url(#dk-leaf-shape)',
+                          }}
+                        >
+                          <img
+                            loading="lazy"
+                            decoding="async"
+                            src={companyImages[i].src}
+                            alt={item.name}
+                            className="absolute inset-0 w-full h-full object-cover animate-leaf-image-drift"
+                            style={{ animationDelay: `-${i * 3.5}s` }}
+                          />
+                          {/* Cool gradient overlay — subtle green tint with light shine on top */}
+                          <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-brand-green/30 pointer-events-none" />
+                          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-brand-ink/25 via-transparent to-transparent pointer-events-none" />
+                        </div>
+
+                        {/* Gradient stroke around the leaf edge */}
+                        <svg
+                          className="absolute inset-0 w-full h-full pointer-events-none"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="none"
+                          aria-hidden
+                        >
+                          <path
+                            d="M 50 2 C 92 22 92 78 50 98 C 8 78 8 22 50 2 Z"
+                            fill="none"
+                            stroke="url(#dk-leaf-stroke)"
+                            strokeWidth="0.6"
+                            vectorEffect="non-scaling-stroke"
+                          />
+                        </svg>
                       </div>
                     )}
+                    </div>
                   </div>
                   <div>
                     <p className="eyebrow mb-4">{item.tagline}</p>

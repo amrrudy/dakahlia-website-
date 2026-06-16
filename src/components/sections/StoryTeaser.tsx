@@ -26,10 +26,14 @@ export default function StoryTeaser() {
             <p className="text-[11px] uppercase tracking-[0.28em] font-bold text-brand-green mb-4">
               {t.storyTeaser.eyebrow}
             </p>
-            <h2 className="display-text text-brand-ink leading-[0.88] text-5xl mb-6">
-              {t.storyTeaser.title.split('. ').map((part, i, arr) => (
-                <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
-              ))}
+            <h2 className={`display-text text-brand-ink text-5xl mb-6 ${dir === 'rtl' ? 'leading-[1.45]' : 'leading-[0.88]'}`}>
+              {dir === 'rtl' ? (
+                t.storyTeaser.title
+              ) : (
+                t.storyTeaser.title.split('. ').map((part, i, arr) => (
+                  <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
+                ))
+              )}
             </h2>
           </Reveal>
           <Reveal direction="up" delay={80}>
@@ -65,12 +69,16 @@ export default function StoryTeaser() {
               {t.storyTeaser.eyebrow}
             </p>
             <h2
-              className="display-text text-brand-ink leading-[0.85] tracking-tight mb-8"
+              className={`display-text text-brand-ink tracking-tight mb-8 ${dir === 'rtl' ? 'leading-[1.45]' : 'leading-[0.85]'}`}
               style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
             >
-              {t.storyTeaser.title.split('. ').map((part, i, arr) => (
-                <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
-              ))}
+              {dir === 'rtl' ? (
+                t.storyTeaser.title
+              ) : (
+                t.storyTeaser.title.split('. ').map((part, i, arr) => (
+                  <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
+                ))
+              )}
             </h2>
           </Reveal>
           <Reveal direction="left" delay={80}>

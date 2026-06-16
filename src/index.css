@@ -310,6 +310,29 @@
   animation: cursor-blink 0.8s step-end infinite;
 }
 
+/* Gentle leaf sway — translates the wrapper so it composes with inner rotate */
+@keyframes leaf-sway {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+.animate-leaf-sway {
+  animation: leaf-sway 7s ease-in-out infinite;
+  will-change: translate;
+}
+
+/* Ken Burns-style drift for images inside leaf cards — slow, continuous pan + zoom */
+@keyframes leaf-image-drift {
+  0%   { transform: scale(1.12) translate(0%, 0%); }
+  25%  { transform: scale(1.18) translate(-2%, -1.5%); }
+  50%  { transform: scale(1.14) translate(1.5%, 2%); }
+  75%  { transform: scale(1.2)  translate(2%, -1%); }
+  100% { transform: scale(1.12) translate(0%, 0%); }
+}
+.animate-leaf-image-drift {
+  animation: leaf-image-drift 20s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* Reduced-motion: kill all decorative loops */
 @media (prefers-reduced-motion: reduce) {
   .animate-blob-float,
@@ -318,7 +341,9 @@
   .animate-marquee,
   .animate-drift-a,
   .animate-drift-b,
-  .animate-drift-c {
+  .animate-drift-c,
+  .animate-leaf-sway,
+  .animate-leaf-image-drift {
     animation: none !important;
   }
 }
