@@ -109,33 +109,94 @@ export default function Companies() {
           <div className="space-y-16 lg:space-y-24">
             {p.items.map((item, i) => {
               const reversed = i % 2 === 1
+              // Asymmetric "leaf" radius — flips per card for visual rhythm
+              const leafRadius = reversed
+                ? 'rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-2xl rounded-br-2xl'
+                : 'rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-2xl rounded-bl-2xl'
               return (
                 <article key={item.index} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                  <div className={`relative ${reversed ? 'lg:order-2' : ''}`}>
+                  <div className={`group relative ${reversed ? 'lg:order-2' : ''} transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1`}>
                     {companyImages[i].isLogo ? (
                       /* Logo card — dark branded background */
-                      <div className="rounded-2xl aspect-[5/4] bg-brand-ink flex items-center justify-center gap-6 p-10">
+                      <div
+                        className={`relative aspect-[5/4] bg-brand-ink flex items-center justify-center gap-6 p-10 overflow-hidden
+                          ${leafRadius}
+                          shadow-[0_25px_50px_-15px_rgba(13,31,23,0.3)]
+                          transition-shadow duration-500
+                          group-hover:shadow-[0_35px_70px_-15px_rgba(4,121,62,0.35)]`}
+                        style={{ transform: 'translateZ(0)', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                      >
                         <img loading="lazy" decoding="async"
                           src={companyImages[i].src}
                           alt={item.name}
-                          className={`object-contain ${companyImages[i].src2 ? 'max-w-[45%] max-h-[55%]' : 'max-w-[70%] max-h-[60%]'}`}
+                          className={`object-contain transition-transform duration-700 group-hover:scale-[1.04] ${companyImages[i].src2 ? 'max-w-[45%] max-h-[55%]' : 'max-w-[70%] max-h-[60%]'}`}
                         />
                         {companyImages[i].src2 && (
                           <img loading="lazy" decoding="async"
                             src={companyImages[i].src2}
                             alt={item.name}
-                            className="max-w-[45%] max-h-[75%] object-contain drop-shadow-2xl"
+                            className="max-w-[45%] max-h-[75%] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-[1.04]"
                           />
                         )}
                       </div>
                     ) : (
-                      <div className="img-card rounded-2xl aspect-[5/4]">
-                        <img loading="lazy" decoding="async" src={companyImages[i].src} alt={item.name} />
+                      <div
+                        className={`relative aspect-[5/4] bg-brand-cream isolate overflow-hidden
+                          ${leafRadius}
+                          shadow-[0_25px_50px_-15px_rgba(13,31,23,0.22)]
+                          transition-shadow duration-500
+                          group-hover:shadow-[0_35px_70px_-15px_rgba(4,121,62,0.3)]`}
+                        style={{ transform: 'translateZ(0)', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                      >
+                        <img
+                          loading="lazy"
+                          decoding="async"
+                          src={companyImages[i].src}
+                          alt={item.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                        />
+                        {/* Soft inner ring for a refined edge against the photo */}
+                        <div aria-hidden className={`absolute inset-0 ring-1 ring-inset ring-white/30 ${leafRadius} pointer-events-none`} />
+
+                        {/* Glass index plate — masked into the card, shares the leaf shape */}
+                        <div
+                          className={`absolute top-4 ${reversed ? 'end-4' : 'start-4'} z-10 pointer-events-none
+                            ${reversed
+                              ? 'rounded-tr-2xl rounded-bl-2xl rounded-tl-md rounded-br-md'
+                              : 'rounded-tl-2xl rounded-br-2xl rounded-tr-md rounded-bl-md'}
+                            bg-white/30 backdrop-blur-2xl backdrop-saturate-200
+                            border border-white/55
+                            shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_10px_24px_-8px_rgba(0,0,0,0.35)]
+                            px-4 py-2.5
+                            flex items-center gap-2`}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                          <span className="font-display text-xl lg:text-2xl text-white leading-none">
+                            {item.index}
+                          </span>
+                        </div>
                       </div>
                     )}
-                    <div className="absolute top-6 start-6 font-display text-7xl text-brand-yellow/90 leading-none">
-                      {item.index}
-                    </div>
+
+                    {/* For logo cards (dark bg variant), keep an index plate too */}
+                    {companyImages[i].isLogo && (
+                      <div
+                        className={`absolute top-4 ${reversed ? 'end-4' : 'start-4'} z-10 pointer-events-none
+                          ${reversed
+                            ? 'rounded-tr-2xl rounded-bl-2xl rounded-tl-md rounded-br-md'
+                            : 'rounded-tl-2xl rounded-br-2xl rounded-tr-md rounded-bl-md'}
+                          bg-white/15 backdrop-blur-2xl backdrop-saturate-200
+                          border border-white/30
+                          shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]
+                          px-4 py-2.5
+                          flex items-center gap-2`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                        <span className="font-display text-xl lg:text-2xl text-white leading-none">
+                          {item.index}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <div>
                     <p className="eyebrow mb-4">{item.tagline}</p>

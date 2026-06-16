@@ -259,13 +259,19 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — glass with extra body so it reads over any hero photo */}
           <button
             onClick={() => setMobileOpen((o) => !o)}
-            className={`lg:hidden ms-auto btn-glass-icon w-10 h-10 ${overHero ? 'text-white' : 'text-brand-ink'}`}
             aria-label="Menu"
+            className={`lg:hidden ms-auto relative inline-flex items-center justify-center w-11 h-11 rounded-full
+              backdrop-blur-2xl backdrop-saturate-200
+              transition-all duration-300 active:scale-95
+              ${overHero
+                ? 'bg-white/35 border border-white/60 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_10px_24px_-8px_rgba(0,0,0,0.35)] hover:bg-white/50 hover:border-white/75'
+                : 'bg-white/55 border border-brand-ink/15 text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_8px_20px_-8px_rgba(13,31,23,0.18)] hover:bg-white/75 hover:border-brand-ink/25'
+              }`}
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={20} strokeWidth={2.25} /> : <Menu size={20} strokeWidth={2.25} />}
           </button>
         </div>
 

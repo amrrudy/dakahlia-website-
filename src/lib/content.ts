@@ -431,7 +431,7 @@ const en: Dict = {
       hero: {
         title: 'Our Companies',
         subtitle:
-          'Six interconnected businesses working together within one fully integrated agri-food platform.',
+          'Five interconnected businesses working together within one fully integrated agri-food platform.',
       },
       intro: {
         eyebrow: 'Our Portfolio',
@@ -1077,7 +1077,7 @@ const ar: Dict = {
     companies: {
       hero: {
         title: 'شركاتنا',
-        subtitle: 'ستة قطاعات أعمال مترابطة تعمل معاً ضمن منصة زراعية غذائية متكاملة بالكامل.',
+        subtitle: 'خمسة قطاعات أعمال مترابطة تعمل معاً ضمن منصة زراعية غذائية متكاملة بالكامل.',
       },
       intro: {
         eyebrow: 'محفظتنا',
