@@ -9,8 +9,8 @@ const companyImages: Array<{ src: string; isLogo: boolean; src2?: string }> = [
   { src: '/images/agriculture-citrus.jpg', isLogo: false },
   // 03 Dakahlia Slaughterhouse — processing line
   { src: '/images/slaughterhouse-processing.jpg', isLogo: false },
-  // 04 Shams Chemicals — brand logo on dark card
-  { src: '/images/shams-logo.png', isLogo: true },
+  // 04 Shams Chemicals — full-bleed facility photo
+  { src: '/images/Shams.jpg', isLogo: false },
   // 05 Al Anani Foundation — sewing & vocational training
   { src: '/images/foundation-sewing.jpg', isLogo: false },
 ]

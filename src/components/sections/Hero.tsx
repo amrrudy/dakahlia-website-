@@ -21,7 +21,7 @@ const slides = [
     alt: 'Dakahlia broiler house interior',
   },
   {
-    src: '/images/20210905_130412.png',
+    src: '/images/20210905_130412.jpg',
     alt: 'Dakahlia grain silos facility',
   },
 ]

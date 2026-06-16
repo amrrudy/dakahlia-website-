@@ -96,7 +96,7 @@ export const articles: Article[] = [
     titleAr: 'شمس للكيماويات تعمّق شراكاتها العالمية لتعزيز الإنتاجية الزراعية المصرية',
     excerpt: 'Shams Agricultural Chemicals has strengthened its partnerships with leading international agri-input brands including Omnia Nutriology, Mirstem, and Plymag, bringing cutting-edge fertilizer and crop protection technologies to Egyptian farmers.',
     excerptAr: 'عزّزت شمس للكيماويات الزراعية شراكاتها مع شركاء دوليين رائدين في مجال المدخلات الزراعية، من بينهم أومنيا نيوترولوجي وميرستم وبليماج، لإيصال تقنيات الأسمدة وحماية المحاصيل المتقدمة إلى المزارعين المصريين.',
-    image: '/images/people-real.jpg',
+    image: '/images/shams-partnerships.jpg',
     readTime: '3 min read',
     readTimeAr: '٣ دقائق قراءة',
   },

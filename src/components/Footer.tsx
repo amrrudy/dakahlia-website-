@@ -57,7 +57,6 @@ export default function Footer() {
                 <li><Link to="/"               className="text-white/65 hover:text-white transition-colors">{t.nav.home}</Link></li>
                 <li><Link to="/about"          className="text-white/65 hover:text-white transition-colors">{t.nav.about}</Link></li>
                 <li><Link to="/companies"      className="text-white/65 hover:text-white transition-colors">{t.nav.companies}</Link></li>
-                <li><Link to="/value-chain"    className="text-white/65 hover:text-white transition-colors">{t.nav.valueChain}</Link></li>
                 <li><Link to="/sustainability" className="text-white/65 hover:text-white transition-colors">{t.nav.sustainability}</Link></li>
                 <li><Link to="/news"           className="text-white/65 hover:text-white transition-colors">{t.nav.news}</Link></li>
                 <li><Link to="/careers"        className="text-white/65 hover:text-white transition-colors">{t.nav.careers}</Link></li>
