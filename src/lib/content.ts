@@ -84,11 +84,7 @@ export interface Dict {
       intro: {
         eyebrow: string
         title: string
-        p1: string
-        p2: string
-        p3: string
-        p4: string
-        p5: string
+        paragraphs: string[]
         statBadge: string
       }
       integration: { title: string; body: string }
@@ -273,9 +269,9 @@ const en: Dict = {
     stat1Label: 'Years of leadership',
     stat1Value: '40+',
     stat2Label: 'Business divisions',
-    stat2Value: '6',
-    stat3Label: 'Vertical integration',
-    stat3Value: '100%',
+    stat2Value: '5',
+    stat3Label: 'Export markets',
+    stat3Value: '50+',
   },
   whoWeAre: {
     eyebrow: 'Our Companies',
@@ -306,7 +302,7 @@ const en: Dict = {
       },
       {
         number: '05',
-        name: 'Al Anani Foundation',
+        name: 'Al Anani Foundation For Social Development',
         desc: 'The CSR arm dedicated to education, healthcare, and community empowerment across Egypt.',
       },
     ],
@@ -332,7 +328,7 @@ const en: Dict = {
     eyebrow: 'Our Story',
     title: 'Homegrown. Integrated. Built for scale.',
     body:
-      'Building on a robust foundation in the poultry sector, Dakahlia Group has evolved into a fully integrated agri-food platform — connecting every stage of the value chain within one coordinated system, supported by disciplined management and advanced operational infrastructure.',
+      'Building on a robust foundation in the poultry sector, Dakahlia Group has evolved into a fully integrated agri-food platform, connecting every stage of the value chain within one coordinated system, supported by disciplined management and advanced operational infrastructure.',
     cta: 'Read Our Story',
   },
   careersTeaser: {
@@ -367,18 +363,22 @@ const en: Dict = {
     about: {
       hero: {
         eyebrow: 'Our Story',
-        title: 'One System. Multiple Strengths.',
-        subtitle:
-          'A prominent homegrown Egyptian group with a diversified presence across poultry, agriculture, food processing, chemicals, and social development.',
+        title: 'Diverse Sectors.\nUnified Vision.\nLeading the Future.',
+        subtitle: 'Leading the way toward a more sustainable future.',
       },
       intro: {
-        eyebrow: 'Who We Are',
-        title: 'A fully integrated agri-food platform',
-        p1: 'Dakahlia Group is a prominent homegrown Egyptian group with a diversified presence across poultry, agriculture, food processing, chemicals, and social development.',
-        p2: 'Building on a robust foundation in the poultry sector, the Group has evolved into a fully integrated agri-food platform, connecting every stage of the value chain within one coordinated system.',
-        p3: 'Supported by disciplined management systems and advanced operational infrastructure, our model is designed to reduce variability, enhance efficiency, and maintain consistent quality across all operations.',
-        p4: 'This integration enables us to deliver reliable performance at scale, while supporting food security and long-term growth.',
-        p5: 'At every stage, our focus remains clear: delivering safe, high-quality products that meet the needs of modern households.',
+        eyebrow: 'Our Journey',
+        title: 'From 1981 to today',
+        paragraphs: [
+          'Every success story begins with a challenge. From the very beginning, we understood that true quality is not measured by the product alone, but by the ability to deliver it consistently and at the same high standard. That is why integration and control across every stage of production have been at the heart of our vision since day one.',
+          'Our journey began in 1981 when the founders acquired their first broiler farm in the Nile Delta. With a clear vision of delivering consistent quality and ensuring reliable supply, the Group built on its deep expertise in feed production and animal health, investing in its own feed manufacturing and nutritional solutions to support flock performance and enhance product quality for both local and international markets.',
+          'As demand grew, Dakahlia Group adopted a long-term expansion strategy focused on developing facilities, increasing production capacity, and investing in advanced technologies. Today, the Group operates one of the largest feed mills in Africa, helping establish its position as a leader in Egypt’s poultry and feed industries while building trusted partnerships with customers across Egypt and beyond for more than four decades.',
+          'In 1997, Dakahlia Group set out with a clear vision: to establish a modern poultry processing facility that would support the growing needs of the Egyptian market while strengthening quality, food safety, and supply reliability. That vision took shape with the construction of Dakahlia Slaughterhouse in 2012 and the launch of its first production cycle in 2017. This investment represented a major step in completing the Group’s integrated production system and led to the creation of Temry, a poultry brand offering fresh, marinated, frozen, and fully cooked products. Today, Temry is a trusted name among consumers and a key driver of the Group’s continued growth in both local and international markets.',
+          'In 1999, the Group expanded into agriculture with the establishment of Dakahlia Agricultural Development, driven by a clear vision to serve global markets. Starting with 700 feddans, the company now manages more than 20,000 feddans and exports premium Egyptian grapes, citrus, potatoes, dates, olives, and olive products to more than 50 countries worldwide.',
+          'As the Group’s operations expanded, the need for specialized agricultural solutions led to the establishment of Shams Agricultural Chemicals in 2001. Initially created to support the Group’s agricultural and livestock operations, the company has grown into one of Egypt’s leading providers of fertilizers, crop protection products, and veterinary solutions, supported by partnerships with major international companies and long-standing customer relationships.',
+          'Alongside its business growth, Dakahlia Group has remained committed to creating a positive social impact. This commitment led to the establishment of Al-Anani Foundation for Social Development, which drives the Group’s community initiatives in education, healthcare, and social development, creating meaningful and lasting impact beyond business operations.',
+          'Today, backed by a strong and stable financial position, advanced facilities, and a team of more than 4,500 employees, Dakahlia Group continues to expand its presence across local and international markets, building on more than four decades of experience and trusted partnerships with customers and partners around the world.',
+        ],
         statBadge: '40+ Years',
       },
       integration: {
@@ -403,11 +403,11 @@ const en: Dict = {
         visionLabel: 'Vision',
         visionTitle: 'Our Vision',
         visionBody:
-          'To build a leading integrated agri-food group that contributes to food security while operating with discipline and responsibility across every market we serve.',
+          'To be a global leader in the agricultural and food sectors, a paragon of business excellence, and the first choice of our stakeholders.',
         missionLabel: 'Mission',
         missionTitle: 'Our Mission',
         missionBody:
-          'To deliver safe, high-quality products at scale by connecting every stage of the value chain within one coordinated system, supported by disciplined management and continuous innovation.',
+          'Consistently provide superior agriculture and food products on a local and global scale, upholding our values at the core of every endeavor.',
       },
       values: {
         eyebrow: 'Our Values',
@@ -928,9 +928,9 @@ const ar: Dict = {
     stat1Label: 'سنة من الريادة',
     stat1Value: '+٤٠',
     stat2Label: 'قطاعات أعمال',
-    stat2Value: '٦',
-    stat3Label: 'تكامل رأسي',
-    stat3Value: '٪١٠٠',
+    stat2Value: '٥',
+    stat3Label: 'أسواق التصدير',
+    stat3Value: '+٥٠',
   },
   whoWeAre: {
     eyebrow: 'شركاتنا',
@@ -960,7 +960,7 @@ const ar: Dict = {
       },
       {
         number: '٠٥',
-        name: 'مؤسسة العناني',
+        name: 'مؤسسة العناني للتنمية الاجتماعية',
         desc: 'الذراع الاجتماعية المخصصة للتعليم والرعاية الصحية والتمكين المجتمعي في أنحاء مصر.',
       },
     ],
@@ -982,8 +982,8 @@ const ar: Dict = {
   },
   storyTeaser: {
     eyebrow: 'قصتنا',
-    title: 'مصري الجذور. متكامل. بُني للتوسع.',
-    body: 'انطلاقاً من أساس راسخ في قطاع الدواجن، تطورت مجموعة الدقهلية لتصبح منصة زراعية غذائية متكاملة بالكامل — تربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة.',
+    title: 'مصري الجذور. متكامل.\nبُني للتوسع.',
+    body: 'انطلاقاً من أساس راسخ في قطاع الدواجن، تطورت مجموعة الدقهلية لتصبح منصة زراعية غذائية متكاملة بالكامل، تربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة.',
     cta: 'اقرأ قصتنا',
   },
   careersTeaser: {
@@ -1017,17 +1017,22 @@ const ar: Dict = {
     about: {
       hero: {
         eyebrow: 'قصتنا',
-        title: 'منظومة واحدة. قدرات متعددة.',
-        subtitle: 'مجموعة مصرية بارزة متنوعة الأنشطة عبر الدواجن والزراعة وتصنيع الأغذية والكيماويات والتنمية الاجتماعية.',
+        title: 'تنوع في القطاعات.\nرؤية موحدة.\nريادة للمستقبل.',
+        subtitle: 'نقود الطريق نحو مستقبل أكثر استدامة.',
       },
       intro: {
-        eyebrow: 'من نحن',
-        title: 'منصة زراعية غذائية متكاملة بالكامل',
-        p1: 'مجموعة الدقهلية مجموعة مصرية بارزة متنوعة الأنشطة، تمتد عملياتها عبر الدواجن والزراعة وتصنيع الأغذية والكيماويات والتنمية الاجتماعية.',
-        p2: 'انطلاقاً من أساس راسخ في قطاع الدواجن، تطورت المجموعة إلى منصة زراعية غذائية متكاملة بالكامل، تربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة.',
-        p3: 'يهدف نموذجنا المدعوم بأنظمة إدارية منضبطة وبنية تحتية تشغيلية متقدمة إلى تقليل التباين وتعزيز الكفاءة والحفاظ على جودة متسقة في جميع العمليات.',
-        p4: 'يُمكّننا هذا التكامل من تقديم أداء موثوق على نطاق واسع، مع دعم الأمن الغذائي والنمو على المدى الطويل.',
-        p5: 'في كل مرحلة، يبقى تركيزنا واضحاً: تقديم منتجات آمنة عالية الجودة تلبي احتياجات الأسر الحديثة.',
+        eyebrow: 'رحلتنا',
+        title: 'من ١٩٨١ وحتى اليوم',
+        paragraphs: [
+          'تبدأ كل قصة نجاح بتحدٍّ. منذ اللحظة الأولى، أدركنا أن الجودة الحقيقية لا تُقاس بالمنتج وحده، بل بالقدرة على تقديمه باستمرار وبالمستوى نفسه من التميز. ولهذا، كان التكامل والسيطرة على مختلف مراحل الإنتاج جزءاً أساسياً من رؤيتنا منذ البداية.',
+          'بدأت الرحلة عام ١٩٨١ عندما استحوذ المؤسسون على أول مزرعة تسمين في منطقة الدلتا، برؤية واضحة تقوم على تقديم جودة ثابتة وضمان استمرارية الإمداد. وانطلاقاً من خبراتهم العميقة في مجال الأعلاف والصحة البيطرية، استثمرت المجموعة في إنتاج الأعلاف والإضافات الخاصة بها، بما يدعم صحة القطيع ويرفع جودة المنتج في السوقين المحلي والعالمي.',
+          'ومع نمو الطلب، تبنّت مجموعة الدقهلية سياسة توسع طويلة المدى قائمة على تطوير المنشآت، وزيادة الطاقات الإنتاجية، والاستثمار في أحدث التقنيات. واليوم، تضم المجموعة أحد أكبر مصانع الأعلاف في أفريقيا، وهو ما أسهم في ترسيخ مكانتها كأحد الرواد في صناعة الدواجن والأعلاف في مصر، وبناء شراكات ممتدة مع العملاء على مدار أكثر من أربعة عقود داخل مصر وخارجها.',
+          'وفي إطار رؤيتها طويلة المدى للتكامل والتطوير، وضعت المجموعة منذ عام ١٩٩٧ هدفاً استراتيجياً يتمثل في إنشاء مجزر دواجن آلي ومتطور يلبي احتياجات السوق المصري ويرتقي بمعايير الجودة وسلامة الغذاء. وتحولت هذه الرؤية إلى واقع مع بدء تنفيذ مجزر الدقهلية عام ٢٠١٢، وانطلاق أول دورة إنتاجية عام ٢٠١٧. وشكّل المجزر خطوة محورية في استكمال منظومة الإنتاج المتكاملة للمجموعة، كما أتاح إطلاق علامة "تمري" التجارية التي تقدم منتجات الدواجن الطازجة والمتبّلة والمجمدة والمطهية بالكامل. واليوم، أصبحت "تمري" علامة موثوقة لدى المستهلكين، وساهمت في توسيع حضور المجموعة داخل الأسواق المحلية والدولية.',
+          'وفي عام ١٩٩٩، توسعت المجموعة إلى القطاع الزراعي عبر تأسيس شركة الدقهلية للتنمية الزراعية برؤية واضحة تستهدف الأسواق العالمية. فبعد أن بدأت الرحلة بمساحة ٧٠٠ فدان، تدير الشركة اليوم أكثر من ٢٠ ألف فدان، وتصدر العنب والموالح والبطاطس والتمور والزيتون ومنتجاته إلى أكثر من ٥٠ دولة حول العالم.',
+          'ومع توسع أعمال المجموعة، تأسست شركة شمس للكيماويات الزراعية عام ٢٠٠١ لتوفير الأسمدة ومنتجات حماية المحاصيل والحلول البيطرية. وبفضل شراكاتها مع كبرى الشركات العالمية وعلاقاتها الممتدة مع العملاء، أصبحت اليوم أحد أبرز مزودي الحلول الزراعية في السوق المصري.',
+          'وبالتوازي مع النمو الاقتصادي، تأسست مؤسسة العناني للتنمية الاجتماعية لتقود جهود المجموعة في مجالات التعليم والرعاية الصحية وتنمية المجتمع؛ إيماناً بأهمية تحقيق أثر مستدام يمتد إلى ما هو أبعد من الأعمال.',
+          'واليوم، وبالاستناد إلى مركز مالي قوي ومستقر، ومنشآت متطورة، وفريق عمل يضم أكثر من ٤٫٥٠٠ موظف، تواصل مجموعة الدقهلية توسيع حضورها في الأسواق المحلية والدولية، مستندةً إلى أكثر من أربعة عقود من الخبرة وشراكات طويلة الأمد مع العملاء والشركاء حول العالم.',
+        ],
         statBadge: '+٤٠ سنة',
       },
       integration: {
@@ -1051,10 +1056,10 @@ const ar: Dict = {
         tagline: 'منظوران، هدفٌ واحد.',
         visionLabel: 'الرؤية',
         visionTitle: 'رؤيتنا',
-        visionBody: 'بناء مجموعة زراعية غذائية متكاملة رائدة تساهم في الأمن الغذائي مع العمل بانضباط ومسؤولية في كل سوق نخدمه.',
+        visionBody: 'أن نكون شركة رائدة عالمياً في قطاعي الزراعة والأغذية، ونموذجًا للتميز في الأعمال، والخيار الأول لشركائنا.',
         missionLabel: 'الرسالة',
-        missionTitle: 'رسالتنا',
-        missionBody: 'تقديم منتجات آمنة عالية الجودة على نطاق واسع من خلال ربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة، مدعومة بإدارة منضبطة وابتكار مستمر.',
+        missionTitle: 'مهمتنا',
+        missionBody: 'نقدم باستمرار منتجات زراعية وغذائية متميزة على المستوى المحلي، مع التمسك بقيمنا في صميم كل مسعى.',
       },
       values: {
         eyebrow: 'قيمنا',

@@ -9,7 +9,7 @@ const companyImages = [
   '/images/agriculture-citrus.jpg',
   '/images/slaughterhouse-processing.jpg',
   '/images/Shams.jpg',
-  '/images/foundation-sewing.jpg',
+  '/images/anani-foundation.jpg',
 ]
 
 const companyWebsites: (string | null)[] = [

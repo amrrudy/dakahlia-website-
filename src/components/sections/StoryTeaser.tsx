@@ -12,9 +12,9 @@ export default function StoryTeaser() {
       {/* Mobile: stacked layout */}
       <div className="block lg:hidden">
         {/* Image top */}
-        <div className="relative w-full h-56 sm:h-72 overflow-hidden">
+        <div className="relative w-full h-44 sm:h-56 overflow-hidden">
           <img loading="lazy" decoding="async"
-            src="/images/chicken-skewers.jpg"
+            src="/images/temry-chicken-pieces.png"
             alt=""
             className="w-full h-full object-cover object-center"
           />
@@ -26,7 +26,7 @@ export default function StoryTeaser() {
             <p className="text-[11px] uppercase tracking-[0.28em] font-bold text-brand-green mb-4">
               {t.storyTeaser.eyebrow}
             </p>
-            <h2 className={`display-text text-brand-ink text-5xl mb-6 ${dir === 'rtl' ? 'leading-[1.45]' : 'leading-[0.88]'}`}>
+            <h2 className={`display-text text-brand-ink text-5xl mb-6 ${dir === 'rtl' ? 'leading-[1.45] whitespace-pre-line' : 'leading-[0.88]'}`}>
               {dir === 'rtl' ? (
                 t.storyTeaser.title
               ) : (
@@ -54,9 +54,9 @@ export default function StoryTeaser() {
       {/* Desktop: side-by-side layout */}
       <div className="hidden lg:flex min-h-[680px] items-stretch">
         {/* Left — image bleeding from edge */}
-        <div className="relative w-[38%] flex-shrink-0">
+        <div className="relative w-[28%] flex-shrink-0">
           <img loading="lazy" decoding="async"
-            src="/images/chicken-skewers.jpg"
+            src="/images/temry-chicken-pieces.png"
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
@@ -69,7 +69,7 @@ export default function StoryTeaser() {
               {t.storyTeaser.eyebrow}
             </p>
             <h2
-              className={`display-text text-brand-ink tracking-tight mb-8 ${dir === 'rtl' ? 'leading-[1.45]' : 'leading-[0.85]'}`}
+              className={`display-text text-brand-ink tracking-tight mb-8 ${dir === 'rtl' ? 'leading-[1.45] whitespace-pre-line' : 'leading-[0.85]'}`}
               style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
             >
               {dir === 'rtl' ? (

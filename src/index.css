@@ -225,11 +225,12 @@
 
 /* Gentle vertical bob for floating elements */
 @keyframes soft-bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -12px; }
 }
 .animate-soft-bob {
   animation: soft-bob 6s ease-in-out infinite;
+  will-change: translate;
 }
 
 /* Free-floating "in space" drift — three variants so multiple elements move differently. */

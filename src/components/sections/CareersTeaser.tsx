@@ -120,20 +120,20 @@ export default function CareersTeaser() {
   const cards = [
     {
       src: '/images/career-portrait-1.jpg',
-      rotate: 'rotate(-6deg) translateY(20px)',
+      rotate: 'none',
       zIndex: 1,
       delay: '0s',
     },
     {
       src: '/images/career-portrait-2.jpg',
-      rotate: 'rotate(2deg) translateY(0px)',
-      zIndex: 3,
+      rotate: 'none',
+      zIndex: 2,
       delay: '1.2s',
     },
     {
       src: '/images/career-portrait-3.jpg',
-      rotate: 'rotate(-3deg) translateY(30px)',
-      zIndex: 2,
+      rotate: 'none',
+      zIndex: 3,
       delay: '2.4s',
     },
   ]
@@ -187,11 +187,11 @@ export default function CareersTeaser() {
 
           {/* Right — clipboard portrait cards */}
           <Reveal direction="left" delay={120}>
-            <div className="relative flex justify-center items-end gap-1 lg:gap-3 pt-10 pb-6 px-2 sm:px-4">
+            <div className="relative flex justify-center items-start gap-1 lg:gap-3 pt-10 pb-6 px-2 sm:px-4">
               {cards.map((card, i) => {
                 const emp = employees[i]
                 return (
-                  <div key={card.src} className="w-[40%] sm:w-[38%] flex-shrink-0">
+                  <div key={card.src} className="w-[28%] sm:w-[32%] lg:w-[38%] flex-shrink-0">
                     <ClipboardCard
                       src={card.src}
                       name={emp.name}

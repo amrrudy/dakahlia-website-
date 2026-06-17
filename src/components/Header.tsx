@@ -154,7 +154,7 @@ export default function Header() {
         { image: '/images/agriculture-citrus.jpg',       label: tr('Dakahlia Agriculture',    'الدقهلية للزراعة'),   desc: tr('17,000+ feddans, global export', 'أكثر من 17,000 فدان وتصدير عالمي'),    to: '/companies' },
         { image: '/images/slaughterhouse-processing.jpg',label: tr('Dakahlia Slaughterhouse', 'مجازر الدقهلية'),     desc: tr('Temry · Al-Dar · 45M birds/yr',  'تمري · الدار · 45 مليون طير/سنوياً'),   to: '/companies' },
         { image: '/images/Shams.jpg',                    label: tr('Shams Chemicals',         'شمس للكيماويات'),     desc: tr('Agricultural inputs & science',  'مدخلات زراعية مدعومة بالعلم'),         to: '/companies' },
-        { image: '/images/foundation-sewing.jpg',        label: tr('Al Anani Foundation',     'مؤسسة العناني'),       desc: tr('Social impact & community development', 'أثر اجتماعي وتنمية مجتمعية'),                                          to: '/companies' },
+        { image: '/images/anani-foundation-dropdown.jpg', label: tr('Al Anani Foundation',     'مؤسسة العناني'),       desc: tr('Social impact & community development', 'أثر اجتماعي وتنمية مجتمعية'),                                          to: '/companies' },
       ],
       megaCta: { label: tr('Explore All Companies', 'استعرض جميع الشركات'), to: '/companies' },
     },

@@ -25,7 +25,7 @@ export default function About() {
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
-            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl whitespace-pre-line leading-[1.05]"
           />
           <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
@@ -36,7 +36,7 @@ export default function About() {
       {/* Intro */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="container-x">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="relative">
               <div className="img-card cursor-orange rounded-2xl aspect-[4/5]">
                 <img loading="lazy" decoding="async" src="/images/citrus-orchard.jpg" alt="" />
@@ -50,11 +50,9 @@ export default function About() {
               <p className="eyebrow mb-6">{p.intro.eyebrow}</p>
               <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.intro.title}</h2>
               <div className="mt-8 space-y-4 text-lg text-brand-ink/70 leading-relaxed text-pretty">
-                <p>{p.intro.p1}</p>
-                <p>{p.intro.p2}</p>
-                <p>{p.intro.p3}</p>
-                <p>{p.intro.p4}</p>
-                <p>{p.intro.p5}</p>
+                {p.intro.paragraphs.map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
               </div>
             </div>
           </div>

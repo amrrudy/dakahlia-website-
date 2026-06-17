@@ -11,8 +11,8 @@ const companyImages: Array<{ src: string; isLogo: boolean; src2?: string }> = [
   { src: '/images/slaughterhouse-processing.jpg', isLogo: false },
   // 04 Shams Chemicals — full-bleed facility photo
   { src: '/images/Shams.jpg', isLogo: false },
-  // 05 Al Anani Foundation — sewing & vocational training
-  { src: '/images/foundation-sewing.jpg', isLogo: false },
+  // 05 Al Anani Foundation — vocational training (electronics)
+  { src: '/images/anani-foundation-dropdown.jpg', isLogo: false },
 ]
 
 // Official websites — null means no external site for that company
