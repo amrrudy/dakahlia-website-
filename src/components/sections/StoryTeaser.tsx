@@ -11,11 +11,15 @@ export default function StoryTeaser() {
 
       {/* Mobile: stacked layout */}
       <div className="block lg:hidden">
-        {/* Image top */}
+        {/* Video top */}
         <div className="relative w-full h-44 sm:h-56 overflow-hidden">
-          <img loading="lazy" decoding="async"
-            src="/images/temry-chicken-pieces.png"
-            alt=""
+          <video
+            src="/videos/story-teaser.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-brand-cream to-transparent" />
@@ -23,21 +27,15 @@ export default function StoryTeaser() {
         {/* Content below */}
         <div className="px-6 pt-8 pb-12">
           <Reveal direction="up">
-            <p className="text-[11px] uppercase tracking-[0.28em] font-bold text-brand-green mb-4">
+            <p className="eyebrow mb-5">
               {t.storyTeaser.eyebrow}
             </p>
-            <h2 className={`display-text text-brand-ink text-5xl mb-6 ${dir === 'rtl' ? 'leading-[1.45] whitespace-pre-line' : 'leading-[0.88]'}`}>
-              {dir === 'rtl' ? (
-                t.storyTeaser.title
-              ) : (
-                t.storyTeaser.title.split('. ').map((part, i, arr) => (
-                  <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
-                ))
-              )}
+            <h2 className={`display-text text-brand-ink text-[2rem] sm:text-[2.375rem] mb-6 ${dir === 'rtl' ? 'leading-[1.45] whitespace-pre-line' : 'leading-tight'}`}>
+              {t.storyTeaser.title}
             </h2>
           </Reveal>
           <Reveal direction="up" delay={80}>
-            <p className="text-base text-brand-ink/65 leading-relaxed mb-8">
+            <p className="text-[1.125rem] text-brand-ink/65 leading-relaxed mb-8">
               {t.storyTeaser.body}
             </p>
             <Link
@@ -53,11 +51,15 @@ export default function StoryTeaser() {
 
       {/* Desktop: side-by-side layout */}
       <div className="hidden lg:flex min-h-[680px] items-stretch">
-        {/* Left — image bleeding from edge */}
+        {/* Left — video bleeding from edge */}
         <div className="relative w-[28%] flex-shrink-0">
-          <img loading="lazy" decoding="async"
-            src="/images/temry-chicken-pieces.png"
-            alt=""
+          <video
+            src="/videos/story-teaser.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
           <div className={`absolute inset-y-0 end-0 w-32 ${dir === 'rtl' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-transparent to-brand-cream`} />
@@ -65,24 +67,18 @@ export default function StoryTeaser() {
         {/* Right — content */}
         <div className="relative flex-1 flex flex-col justify-center py-20 ps-12 pe-16">
           <Reveal direction="left">
-            <p className="text-[11px] uppercase tracking-[0.28em] font-bold text-brand-green mb-4">
+            <p className="eyebrow mb-5">
               {t.storyTeaser.eyebrow}
             </p>
             <h2
-              className={`display-text text-brand-ink tracking-tight mb-8 ${dir === 'rtl' ? 'leading-[1.45] whitespace-pre-line' : 'leading-[0.85]'}`}
-              style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
+              className={`display-text text-brand-ink tracking-tight mb-8 ${dir === 'rtl' ? 'leading-[1.45] whitespace-pre-line' : 'leading-tight'}`}
+              style={{ fontSize: 'clamp(2.125rem, 3.4vw, 3.65rem)' }}
             >
-              {dir === 'rtl' ? (
-                t.storyTeaser.title
-              ) : (
-                t.storyTeaser.title.split('. ').map((part, i, arr) => (
-                  <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
-                ))
-              )}
+              {t.storyTeaser.title}
             </h2>
           </Reveal>
           <Reveal direction="left" delay={80}>
-            <p className="text-lg text-brand-ink/65 leading-relaxed max-w-md text-pretty mb-8">
+            <p className="text-[1.25rem] text-brand-ink/65 leading-relaxed text-pretty mb-8">
               {t.storyTeaser.body}
             </p>
             <Link

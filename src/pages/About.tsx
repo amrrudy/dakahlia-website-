@@ -1,7 +1,96 @@
+import { useRef, useState, useEffect } from 'react'
 import { Check, Eye, Target } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
 import LazySection from '../components/LazySection'
+
+/** Single timeline step — alternates side on desktop, slides in on scroll */
+function TimelineStep({
+  index,
+  total,
+  text,
+}: {
+  index: number
+  total: number
+  text: string
+}) {
+  const ref = useRef<HTMLLIElement>(null)
+  const [visible, setVisible] = useState(false)
+  const isLeft = index % 2 === 0
+
+  useEffect(() => {
+    if (!ref.current || visible) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -80px 0px' },
+    )
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [visible])
+
+  const number = String(index + 1).padStart(2, '0')
+
+  return (
+    <li ref={ref} className="relative lg:grid lg:grid-cols-2 lg:gap-12 mb-12 lg:mb-20">
+      {/* Marker dot on the central line */}
+      <span
+        aria-hidden
+        className={`absolute z-10
+          start-[4px] lg:start-1/2 lg:-translate-x-1/2 top-1.5
+          inline-flex items-center justify-center w-7 h-7 rounded-full
+          bg-white/75 backdrop-blur-xl backdrop-saturate-200
+          border-2 border-brand-green/60
+          shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_24px_-8px_rgba(4,121,62,0.45)]
+          transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${visible ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}
+      >
+        <span className="w-2.5 h-2.5 rounded-full bg-brand-green" />
+      </span>
+
+      {/* Empty grid cell that the card doesn't occupy on desktop */}
+      <div className={`hidden lg:block ${isLeft ? 'lg:order-2' : 'lg:order-1'}`} aria-hidden />
+
+      {/* Card */}
+      <div
+        className={`ps-14 lg:ps-0 ${isLeft ? 'lg:order-1 lg:pe-14' : 'lg:order-2 lg:ps-14'}
+          transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${visible ? 'opacity-100 translate-x-0' : `opacity-0 ${isLeft ? '-translate-x-6' : 'translate-x-6'}`}`}
+        style={{ transitionDelay: visible ? '120ms' : '0ms' }}
+      >
+        <div
+          className={`relative rounded-2xl p-6 lg:p-7
+            bg-white/55 backdrop-blur-2xl backdrop-saturate-200
+            border border-white/70
+            shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_18px_45px_-15px_rgba(13,31,23,0.18)]
+            transition-shadow duration-500
+            hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_28px_55px_-15px_rgba(4,121,62,0.28)]`}
+        >
+          {/* Glass connector arm from card to central line (desktop only) */}
+          <span
+            aria-hidden
+            className={`hidden lg:block absolute top-7 ${isLeft ? '-end-7' : '-start-7'} w-7 h-px bg-gradient-to-${isLeft ? 'l' : 'r'} from-brand-green/45 to-transparent`}
+          />
+
+          {/* Number tag */}
+          <div className="flex items-center gap-3 mb-3">
+            <span className="font-display text-2xl text-brand-green leading-none">{number}</span>
+            <span className="h-px flex-1 bg-brand-green/15" />
+            <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-brand-green/65">
+              {String(total).padStart(2, '0')}
+            </span>
+          </div>
+
+          <p className="text-[15px] lg:text-base text-brand-ink/75 leading-relaxed text-pretty">{text}</p>
+        </div>
+      </div>
+    </li>
+  )
+}
 
 export default function About() {
   const { t } = useI18n()
@@ -13,7 +102,7 @@ export default function About() {
       <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
           <img
-            src="/images/hero-2-poultry-houses.jpg"
+            src="/images/about-hero-cinematic.jpg"
             alt=""
             className="w-full h-full object-cover"
             style={{ objectPosition: 'center 50%' }}
@@ -33,50 +122,48 @@ export default function About() {
         </div>
       </section>
 
-      {/* Intro */}
+      {/* Intro — Our Story as a vertical timeline */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="container-x">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
-            <div className="relative">
-              <div className="img-card cursor-orange rounded-2xl aspect-[4/5]">
-                <img loading="lazy" decoding="async" src="/images/citrus-orchard.jpg" alt="" />
-              </div>
-              <div className="absolute -bottom-6 -end-6 px-7 py-5 rounded-2xl bg-brand-green/30 backdrop-blur-2xl backdrop-saturate-200 border border-brand-green/50 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_20px_50px_-12px_rgba(4,121,62,0.5)]">
-                <div className="font-display text-3xl leading-none">{p.intro.statBadge}</div>
-                <div className="text-xs uppercase tracking-wider mt-1 opacity-80">of excellence</div>
-              </div>
-            </div>
-            <div>
-              <p className="eyebrow mb-6">{p.intro.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.intro.title}</h2>
-              <div className="mt-8 space-y-4 text-lg text-brand-ink/70 leading-relaxed text-pretty">
-                {p.intro.paragraphs.map((para, idx) => (
-                  <p key={idx}>{para}</p>
-                ))}
-              </div>
-            </div>
+          {/* Section header */}
+          <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+            <p className="eyebrow">{p.intro.eyebrow}</p>
           </div>
-        </div>
-      </section>
 
-      {/* Integration That Delivers */}
-      <LazySection>
-      <section className="py-20 lg:py-28 bg-brand-ink text-white relative overflow-hidden">
-        <svg className="absolute -top-20 -right-20 w-[500px] h-[500px] opacity-5" viewBox="0 0 100 100">
-          <path d="M50 5 C25 25, 25 60, 50 95 C75 60, 75 25, 50 5 Z" fill="white" />
-        </svg>
-        <div className="container-x relative">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-balance">{p.integration.title}</h2>
-            </div>
-            <div>
-              <p className="text-xl text-white/80 leading-relaxed text-pretty">{p.integration.body}</p>
+          {/* Zigzag timeline */}
+          <div className="relative max-w-5xl mx-auto">
+            {/* Central vertical pipeline — left on mobile, centered on desktop */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute top-2 bottom-24 w-px
+                start-[17px] lg:start-1/2 lg:-translate-x-1/2
+                bg-gradient-to-b from-brand-green/50 via-brand-green/30 to-brand-green/0"
+            />
+
+            <ol className="relative">
+              {p.intro.paragraphs.map((para, idx) => (
+                <TimelineStep
+                  key={idx}
+                  index={idx}
+                  total={p.intro.paragraphs.length}
+                  text={para}
+                />
+              ))}
+            </ol>
+
+            {/* Closing badge centered at the bottom of the pipeline */}
+            <div className="relative flex justify-center mt-4">
+              <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl
+                bg-brand-green/15 backdrop-blur-2xl backdrop-saturate-200
+                border border-brand-green/40
+                shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_18px_40px_-12px_rgba(4,121,62,0.35)]">
+                <div className="font-display text-3xl text-brand-green leading-none">{p.intro.statBadge}</div>
+                <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-brand-green/80">{p.intro.statBadgeLabel}</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      </LazySection>
 
       {/* What Drives Us */}
       <LazySection>

@@ -86,6 +86,7 @@ export interface Dict {
         title: string
         paragraphs: string[]
         statBadge: string
+        statBadgeLabel: string
       }
       integration: { title: string; body: string }
       whatDrivesUs: {
@@ -261,9 +262,8 @@ const en: Dict = {
   },
   hero: {
     eyebrow: 'Egypt · Integrated Agri-Food Group',
-    headline: 'One system. Multiple strengths.',
-    subtitle:
-      'Dakahlia Group is a prominent homegrown Egyptian group with a diversified presence across poultry, agriculture, food processing, chemicals, and social development.',
+    headline: 'A Diverse Agri-Food Platform\nDriving Tomorrow’s Standards.',
+    subtitle: 'We’re not only ready for tomorrow, we’re leading the way.',
     primaryCta: 'Discover Our Companies',
     secondaryCta: 'Our Story',
     stat1Label: 'Years of leadership',
@@ -367,7 +367,7 @@ const en: Dict = {
         subtitle: 'Leading the way toward a more sustainable future.',
       },
       intro: {
-        eyebrow: 'Our Journey',
+        eyebrow: 'Our Story',
         title: 'From 1981 to today',
         paragraphs: [
           'Every success story begins with a challenge. From the very beginning, we understood that true quality is not measured by the product alone, but by the ability to deliver it consistently and at the same high standard. That is why integration and control across every stage of production have been at the heart of our vision since day one.',
@@ -380,6 +380,7 @@ const en: Dict = {
           'Today, backed by a strong and stable financial position, advanced facilities, and a team of more than 4,500 employees, Dakahlia Group continues to expand its presence across local and international markets, building on more than four decades of experience and trusted partnerships with customers and partners around the world.',
         ],
         statBadge: '40+ Years',
+        statBadgeLabel: 'of excellence',
       },
       integration: {
         title: 'Integration That Delivers',
@@ -417,7 +418,7 @@ const en: Dict = {
           { name: 'Excellence', body: 'Excellence in execution across all operations.' },
           { name: 'Ownership', body: 'Ownership of outcomes at every level.' },
           { name: 'Respect', body: 'Respect for people and partnerships.' },
-          { name: 'Sustainable Growth', body: 'Commitment to sustainable growth for the long term.' },
+          { name: 'Growth', body: 'Commitment to growth for the long term.' },
         ],
       },
       leadership: {
@@ -920,9 +921,8 @@ const ar: Dict = {
   },
   hero: {
     eyebrow: 'مصر · مجموعة زراعية غذائية متكاملة',
-    headline: 'منظومة واحدة. قدرات متعددة.',
-    subtitle:
-      'مجموعة الدقهلية مجموعة مصرية بارزة ومتنوعة الأنشطة، تمتد عملياتها عبر الدواجن والزراعة وتصنيع الأغذية والكيماويات والتنمية الاجتماعية.',
+    headline: 'تنوع في القطاعات.\nرؤية موحدة.\nريادة للمستقبل.',
+    subtitle: 'نقود الطريق نحو مستقبل أكثر استدامة.',
     primaryCta: 'تعرف على شركاتنا',
     secondaryCta: 'قصتنا',
     stat1Label: 'سنة من الريادة',
@@ -1021,7 +1021,7 @@ const ar: Dict = {
         subtitle: 'نقود الطريق نحو مستقبل أكثر استدامة.',
       },
       intro: {
-        eyebrow: 'رحلتنا',
+        eyebrow: 'قصتنا',
         title: 'من ١٩٨١ وحتى اليوم',
         paragraphs: [
           'تبدأ كل قصة نجاح بتحدٍّ. منذ اللحظة الأولى، أدركنا أن الجودة الحقيقية لا تُقاس بالمنتج وحده، بل بالقدرة على تقديمه باستمرار وبالمستوى نفسه من التميز. ولهذا، كان التكامل والسيطرة على مختلف مراحل الإنتاج جزءاً أساسياً من رؤيتنا منذ البداية.',
@@ -1034,6 +1034,7 @@ const ar: Dict = {
           'واليوم، وبالاستناد إلى مركز مالي قوي ومستقر، ومنشآت متطورة، وفريق عمل يضم أكثر من ٤٫٥٠٠ موظف، تواصل مجموعة الدقهلية توسيع حضورها في الأسواق المحلية والدولية، مستندةً إلى أكثر من أربعة عقود من الخبرة وشراكات طويلة الأمد مع العملاء والشركاء حول العالم.',
         ],
         statBadge: '+٤٠ سنة',
+        statBadgeLabel: 'من الخبرة',
       },
       integration: {
         title: 'تكامل يُحقق النتائج',
@@ -1069,7 +1070,7 @@ const ar: Dict = {
           { name: 'التميز', body: 'التميز في التنفيذ عبر جميع العمليات.' },
           { name: 'تحمل المسؤولية', body: 'تحمل المسؤولية عن النتائج على كل المستويات.' },
           { name: 'الاحترام', body: 'الاحترام للأشخاص والشراكات.' },
-          { name: 'النمو المستدام', body: 'الالتزام بالنمو المستدام على المدى الطويل.' },
+          { name: 'النمو', body: 'الالتزام بالنمو على المدى الطويل.' },
         ],
       },
       leadership: {

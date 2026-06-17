@@ -1,6 +1,77 @@
+import { useRef, useState } from 'react'
 import { Check, ExternalLink } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
+
+/** Card that tilts in 3D following the cursor position */
+function TiltLogoCard({
+  src,
+  label,
+}: {
+  src: string
+  label: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0, glow: { x: 50, y: 50 } })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const px = (e.clientX - rect.left) / rect.width
+    const py = (e.clientY - rect.top) / rect.height
+    setTilt({
+      rx: -(py - 0.5) * 14,
+      ry: (px - 0.5) * 14,
+      glow: { x: px * 100, y: py * 100 },
+    })
+  }
+
+  const handleMouseLeave = () => {
+    setTilt({ rx: 0, ry: 0, glow: { x: 50, y: 50 } })
+  }
+
+  return (
+    <div className="flex-shrink-0" style={{ perspective: '900px' }}>
+      <div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="group relative aspect-square w-28 sm:w-32 lg:w-36
+          rounded-2xl
+          bg-white/45 backdrop-blur-2xl backdrop-saturate-200
+          border border-white/70
+          shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_18px_40px_-15px_rgba(13,31,23,0.18)]
+          overflow-hidden cursor-pointer"
+        style={{
+          transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 250ms cubic-bezier(0.22,1,0.36,1)',
+        }}
+      >
+        {/* Cursor-following glow */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(circle at ${tilt.glow.x}% ${tilt.glow.y}%, rgba(4,121,62,0.22), transparent 55%)`,
+          }}
+        />
+        {/* Top shine */}
+        <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent" />
+
+        <div className="relative h-full flex items-center justify-center p-4" style={{ transform: 'translateZ(20px)' }}>
+          <img
+            src={src}
+            alt={label}
+            loading="lazy"
+            decoding="async"
+            className="max-w-[80%] max-h-[80%] object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const companyImages: Array<{ src: string; isLogo: boolean; src2?: string }> = [
   // 01 Dakahlia Poultry — day-old chicks at the hatchery
@@ -25,68 +96,13 @@ const companyWebsites: (string | null)[] = [
 ]
 
 export default function Companies() {
-  const { t, dir } = useI18n()
+  const { t } = useI18n()
   const p = t.pages.companies
-  const isRtl = dir === 'rtl'
 
   return (
     <>
-      {/* Hero with scattered logo background */}
-      <section className="relative bg-brand-cream overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
-
-        {/* Scattered brand logos — purely decorative, kept off the title column */}
-        {[
-          { src: '/images/Agriculture.png',     top: '12%', left: '84%', size: 110, rotate: 5   },
-          { src: '/images/Red.png',             top: '4%',  left: '55%', size: 90,  rotate: 15  },
-          { src: '/images/Desertgold.png',      top: '22%', left: '60%', size: 100, rotate: 6   },
-          { src: '/images/Cleos.png',           top: '28%', left: '90%', size: 95,  rotate: 12  },
-          { src: '/images/Foundation.png',      top: '42%', left: '76%', size: 110, rotate: 10  },
-          { src: '/images/Harvest.png',         top: '50%', left: '55%', size: 110, rotate: -4  },
-          { src: '/images/Shams.png',           top: '45%', left: '91%', size: 110, rotate: 11  },
-          { src: '/images/Saucetree.png',       top: '35%', left: '83%', size: 100, rotate: 7   },
-          { src: '/images/Aqua.png',            top: '60%', left: '62%', size: 105, rotate: -7  },
-          { src: '/images/Market.png',          top: '38%', left: '80%', size: 120, rotate: -5  },
-          { src: '/images/Pickletree.png',      top: '6%',  left: '70%', size: 95,  rotate: -6  },
-          { src: '/images/Poultry.png',         top: '6%',  left: '5%',  size: 115, rotate: 8   },
-          { src: '/images/Citrus.png',          top: '14%', left: '28%', size: 105, rotate: -10 },
-          { src: '/images/Sauce.png',           top: '8%',  left: '46%', size: 95,  rotate: -14 },
-          { src: '/images/Fayruze.png',         top: '2%',  left: '15%', size: 100, rotate: -8  },
-          { src: '/images/ALEEF-LOGO (1).png',  top: '18%', left: '72%', size: 110, rotate: 4   },
-        ].map((logo, i) => {
-          // Cycle through three drift variants so each logo flies on its own path
-          const driftClass = ['animate-drift-a', 'animate-drift-b', 'animate-drift-c'][i % 3]
-          return (
-          <span
-            key={i}
-            aria-hidden="true"
-            className={driftClass}
-            style={{
-              position: 'absolute',
-              top: logo.top,
-              // In RTL, mirror left → right so logos flip to the title-free side
-              ...(isRtl ? { right: logo.left } : { left: logo.left }),
-              width: logo.size,
-              height: logo.size,
-              transform: `rotate(${isRtl ? -logo.rotate : logo.rotate}deg)`,
-              animationDelay: `-${(i * 1.3) % 11}s`,
-              pointerEvents: 'none',
-              userSelect: 'none',
-              display: 'inline-block',
-              willChange: 'translate',
-            }}
-          >
-            <img
-              src={logo.src}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-contain"
-            />
-          </span>
-          )
-        })}
-
-        {/* Foreground content */}
+      {/* Hero — consistent with other pages: full-width title + subtitle, logo strip below */}
+      <section className="relative bg-brand-cream overflow-hidden min-h-[460px] lg:min-h-[540px] flex flex-col justify-end">
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
@@ -96,6 +112,19 @@ export default function Companies() {
           <p className="mt-6 text-lg max-w-2xl leading-relaxed text-pretty text-brand-ink/65">
             {p.hero.subtitle}
           </p>
+
+          {/* Brand logo strip — 3D cursor-tilt cards */}
+          <div className="mt-10 flex flex-wrap items-center justify-start gap-3 sm:gap-4">
+            {[
+              { src: '/images/Poultry.png',        label: 'Dakahlia Poultry' },
+              { src: '/images/Agriculture.png',    label: 'Dakahlia Agriculture' },
+              { src: '/images/Slaughterhouse.png', label: 'Dakahlia Slaughterhouses' },
+              { src: '/images/Shams.png',          label: 'Shams Chemicals' },
+              { src: '/images/Foundation.png',     label: 'Al Anani Foundation' },
+            ].map((logo) => (
+              <TiltLogoCard key={logo.src} src={logo.src} label={logo.label} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -115,11 +144,6 @@ export default function Companies() {
         </svg>
 
         <div className="container-x">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="eyebrow mb-5">{p.intro.eyebrow}</p>
-            <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.intro.title}</h2>
-          </div>
-
           <div className="space-y-16 lg:space-y-24">
             {p.items.map((item, i) => {
               const reversed = i % 2 === 1
