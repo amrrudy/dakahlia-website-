@@ -334,6 +334,94 @@
   will-change: transform;
 }
 
+/* Sketch-in reveal — horizontal mask wipe that mimics hand-drawing a sketch */
+@keyframes sketch-in {
+  0% {
+    -webkit-mask-position: 100% 0;
+            mask-position: 100% 0;
+    opacity: 0;
+    filter: contrast(0.55) saturate(0.4);
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-mask-position: 0% 0;
+            mask-position: 0% 0;
+    opacity: 0.95;
+    filter: contrast(1) saturate(1);
+  }
+}
+.animate-sketch-in {
+  -webkit-mask-image: linear-gradient(90deg, #000 50%, transparent 50%);
+          mask-image: linear-gradient(90deg, #000 50%, transparent 50%);
+  -webkit-mask-size: 200% 100%;
+          mask-size: 200% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+  animation: sketch-in 1.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: mask-position, opacity, filter;
+}
+
+/* Rail pulse — a bright electric "bullet" of light that travels top → bottom along
+   the central timeline wire, on a slow continuous loop. Gentle flicker at entry,
+   long quiet glide, soft exit. */
+@keyframes rail-pulse {
+  0%   { top: -8%;  opacity: 0; }
+  4%   { opacity: 0.5; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  96%  { opacity: 0.5; }
+  100% { top: 106%; opacity: 0; }
+}
+.animate-rail-pulse {
+  animation: rail-pulse 8s cubic-bezier(0.55, 0.1, 0.45, 0.9) infinite;
+  will-change: top, opacity;
+}
+/* Soft halo that breathes in sync with the bullet — slow throb, gentle electric feel */
+@keyframes rail-pulse-halo {
+  0%, 100% { box-shadow: 0 0 14px 3px rgba(4,121,62,0.45), 0 0 28px 8px rgba(98,188,84,0.22); }
+  50%      { box-shadow: 0 0 22px 6px rgba(4,121,62,0.7),  0 0 44px 14px rgba(98,188,84,0.38); }
+}
+.animate-rail-pulse-halo {
+  animation: rail-pulse-halo 1.6s ease-in-out infinite;
+}
+
+/* Glass sweep — a soft band of light that travels top → bottom across the sticky note
+   when the card scrolls into view, mimicking a passing light source */
+@keyframes glass-sweep {
+  0%   { transform: translateY(-160%); opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateY(420%); opacity: 0; }
+}
+.animate-glass-sweep {
+  animation: glass-sweep 1.9s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Pencil tracer — a guide whose width grows 0 → 100% in sync with sketch-in;
+   the pencil icon sits at its right edge so it appears to draw the image */
+@keyframes pen-track {
+  0%   { width: 0%;   opacity: 0; }
+  5%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+.animate-pen-track {
+  animation: pen-track 1.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: width, opacity;
+}
+@keyframes pen-wiggle {
+  0%, 100% { transform: translate(50%, -50%) rotate(-18deg); }
+  50%      { transform: translate(50%, -54%) rotate(-15deg); }
+}
+.animate-pen-wiggle {
+  animation: pen-wiggle 0.18s ease-in-out infinite;
+}
+
 /* Reduced-motion: kill all decorative loops */
 @media (prefers-reduced-motion: reduce) {
   .animate-blob-float,
@@ -346,6 +434,20 @@
   .animate-leaf-sway,
   .animate-leaf-image-drift {
     animation: none !important;
+  }
+  .animate-sketch-in {
+    animation: none !important;
+    -webkit-mask-image: none;
+            mask-image: none;
+    opacity: 0.95;
+  }
+  .animate-pen-track,
+  .animate-pen-wiggle,
+  .animate-glass-sweep,
+  .animate-rail-pulse,
+  .animate-rail-pulse-halo {
+    animation: none !important;
+    opacity: 0 !important;
   }
 }
 

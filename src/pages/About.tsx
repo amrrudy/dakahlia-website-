@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { Check, Eye, Target } from 'lucide-react'
+import { Check, Eye, Target, Pencil } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import TypedHeading from '../components/TypedHeading'
 import LazySection from '../components/LazySection'
@@ -9,10 +9,12 @@ function TimelineStep({
   index,
   total,
   text,
+  image,
 }: {
   index: number
   total: number
   text: string
+  image?: string
 }) {
   const ref = useRef<HTMLLIElement>(null)
   const [visible, setVisible] = useState(false)
@@ -41,19 +43,45 @@ function TimelineStep({
       <span
         aria-hidden
         className={`absolute z-10
-          start-[4px] lg:start-1/2 lg:-translate-x-1/2 top-1.5
+          start-[4px] lg:start-1/2 ltr:lg:-translate-x-1/2 rtl:lg:translate-x-1/2 top-1.5
           inline-flex items-center justify-center w-7 h-7 rounded-full
           bg-white/75 backdrop-blur-xl backdrop-saturate-200
           border-2 border-brand-green/60
           shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_24px_-8px_rgba(4,121,62,0.45)]
-          transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+          transition-[opacity,scale] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
           ${visible ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}
       >
         <span className="w-2.5 h-2.5 rounded-full bg-brand-green" />
       </span>
 
-      {/* Empty grid cell that the card doesn't occupy on desktop */}
-      <div className={`hidden lg:block ${isLeft ? 'lg:order-2' : 'lg:order-1'}`} aria-hidden />
+      {/* Opposite cell — empty space across from the card; hosts the optional illustration */}
+      <div className={`hidden lg:flex items-center justify-center ${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+        {image && (
+          <div className="relative inline-block">
+            <img
+              aria-hidden
+              src={image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className={`block max-w-full max-h-72 lg:max-h-80 w-auto h-auto object-contain select-none mix-blend-multiply
+                ${visible ? 'animate-sketch-in' : 'opacity-0'}`}
+              style={{ animationDelay: visible ? '240ms' : '0ms' }}
+            />
+            {visible && (
+              <div
+                aria-hidden
+                className="absolute inset-y-0 left-0 pointer-events-none animate-pen-track overflow-visible"
+                style={{ animationDelay: '240ms' }}
+              >
+                <span className="absolute top-1/2 right-0 animate-pen-wiggle text-brand-green drop-shadow-[0_3px_6px_rgba(4,121,62,0.45)]">
+                  <Pencil size={26} strokeWidth={2} fill="currentColor" />
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Card */}
       <div
@@ -63,18 +91,50 @@ function TimelineStep({
         style={{ transitionDelay: visible ? '120ms' : '0ms' }}
       >
         <div
-          className={`relative rounded-2xl p-6 lg:p-7
-            bg-white/55 backdrop-blur-2xl backdrop-saturate-200
-            border border-white/70
-            shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_18px_45px_-15px_rgba(13,31,23,0.18)]
-            transition-shadow duration-500
-            hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_28px_55px_-15px_rgba(4,121,62,0.28)]`}
+          className={`sticky-note relative rounded-2xl p-6 lg:p-7 pt-8 lg:pt-9
+            bg-white/10 backdrop-blur-2xl backdrop-saturate-200
+            border border-white/40
+            shadow-[0_22px_46px_-14px_rgba(13,31,23,0.30),0_4px_12px_-2px_rgba(13,31,23,0.18),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(255,255,255,0.2)]
+            transition-transform duration-500 ease-out
+            hover:rotate-0 hover:-translate-y-0.5
+            ${index % 2 === 0 ? '-rotate-[0.7deg]' : 'rotate-[0.7deg]'}`}
+          style={{
+            transformOrigin: 'top center',
+            backgroundImage:
+              'radial-gradient(120% 80% at 0% 0%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 55%), radial-gradient(100% 70% at 100% 100%, rgba(4,121,62,0.10) 0%, rgba(4,121,62,0) 60%)',
+          }}
         >
-          {/* Glass connector arm from card to central line (desktop only) */}
+          {/* Push-pin — brand green */}
           <span
             aria-hidden
-            className={`hidden lg:block absolute top-7 ${isLeft ? '-end-7' : '-start-7'} w-7 h-px bg-gradient-to-${isLeft ? 'l' : 'r'} from-brand-green/45 to-transparent`}
+            className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-5 h-5 rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle at 32% 30%, #8fd97f 0%, #04793e 55%, #013318 100%)',
+              boxShadow:
+                '0 4px 6px -1px rgba(13,31,23,0.45), 0 1px 2px rgba(13,31,23,0.3), inset -2px -2px 3px rgba(0,0,0,0.35), inset 2px 2px 3px rgba(255,255,255,0.5)',
+            }}
           />
+          {/* Pin specular highlight */}
+          <span
+            aria-hidden
+            className="absolute -top-[9px] left-1/2 -translate-x-[6px] z-20 w-1.5 h-1.5 rounded-full bg-white/85 blur-[0.5px]"
+          />
+
+          {/* Light sweep — top → bottom shimmer that runs once when the card enters view */}
+          <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+            {visible && (
+              <div
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-1/4 animate-glass-sweep"
+                style={{
+                  background:
+                    'linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%)',
+                  animationDelay: '320ms',
+                }}
+              />
+            )}
+          </div>
 
           {/* Number tag */}
           <div className="flex items-center gap-3 mb-3">
@@ -132,13 +192,31 @@ export default function About() {
 
           {/* Zigzag timeline */}
           <div className="relative max-w-5xl mx-auto">
-            {/* Central vertical pipeline — left on mobile, centered on desktop */}
+            {/* Central vertical pipeline — start-side on mobile, centered on desktop;
+                logical translate so it stays centered in both LTR and RTL */}
             <span
               aria-hidden
-              className="pointer-events-none absolute top-2 bottom-24 w-px
-                start-[17px] lg:start-1/2 lg:-translate-x-1/2
-                bg-gradient-to-b from-brand-green/50 via-brand-green/30 to-brand-green/0"
-            />
+              className="pointer-events-none absolute top-2 bottom-24 w-0.5 rounded-full
+                start-[17px] lg:start-1/2 ltr:lg:-translate-x-1/2 rtl:lg:translate-x-1/2
+                bg-gradient-to-b from-brand-green/70 via-brand-green/45 to-brand-green/0
+                shadow-[0_0_8px_rgba(4,121,62,0.18)]
+                [mask-image:linear-gradient(to_bottom,transparent,black_6%,black_94%,transparent)]"
+            >
+              {/* Electric pulse traveling down the wire */}
+              <span
+                aria-hidden
+                className="absolute left-1/2 -translate-x-1/2 w-3 h-20 animate-rail-pulse"
+              >
+                <span
+                  className="block w-full h-full rounded-full animate-rail-pulse-halo"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, transparent 0%, rgba(98,188,84,0.55) 30%, rgba(255,255,255,0.95) 50%, rgba(98,188,84,0.55) 70%, transparent 100%)',
+                    filter: 'blur(0.4px)',
+                  }}
+                />
+              </span>
+            </span>
 
             <ol className="relative">
               {p.intro.paragraphs.map((para, idx) => (
@@ -147,6 +225,17 @@ export default function About() {
                   index={idx}
                   total={p.intro.paragraphs.length}
                   text={para}
+                  image={
+                    idx === 0 ? '/images/about-origin-barn.png'
+                    : idx === 1 ? '/images/about-1981-chicks.png'
+                    : idx === 2 ? '/images/about-expansion.png'
+                    : idx === 3 ? '/images/about-slaughterhouse.png'
+                    : idx === 4 ? '/images/about-agriculture.png'
+                    : idx === 5 ? '/images/about-shams.png'
+                    : idx === 6 ? '/images/about-foundation.png'
+                    : idx === 7 ? '/images/about-today.png'
+                    : undefined
+                  }
                 />
               ))}
             </ol>
