@@ -37,9 +37,9 @@ export default function Sustainability() {
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
-            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
           />
-          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+          <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
         </div>
@@ -51,12 +51,12 @@ export default function Sustainability() {
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
             <div>
               <p className="eyebrow mb-5">{p.intro.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl text-brand-ink text-balance">
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl text-brand-ink text-balance">
                 {p.intro.title}
               </h2>
             </div>
             <div className="lg:pt-12">
-              <p className="text-xl text-brand-ink/70 leading-relaxed text-pretty">{p.intro.body}</p>
+              <p className="text-lg sm:text-xl text-brand-ink/70 leading-relaxed text-pretty">{p.intro.body}</p>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function Sustainability() {
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-20 items-center">
             <div>
               <p className="eyebrow !text-brand-yellow mb-5">{p.foundation.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-balance">
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-balance">
                 {p.foundation.title}
               </h2>
             </div>

@@ -38,7 +38,7 @@ export default function CompaniesGrid() {
         <div className="max-w-4xl mb-24 lg:mb-32">
           <Reveal as="p" className="eyebrow mb-6">{t.whoWeAre.eyebrow}</Reveal>
           <Reveal as="h2" delay={80}
-            className="display-text text-[2.75rem] md:text-6xl lg:text-7xl text-brand-ink">
+            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl text-brand-ink">
             {t.whoWeAre.title.split('. ').map((part, i, arr) => (
               <span key={i} className="block">{part}{i < arr.length - 1 ? '.' : ''}</span>
             ))}
@@ -98,7 +98,7 @@ export default function CompaniesGrid() {
                   <span className="inline-block text-xs font-bold tracking-[0.3em] uppercase text-brand-green-light mb-4">
                     {String(c.number).padStart(2, '0')}
                   </span>
-                  <h3 className="display-text text-3xl md:text-4xl lg:text-5xl text-brand-ink mb-5 text-balance">
+                  <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink mb-5 text-balance">
                     {c.name}
                   </h3>
                   <p className="text-lg text-brand-ink/65 leading-relaxed text-pretty max-w-lg">

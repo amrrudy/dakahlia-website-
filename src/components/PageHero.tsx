@@ -15,10 +15,10 @@ export default function PageHero({ eyebrow, title, subtitle, imageUrl }: PageHer
       <div className="container-x relative">
         <div className="max-w-4xl">
           {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
-          <h1 className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-balance text-brand-ink">
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-balance text-brand-ink">
             {title}
           </h1>
-          <p className="mt-8 text-lg md:text-xl text-brand-ink/70 max-w-2xl leading-relaxed text-pretty">
+          <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-brand-ink/70 max-w-2xl leading-relaxed text-pretty">
             {subtitle}
           </p>
         </div>

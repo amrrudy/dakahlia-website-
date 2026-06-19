@@ -61,7 +61,7 @@ export default function TwoPillars() {
                 </svg>
               </div>
 
-              <h3 className="display-text text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight">
+              <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight">
                 {p.title}
               </h3>
               <p className="text-lg text-white/65 leading-relaxed text-pretty max-w-md">

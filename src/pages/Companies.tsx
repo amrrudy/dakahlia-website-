@@ -272,14 +272,13 @@ export default function Companies() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Left — copy */}
-            <div>
-              <p className="eyebrow mb-5">Our Portfolio</p>
+            <div className="text-center lg:text-start">
               <TypedHeading
                 text={p.hero.title}
                 cursorClassName="bg-brand-green"
                 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-ink text-balance leading-[1.05]"
               />
-              <p className="mt-6 text-lg lg:text-xl max-w-xl leading-relaxed text-pretty text-brand-ink/70">
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed text-pretty text-brand-ink/70">
                 {p.hero.subtitle}
               </p>
             </div>
@@ -341,11 +340,11 @@ export default function Companies() {
                   >
                     {/* Inner gloss */}
                     <span aria-hidden className="absolute inset-1 rounded-full bg-gradient-to-br from-white/35 via-transparent to-transparent" />
-                    {/* Brand mark */}
+                    {/* Brand mark — gentle in-place breathe + glow + wobble */}
                     <img
                       src="/logos/dakahlia-vertical.png"
                       alt="Dakahlia"
-                      className="relative w-12 h-12 lg:w-14 lg:h-14 object-contain"
+                      className="relative w-12 h-12 lg:w-14 lg:h-14 object-contain animate-logo-breathe"
                     />
                     {/* Halo ring */}
                     <span aria-hidden className="absolute -inset-2 rounded-full border border-brand-green/10 animate-halo-pulse" />
@@ -431,6 +430,21 @@ export default function Companies() {
                   animation: core-pulse 3.5s ease-in-out infinite;
                 }
 
+                @keyframes logo-breathe {
+                  0%, 100% {
+                    transform: scale(1) rotateY(-8deg);
+                    filter: drop-shadow(0 0 6px rgba(98,188,84,0.35));
+                  }
+                  50% {
+                    transform: scale(1.08) rotateY(8deg);
+                    filter: drop-shadow(0 0 16px rgba(98,188,84,0.7));
+                  }
+                }
+                .animate-logo-breathe {
+                  animation: logo-breathe 4s ease-in-out infinite;
+                  will-change: transform, filter;
+                }
+
                 @keyframes halo-pulse {
                   0%, 100% { transform: scale(1);    opacity: 0.4; }
                   50%      { transform: scale(1.25); opacity: 0;   }
@@ -450,7 +464,8 @@ export default function Companies() {
 
                 @media (prefers-reduced-motion: reduce) {
                   .logo-ring, .orbit-counter, .animate-nebula-pulse,
-                  .animate-core-pulse, .animate-halo-pulse, .card-float {
+                  .animate-core-pulse, .animate-halo-pulse, .card-float,
+                  .animate-logo-breathe {
                     animation: none;
                   }
                 }
@@ -481,8 +496,8 @@ export default function Companies() {
                   </div>
                   <div>
                     <p className="eyebrow mb-4">{item.tagline}</p>
-                    <h3 className="display-text text-3xl md:text-4xl lg:text-5xl text-brand-ink mb-6 text-balance">{item.name}</h3>
-                    <p className="text-lg text-brand-ink/70 leading-relaxed text-pretty mb-8">{item.body}</p>
+                    <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink mb-6 text-balance">{item.name}</h3>
+                    <p className="text-base sm:text-lg text-brand-ink/70 leading-relaxed text-pretty mb-8">{item.body}</p>
                     <ul className="space-y-3">
                       {item.bullets.map((b, idx) => (
                         <li key={idx} className="flex items-start gap-3">

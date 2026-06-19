@@ -75,7 +75,7 @@ export default function NewsArticle() {
             </div>
 
             {/* Title — PageHero scale */}
-            <h1 className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-balance text-brand-ink leading-[1.02]">
+            <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-balance text-brand-ink leading-[1.02]">
               {title}
             </h1>
 
@@ -164,7 +164,7 @@ export default function NewsArticle() {
             <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
               <div>
                 <p className="eyebrow mb-4">{p.moreStories}</p>
-                <h2 className="display-text text-3xl md:text-4xl lg:text-5xl text-brand-ink">
+                <h2 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink">
                   {locale === 'ar' ? 'مقالات قد تهمك' : 'You may also like'}
                 </h2>
               </div>

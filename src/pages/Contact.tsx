@@ -27,9 +27,9 @@ export default function Contact() {
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
-            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
           />
-          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+          <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
           <a
@@ -103,7 +103,7 @@ export default function Contact() {
             {/* Form side — glass card */}
             <div>
               <p className="eyebrow mb-4">{p.form.eyebrow}</p>
-              <h2 className="display-text text-3xl md:text-4xl text-brand-ink mb-8">{p.form.title}</h2>
+              <h2 className="display-text text-2xl sm:text-3xl md:text-4xl text-brand-ink mb-8">{p.form.title}</h2>
               <form className="relative space-y-5 rounded-3xl p-8 lg:p-10
                 bg-white/45 backdrop-blur-2xl backdrop-saturate-200
                 border border-white/70
@@ -149,10 +149,10 @@ export default function Contact() {
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <p className="eyebrow mb-5">{p.global.eyebrow}</p>
-            <h2 className="display-text text-3xl md:text-4xl lg:text-5xl text-brand-ink text-balance mb-5">
+            <h2 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink text-balance mb-5">
               {p.global.title}
             </h2>
-            <p className="text-lg text-brand-ink/65 leading-relaxed text-pretty">
+            <p className="text-base sm:text-lg text-brand-ink/65 leading-relaxed text-pretty">
               {p.global.body}
             </p>
           </div>

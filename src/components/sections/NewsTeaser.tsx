@@ -25,7 +25,7 @@ export default function NewsTeaser() {
       <div className="container-x pt-20 pb-12 flex flex-wrap items-end justify-between gap-6">
         <Reveal>
           <p className="eyebrow !text-brand-green-light mb-4">{t.newsTeaser.title}</p>
-          <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-white">
+          <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
             {locale === 'ar' ? 'آخر المستجدات' : 'Stories & Updates'}
           </h2>
         </Reveal>

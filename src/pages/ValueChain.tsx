@@ -93,7 +93,7 @@ export default function ValueChain() {
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
             <div>
               <p className="eyebrow mb-5">{p.approach.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl text-brand-ink text-balance">{p.approach.title}</h2>
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl text-brand-ink text-balance">{p.approach.title}</h2>
             </div>
             <div className="lg:pt-16">
               <p className="text-lg text-brand-ink/70 leading-relaxed text-pretty">{p.approach.body}</p>
@@ -115,7 +115,7 @@ export default function ValueChain() {
         <div className="container-x relative text-white">
           <div className="max-w-3xl">
             <p className="eyebrow !text-brand-yellow mb-5">{p.farmToTable.eyebrow}</p>
-            <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-balance">{p.farmToTable.title}</h2>
+            <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-balance">{p.farmToTable.title}</h2>
             <p className="mt-8 text-lg text-white/85 leading-relaxed max-w-2xl text-pretty">{p.farmToTable.body}</p>
             <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-full text-sm font-bold tracking-wide text-brand-yellow bg-brand-yellow/[0.08] backdrop-blur-xl backdrop-saturate-200 border border-brand-yellow/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]">
               ✓ {p.farmToTable.badge}
@@ -133,7 +133,7 @@ export default function ValueChain() {
         <div className="container-x relative">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="eyebrow mb-5">{p.model.eyebrow}</p>
-            <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.model.title}</h2>
+            <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.model.title}</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {p.model.stages.map((s) => (
@@ -180,7 +180,7 @@ export default function ValueChain() {
                 <span className="h-px w-10 bg-brand-yellow" />
                 <span className="text-[11px] uppercase tracking-[0.32em] text-brand-yellow font-bold">{p.strength.eyebrow}</span>
               </div>
-              <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-balance">{p.strength.title}</h2>
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-balance">{p.strength.title}</h2>
             </div>
             <div className="lg:pt-6">
               <p className="text-lg text-white/75 leading-relaxed text-pretty">{p.strength.body}</p>

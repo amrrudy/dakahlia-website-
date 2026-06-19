@@ -105,7 +105,7 @@ export default function Hero() {
       <div className="container-x relative z-20 pb-24 lg:pb-32 pt-36 text-white w-full">
         <div className="max-w-5xl relative z-20">
 
-          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] relative whitespace-pre">
+          <h1 className="display-text text-[1.75rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] sm:leading-[1.05] relative whitespace-pre-line text-balance">
             {/* Invisible full-text placeholder reserves layout space so nothing shifts as we type */}
             <span aria-hidden className="invisible select-none">{headline}</span>
             {/* Typing layer */}

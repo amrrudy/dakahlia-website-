@@ -118,26 +118,27 @@ export default function Careers() {
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
-            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
           />
-          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+          <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
         </div>
       </section>
 
       {/* Culture */}
-      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="relative py-20 lg:py-28 bg-gradient-to-b from-brand-cream via-white to-brand-cream overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -start-24 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
-          <div className="absolute bottom-0 -end-32 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/15 blur-3xl animate-blob-float" style={{ animationDelay: '5s' }} />
+          <div className="absolute -top-24 -start-24 w-[26rem] h-[26rem] rounded-full bg-brand-green/18 blur-3xl animate-blob-float" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] rounded-full bg-brand-green-light/15 blur-3xl animate-blob-float" style={{ animationDelay: '3s' }} />
+          <div className="absolute bottom-0 -end-32 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/18 blur-3xl animate-blob-float" style={{ animationDelay: '5s' }} />
         </div>
 
         <div className="container-x relative">
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 mb-16">
             <div>
               <p className="eyebrow mb-5">{p.culture.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl text-brand-ink text-balance">
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl text-brand-ink text-balance">
                 {p.culture.title}
               </h2>
             </div>
@@ -148,29 +149,34 @@ export default function Careers() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
             {p.culture.items.map((item, i) => {
               const Icon = cultureIcons[i]
               return (
                 <div
                   key={item.title}
-                  className="group relative rounded-2xl p-10 overflow-hidden
-                    bg-white/45 backdrop-blur-2xl backdrop-saturate-200
-                    border border-white/70
-                    shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_20px_50px_-20px_rgba(13,31,23,0.15)]
+                  className="group relative rounded-2xl p-6 sm:p-8 lg:p-10 overflow-hidden
+                    bg-white/60 backdrop-blur-2xl backdrop-saturate-200
+                    border border-white/80
+                    ring-1 ring-brand-ink/5
+                    shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_18px_36px_-14px_rgba(13,31,23,0.18),0_4px_12px_-4px_rgba(13,31,23,0.10)]
                     transition-all duration-500
                     hover:-translate-y-1
+                    hover:bg-white/75
                     hover:border-brand-green/40
-                    hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_30px_70px_-20px_rgba(4,121,62,0.35)]"
+                    hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_28px_50px_-15px_rgba(4,121,62,0.30)]"
                 >
                   {/* Subtle green sheen on hover */}
-                  <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-green/0 to-brand-green/0 group-hover:from-brand-green/10 group-hover:to-brand-green/0 transition-colors duration-500" />
+                  <span aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-green/0 to-brand-green/0 group-hover:from-brand-green/10 group-hover:to-brand-green/0 transition-colors duration-500" />
+                  {/* Top inner highlight */}
+                  <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/85 to-transparent" />
 
                   <div className="relative">
-                    <div className="btn-glass-icon w-14 h-14 mb-6 text-brand-green !bg-brand-green/15 !border-brand-green/30 group-hover:!bg-brand-green group-hover:!text-white group-hover:!border-brand-green/60">
-                      <Icon size={26} strokeWidth={1.8} />
+                    <div className="btn-glass-icon w-12 h-12 sm:w-14 sm:h-14 mb-5 sm:mb-6 text-brand-green !bg-brand-green/15 !border-brand-green/30 group-hover:!bg-brand-green group-hover:!text-white group-hover:!border-brand-green/60">
+                      <Icon size={22} strokeWidth={1.8} className="sm:hidden" />
+                      <Icon size={26} strokeWidth={1.8} className="hidden sm:block" />
                     </div>
-                    <h3 className="font-display text-2xl mb-3 leading-tight text-brand-ink">{item.title}</h3>
+                    <h3 className="font-display text-xl sm:text-2xl mb-2 sm:mb-3 leading-tight text-brand-ink">{item.title}</h3>
                     <p className="text-sm text-brand-ink/70 leading-relaxed">{item.body}</p>
                   </div>
                 </div>
@@ -190,7 +196,7 @@ export default function Careers() {
         <div className="container-x relative">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <p className="eyebrow mb-5">{p.positions.eyebrow}</p>
-            <h2 className="display-text text-4xl md:text-5xl text-brand-ink text-balance">
+            <h2 className="display-text text-3xl sm:text-4xl md:text-5xl text-brand-ink text-balance">
               {p.positions.title}
             </h2>
           </div>
@@ -217,7 +223,7 @@ export default function Careers() {
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
               <p className="eyebrow mb-5">{p.apply.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl text-brand-ink text-balance">
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl text-brand-ink text-balance">
                 {p.apply.title}
               </h2>
             </div>

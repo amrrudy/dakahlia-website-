@@ -259,7 +259,7 @@ export default function About() {
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
             <div>
               <p className="eyebrow mb-5">{p.whatDrivesUs.eyebrow}</p>
-              <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">
+              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">
                 {p.whatDrivesUs.title}
               </h2>
             </div>
@@ -381,7 +381,7 @@ export default function About() {
         <div className="container-x relative">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="eyebrow mb-5">{p.values.eyebrow}</p>
-            <h2 className="display-text text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.values.title}</h2>
+            <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-ink text-balance">{p.values.title}</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {p.values.items.map((v, i) => (

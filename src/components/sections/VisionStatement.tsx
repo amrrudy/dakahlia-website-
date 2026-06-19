@@ -30,7 +30,7 @@ export default function VisionStatement() {
         <div className="max-w-5xl">
           <Reveal as="p" className="eyebrow !text-brand-yellow mb-8">{t.vision.eyebrow}</Reveal>
           <Reveal as="blockquote" delay={100}
-            className="display-text text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-balance leading-[0.95]">
+            className="display-text text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-balance leading-[0.95]">
             {t.vision.headline}
           </Reveal>
           <Reveal as="p" delay={220}

@@ -36,9 +36,9 @@ export default function News() {
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
-            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
+            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
           />
-          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+          <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
         </div>
