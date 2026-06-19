@@ -239,7 +239,7 @@ export default function Hero() {
             size={18}
             strokeWidth={2.25}
             className={`relative z-10 transition-transform duration-300 ${
-              side === 'start-6'
+              side.startsWith('start')
                 ? 'group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5'
                 : 'group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5'
             }`}
