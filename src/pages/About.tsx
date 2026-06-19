@@ -7,12 +7,10 @@ import LazySection from '../components/LazySection'
 /** Single timeline step — alternates side on desktop, slides in on scroll */
 function TimelineStep({
   index,
-  total,
   text,
   image,
 }: {
   index: number
-  total: number
   text: string
   image?: string
 }) {
@@ -140,9 +138,6 @@ function TimelineStep({
           <div className="flex items-center gap-3 mb-3">
             <span className="font-display text-2xl text-brand-green leading-none">{number}</span>
             <span className="h-px flex-1 bg-brand-green/15" />
-            <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-brand-green/65">
-              {String(total).padStart(2, '0')}
-            </span>
           </div>
 
           <p className="text-[15px] lg:text-base text-brand-ink/75 leading-relaxed text-pretty">{text}</p>
@@ -223,7 +218,6 @@ export default function About() {
                 <TimelineStep
                   key={idx}
                   index={idx}
-                  total={p.intro.paragraphs.length}
                   text={para}
                   image={
                     idx === 0 ? '/images/about-origin-barn.png'
