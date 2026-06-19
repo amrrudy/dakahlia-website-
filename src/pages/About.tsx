@@ -53,7 +53,7 @@ function TimelineStep({
       </span>
 
       {/* Opposite cell — empty space across from the card; hosts the optional illustration */}
-      <div className={`hidden lg:flex items-center justify-center ${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+      <div className={`${image ? 'flex ps-14 mb-5 lg:ps-0 lg:mb-0' : 'hidden'} lg:flex items-center justify-center ${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
         {image && (
           <div className="relative inline-block">
             <img
@@ -62,7 +62,7 @@ function TimelineStep({
               alt=""
               loading="lazy"
               decoding="async"
-              className={`block max-w-full max-h-72 lg:max-h-80 w-auto h-auto object-contain select-none mix-blend-multiply
+              className={`block max-w-full max-h-44 lg:max-h-80 w-auto h-auto object-contain select-none mix-blend-multiply
                 ${visible ? 'animate-sketch-in' : 'opacity-0'}`}
               style={{ animationDelay: visible ? '240ms' : '0ms' }}
             />
@@ -169,7 +169,7 @@ export default function About() {
         <div className="container-x relative z-10 pt-44 pb-14">
           <TypedHeading
             text={p.hero.title}
-            className="display-text text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl whitespace-pre-line leading-[1.05]"
+            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl whitespace-pre-line leading-[1.05]"
           />
           <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}

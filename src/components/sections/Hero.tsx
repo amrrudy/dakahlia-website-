@@ -105,7 +105,7 @@ export default function Hero() {
       <div className="container-x relative z-20 pb-24 lg:pb-32 pt-36 text-white w-full">
         <div className="max-w-5xl relative z-20">
 
-          <h1 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] leading-[1.05] relative whitespace-pre">
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] relative whitespace-pre">
             {/* Invisible full-text placeholder reserves layout space so nothing shifts as we type */}
             <span aria-hidden className="invisible select-none">{headline}</span>
             {/* Typing layer */}
@@ -190,15 +190,17 @@ export default function Hero() {
 
       {/* ── Floating side arrows with progress ring ── */}
       {([
-        { onClick: prev, Icon: PrevIcon, side: 'start-6', label: 'Previous slide' },
-        { onClick: next, Icon: NextIcon, side: 'end-6',   label: 'Next slide' },
+        { onClick: prev, Icon: PrevIcon, side: 'start-4 lg:start-6', label: 'Previous slide' },
+        { onClick: next, Icon: NextIcon, side: 'end-4 lg:end-6',     label: 'Next slide' },
       ] as const).map(({ onClick, Icon, side, label }) => (
         <button
           key={label}
           onClick={onClick}
           aria-label={label}
-          className={`absolute ${side} top-1/2 -translate-y-1/2 z-20 group
-            w-14 h-14 rounded-full flex items-center justify-center
+          className={`absolute ${side}
+            bottom-8 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2
+            z-20 group
+            w-10 h-10 lg:w-14 lg:h-14 rounded-full flex items-center justify-center
             text-white
             transition-all duration-500
             hover:scale-110 active:scale-95`}
