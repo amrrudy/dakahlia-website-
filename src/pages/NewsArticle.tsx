@@ -3,15 +3,6 @@ import { ArrowLeft, ArrowRight, Clock, Calendar } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import { articles } from '../lib/news'
 
-const glassChip = 'backdrop-blur-xl backdrop-saturate-200 border shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]'
-const categoryColors: Record<string, string> = {
-  Sustainability: `bg-brand-green/[0.08] text-brand-green border-brand-green/25 ${glassChip}`,
-  Products:       `bg-brand-yellow/[0.15] text-brand-ink border-brand-yellow/30 ${glassChip}`,
-  Operations:     `bg-brand-ink/[0.06] text-brand-ink border-brand-ink/15 ${glassChip}`,
-  Launch:         `bg-brand-green-light/[0.15] text-brand-green border-brand-green-light/30 ${glassChip}`,
-  Community:      `bg-brand-yellow/[0.15] text-brand-ink border-brand-yellow/30 ${glassChip}`,
-  Partnerships:   `bg-brand-ink/[0.06] text-brand-ink border-brand-ink/15 ${glassChip}`,
-}
 
 export default function NewsArticle() {
   const { id } = useParams<{ id: string }>()
@@ -38,7 +29,6 @@ export default function NewsArticle() {
 
   const title = locale === 'ar' ? article.titleAr : article.title
   const excerpt = locale === 'ar' ? article.excerptAr : article.excerpt
-  const category = locale === 'ar' ? article.categoryAr : article.category
   const date = locale === 'ar' ? article.dateAr : article.date
   const readTime = locale === 'ar' ? article.readTimeAr : article.readTime
 
@@ -66,13 +56,6 @@ export default function NewsArticle() {
               />
               {p.backToNews}
             </Link>
-
-            {/* Category eyebrow pill — sits directly under the back link */}
-            <div className="mb-8">
-              <span className={`inline-flex items-center text-[10px] font-bold uppercase tracking-[0.22em] px-3 py-1.5 rounded-full ${categoryColors[article.category] ?? `bg-brand-green/[0.08] text-brand-green border-brand-green/25 ${glassChip}`}`}>
-                {category}
-              </span>
-            </div>
 
             {/* Title — PageHero scale */}
             <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-balance text-brand-ink leading-[1.02]">
@@ -124,7 +107,7 @@ export default function NewsArticle() {
               shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_30px_60px_-20px_rgba(13,31,23,0.15)]">
 
               {/* Eyebrow ornament */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="eyebrow flex items-center gap-3 mb-6">
                 <span className="h-px w-10 bg-brand-green" />
                 <span className="text-[10px] uppercase tracking-[0.32em] text-brand-green font-bold">
                   {locale === 'ar' ? 'القصة' : 'The Story'}
@@ -143,9 +126,6 @@ export default function NewsArticle() {
                 <span className="font-display italic text-brand-ink/55 text-sm">
                   {locale === 'ar' ? '— مجموعة الدقهلية' : '— Dakahlia Group'}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.28em] text-brand-ink/45 font-semibold">
-                  {category}
-                </span>
               </div>
             </article>
           </div>
@@ -154,10 +134,11 @@ export default function NewsArticle() {
 
       {/* ── More stories ── */}
       {more.length > 0 && (
-        <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <section className="relative py-20 lg:py-28 overflow-hidden">
           <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-24 end-1/4 w-[26rem] h-[26rem] rounded-full bg-brand-green/12 blur-3xl animate-blob-float" />
-            <div className="absolute -bottom-32 -start-24 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/12 blur-3xl animate-blob-float" style={{ animationDelay: '6s' }} />
+            <div className="absolute -top-24 -start-24 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
+            <div className="absolute top-1/3 -end-32 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/15 blur-3xl animate-blob-float" style={{ animationDelay: '5s' }} />
+            <div className="absolute -bottom-32 start-1/3 w-[24rem] h-[24rem] rounded-full bg-brand-green-light/15 blur-3xl animate-blob-float" style={{ animationDelay: '9s' }} />
           </div>
 
           <div className="container-x relative">
@@ -196,10 +177,7 @@ export default function NewsArticle() {
                     />
                   </div>
                   <div className="p-6">
-                    <span className={`text-[10px] font-bold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full ${categoryColors[a.category] ?? `bg-brand-green/[0.08] text-brand-green border-brand-green/25 ${glassChip}`}`}>
-                      {locale === 'ar' ? a.categoryAr : a.category}
-                    </span>
-                    <h3 className="font-display text-lg lg:text-xl text-brand-ink mt-4 leading-tight text-balance group-hover:text-brand-green transition-colors">
+                    <h3 className="font-display text-lg lg:text-xl text-brand-ink leading-tight text-balance group-hover:text-brand-green transition-colors">
                       {locale === 'ar' ? a.titleAr : a.title}
                     </h3>
                     <div className="mt-4 pt-4 border-t border-brand-ink/10 flex items-center justify-between text-xs text-brand-ink/55">

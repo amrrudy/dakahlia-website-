@@ -1,6 +1,5 @@
 import { Check } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import TypedHeading from '../components/TypedHeading'
 import LazySection from '../components/LazySection'
 
 const pillarImages = [
@@ -35,10 +34,7 @@ export default function Sustainability() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
         <div className="container-x relative z-10 pt-44 pb-14">
-          <TypedHeading
-            text={p.hero.title}
-            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
-          />
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white max-w-4xl whitespace-nowrap">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
@@ -46,7 +42,7 @@ export default function Sustainability() {
       </section>
 
       {/* Intro */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-20 lg:py-28">
         <div className="container-x">
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
             <div>
@@ -64,7 +60,7 @@ export default function Sustainability() {
 
       {/* Three Pillars */}
       <LazySection>
-      <section className="py-20 lg:py-28 bg-brand-cream leaf-bg">
+      <section className="py-20 lg:py-28 leaf-bg">
         <div className="container-x space-y-10 lg:space-y-16">
           {p.pillars.map((pillar, i) => {
             const reversed = i % 2 === 1

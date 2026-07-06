@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, useRef } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import {
   Search, ChevronDown, Menu, X, ArrowRight,
-  Home, Info, Building2, Workflow, Leaf, Newspaper, Briefcase, Mail, FileText,
+  Home, Info, Building2, Leaf, Newspaper, Briefcase, Mail, FileText,
 } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import { articles } from '../lib/news'
@@ -84,7 +84,7 @@ export default function Header() {
       { type: 'page', label: t.nav.home,           labelAr: 'الرئيسية',     desc: 'Dakahlia Group homepage',    descAr: 'الصفحة الرئيسية لمجموعة الدقهلية', to: '/',              Icon: Home },
       { type: 'page', label: t.nav.about,          labelAr: 'عن المجموعة',  desc: 'Our story & leadership',     descAr: 'قصتنا والقيادة',                  to: '/about',         Icon: Info },
       { type: 'page', label: t.nav.companies,      labelAr: 'الشركات',      desc: 'Group companies portfolio',  descAr: 'محفظة شركات المجموعة',           to: '/companies',     Icon: Building2 },
-      { type: 'page', label: t.nav.valueChain,     labelAr: 'سلسلة القيمة', desc: 'Farm-to-consumer model',     descAr: 'نموذج المزرعة إلى المستهلك',     to: '/value-chain',   Icon: Workflow },
+
       { type: 'page', label: t.nav.sustainability, labelAr: 'الاستدامة',    desc: 'Environment & community',    descAr: 'البيئة والمجتمع',                 to: '/sustainability', Icon: Leaf },
       { type: 'page', label: t.nav.news,           labelAr: 'الأخبار',      desc: 'Latest stories & updates',   descAr: 'آخر القصص والمستجدات',           to: '/news',          Icon: Newspaper },
       { type: 'page', label: t.nav.careers,        labelAr: 'الوظائف',      desc: 'Open positions & culture',   descAr: 'الوظائف الشاغرة والثقافة',       to: '/careers',       Icon: Briefcase },
@@ -177,8 +177,19 @@ export default function Header() {
   const closeMenu = ()               => { leaveTimer.current = setTimeout(() => setActiveMenu(null), 100) }
   const keepMenu  = ()               => { if (leaveTimer.current) clearTimeout(leaveTimer.current) }
 
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const NAV_GAP = 10 // px — gap from top of viewport
-  const NAV_H = 72 // px — keep in sync with h-[72px] below
+  const NAV_H = isLargeScreen ? 96 : 80 // px — keep in sync with h-20 / lg:h-24 below
   const NAV_OFFSET = NAV_GAP + NAV_H // total offset for elements anchored below the header
 
   return (
@@ -191,14 +202,14 @@ export default function Header() {
             : 'bg-white/55 border border-white/35 shadow-[0_4px_30px_rgba(0,0,0,0.06)]'
         }`}
       >
-        <div className="container-x flex items-center h-[72px] gap-6">
+        <div className="container-x flex items-center h-20 lg:h-24 gap-6 transition-all duration-300">
 
           {/* Logo */}
           <Link to="/" className="flex-shrink-0" aria-label="Dakahlia Group">
             <Logo
               variant="horizontal"
               tone={overHero ? 'light' : 'dark'}
-              className="h-14 lg:h-16 w-auto transition-all duration-300"
+              className="h-16 lg:h-20 w-auto transition-all duration-300"
             />
           </Link>
 

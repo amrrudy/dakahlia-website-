@@ -1,7 +1,6 @@
 import { useState, useRef, useMemo } from 'react'
 import { Users, Shield, Heart, Upload, FileText, X, CheckCircle2, RotateCcw } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import TypedHeading from '../components/TypedHeading'
 import LazySection from '../components/LazySection'
 
 const cultureIcons = [Users, Shield, Heart]
@@ -116,10 +115,7 @@ export default function Careers() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
         <div className="container-x relative z-10 pt-44 pb-14">
-          <TypedHeading
-            text={p.hero.title}
-            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
-          />
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
@@ -127,7 +123,7 @@ export default function Careers() {
       </section>
 
       {/* Culture */}
-      <section className="relative py-20 lg:py-28 bg-gradient-to-b from-brand-cream via-white to-brand-cream overflow-hidden">
+      <section className="relative py-20 lg:py-28 overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 -start-24 w-[26rem] h-[26rem] rounded-full bg-brand-green/18 blur-3xl animate-blob-float" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] rounded-full bg-brand-green-light/15 blur-3xl animate-blob-float" style={{ animationDelay: '3s' }} />
@@ -188,7 +184,7 @@ export default function Careers() {
 
       {/* Open Positions */}
       <LazySection>
-      <section className="relative py-20 lg:py-28 bg-brand-cream overflow-hidden">
+      <section className="relative py-20 lg:py-28 overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/2 start-1/4 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full bg-brand-green-light/15 blur-3xl animate-blob-float" />
         </div>
@@ -213,7 +209,7 @@ export default function Careers() {
 
       {/* Application Form */}
       <LazySection minHeight={1000}>
-      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="relative py-20 lg:py-28 overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 end-1/4 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
           <div className="absolute -bottom-32 -start-24 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/15 blur-3xl animate-blob-float" style={{ animationDelay: '6s' }} />

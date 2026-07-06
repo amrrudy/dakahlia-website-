@@ -1,6 +1,5 @@
-import { MapPin, Phone, Mail, Navigation, Clock, Headphones } from 'lucide-react'
+import { MapPin, Phone, Mail, Navigation, Clock } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import TypedHeading from '../components/TypedHeading'
 import LazySection from '../components/LazySection'
 
 export default function Contact() {
@@ -25,10 +24,7 @@ export default function Contact() {
         </div>
 
         <div className="container-x relative z-10 pt-44 pb-14">
-          <TypedHeading
-            text={p.hero.title}
-            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
-          />
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
@@ -45,7 +41,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="relative py-20 lg:py-28 overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 -start-24 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
           <div className="absolute top-1/2 -end-32 w-[30rem] h-[30rem] rounded-full bg-brand-yellow/15 blur-3xl animate-blob-float" style={{ animationDelay: '5s' }} />
@@ -70,7 +66,6 @@ export default function Contact() {
                     { Icon: MapPin, label: p.info.officeLabel, value: p.info.officeValue, isLink: false, href: '' },
                     { Icon: Mail,   label: p.info.emailLabel,  value: `${p.info.emailValue}\n${p.info.email2Value}`, isLink: true,  href: `mailto:${p.info.emailValue}` },
                     { Icon: Phone,      label: p.info.phoneLabel,   value: p.info.phoneValue,   isLink: true,  href: `tel:${p.info.phoneValue.split('/')[0].trim()}` },
-                    { Icon: Headphones, label: p.info.hotlineLabel, value: p.info.hotlineValue, isLink: true,  href: `tel:${p.info.hotlineValue}` },
                     { Icon: Clock,      label: p.info.hoursLabel,   value: p.info.hoursValue,   isLink: false, href: '' },
                   ].map(({ Icon, label, value, isLink, href }) => {
                     const Wrapper: 'div' | 'a' = isLink ? 'a' : 'div'
@@ -139,7 +134,7 @@ export default function Contact() {
 
       {/* ── Global Reach — stylized world map with Egypt focal marker ──── */}
       <LazySection>
-      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="relative py-20 lg:py-28 overflow-hidden">
         {/* Soft atmospheric glow */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[55%] rounded-full bg-brand-green/8 blur-3xl" />

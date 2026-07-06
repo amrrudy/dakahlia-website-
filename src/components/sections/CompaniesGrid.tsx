@@ -26,7 +26,7 @@ export default function CompaniesGrid() {
   const { t, dir } = useI18n()
 
   return (
-    <section className="relative py-28 lg:py-40 bg-brand-cream overflow-hidden">
+    <section className="relative pt-28 lg:pt-40 pb-14 lg:pb-20 overflow-hidden">
       {/* Floating organic background shapes */}
       <Blob variant={1} float color="var(--brand-green-light)" opacity={0.08}
         className="absolute -top-32 -end-40 w-[36rem] h-[36rem]" />
@@ -82,10 +82,6 @@ export default function CompaniesGrid() {
                           className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110" />
                       )}
                     </div>
-                    {/* floating number badge */}
-                    <div className="absolute -top-5 -start-3 lg:-start-6 animate-soft-bob">
-                      <span className="font-display text-6xl lg:text-7xl text-brand-green/15">{c.number}</span>
-                    </div>
                   </div>
                 </Reveal>
 
@@ -95,9 +91,7 @@ export default function CompaniesGrid() {
                   delay={120}
                   className={reversed ? 'lg:order-1' : ''}
                 >
-                  <span className="inline-block text-xs font-bold tracking-[0.3em] uppercase text-brand-green-light mb-4">
-                    {String(c.number).padStart(2, '0')}
-                  </span>
+
                   <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink mb-5 text-balance">
                     {c.name}
                   </h3>

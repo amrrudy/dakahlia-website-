@@ -139,16 +139,12 @@ export default function CareersTeaser() {
   ]
 
   return (
-    <section className="relative bg-brand-cream overflow-hidden py-20 lg:py-28">
+    <section className="relative overflow-hidden py-20 lg:py-28">
       <div className="container-x">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
 
           {/* Left — bold headline + text */}
           <Reveal direction="right">
-            <div className="w-12 h-1 bg-brand-green mb-7 rounded-full" />
-            <p className="text-[11px] uppercase tracking-[0.28em] font-bold text-brand-green mb-5">
-              {t.careersTeaser.eyebrow}
-            </p>
             <h2
               className="display-text text-brand-ink"
               style={{ fontSize: 'clamp(2.8rem, 6vw, 5.2rem)' }}

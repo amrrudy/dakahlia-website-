@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import { Check, ExternalLink } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
-import TypedHeading from '../components/TypedHeading'
 
 /** Card that tilts in 3D following the cursor position */
 function TiltLogoCard({
@@ -36,7 +35,7 @@ function TiltLogoCard({
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="group relative aspect-square w-28 sm:w-32 lg:w-36
+        className="group relative aspect-square w-32 sm:w-36 lg:w-40
           rounded-2xl
           bg-white/45 backdrop-blur-2xl backdrop-saturate-200
           border border-white/70
@@ -59,13 +58,13 @@ function TiltLogoCard({
         {/* Top shine */}
         <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent" />
 
-        <div className="relative h-full flex items-center justify-center p-4" style={{ transform: 'translateZ(20px)' }}>
+        <div className="relative h-full flex items-center justify-center p-2.5" style={{ transform: 'translateZ(20px)' }}>
           <img
             src={src}
             alt={label}
             loading="lazy"
             decoding="async"
-            className="max-w-[80%] max-h-[80%] object-contain"
+            className="max-w-[92%] max-h-[92%] object-contain"
           />
         </div>
       </div>
@@ -82,8 +81,8 @@ const companyImages: Array<{ src: string; isLogo: boolean; src2?: string }> = [
   { src: '/images/slaughterhouse-processing.jpg', isLogo: false },
   // 04 Shams Chemicals — full-bleed facility photo
   { src: '/images/Shams.jpg', isLogo: false },
-  // 05 Al Anani Foundation — vocational training (electronics)
-  { src: '/images/anani-foundation-dropdown.jpg', isLogo: false },
+  // 05 Al Anani Foundation — medical outreach
+  { src: '/images/anani-foundation-medical.jpg', isLogo: false },
 ]
 
 const companyLogos: string[] = [
@@ -99,14 +98,10 @@ function ParallaxImageCard({
   imageSrc,
   logoSrc,
   alt,
-  index,
-  total,
 }: {
   imageSrc: string
   logoSrc: string
   alt: string
-  index: string
-  total: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [tilt, setTilt] = useState({ rx: 0, ry: 0, rz: 0, mx: 50, my: 50, dx: 0, dy: 0, hovering: false })
@@ -137,8 +132,6 @@ function ParallaxImageCard({
   // Parallax shifts per layer (px)
   const photoShiftX = -tilt.dx * 18   // image pans opposite to cursor (depth illusion)
   const photoShiftY = -tilt.dy * 18
-  const ribbonShiftX = tilt.dx * 16   // foreground layer drifts with cursor
-  const ribbonShiftY = tilt.dy * 16
   const logoShiftX = tilt.dx * 26     // logo (deepest) drifts more
   const logoShiftY = tilt.dy * 26
 
@@ -197,24 +190,11 @@ function ParallaxImageCard({
           }}
         />
 
-        {/* Index ribbon — top-left, depth 80, parallax-shifted */}
-        <div
-          className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full
-            bg-white/15 backdrop-blur-xl backdrop-saturate-200
-            border border-white/30
-            shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]
-            text-[10px] font-bold tracking-[0.28em] uppercase text-white/95"
-          style={{
-            transform: `translate3d(${ribbonShiftX}px, ${ribbonShiftY}px, 80px)`,
-            transition: 'transform 250ms cubic-bezier(0.22,1,0.36,1)',
-          }}
-        >
-          {index} / {String(total).padStart(2, '0')}
-        </div>
+
 
         {/* Floating logo — bottom-right, deepest depth, biggest parallax shift */}
         <div
-          className="absolute bottom-5 right-5 w-20 h-20 lg:w-24 lg:h-24
+          className="absolute bottom-5 right-5 w-28 h-28 lg:w-32 lg:h-32
             flex items-center justify-center"
           style={{
             transform: `translate3d(${logoShiftX}px, ${logoShiftY}px, 120px)`,
@@ -260,244 +240,52 @@ export default function Companies() {
 
   return (
     <>
-      {/* Hero — split layout: copy left, staggered logo collage right */}
-      <section className="relative bg-brand-cream overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-center">
-        {/* Decorative blobs */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -start-24 w-[28rem] h-[28rem] rounded-full bg-brand-green/10 blur-3xl animate-blob-float" />
-          <div className="absolute -bottom-24 -end-24 w-[26rem] h-[26rem] rounded-full bg-brand-yellow/10 blur-3xl animate-blob-float" style={{ animationDelay: '5s' }} />
+      {/* Hero — same style as About/Story page */}
+      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+        <div className="absolute inset-0">
+          <img
+            src="/images/companies-hero.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 50%' }}
+          />
         </div>
+        {/* Dark gradient overlay — heavy at bottom for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
-        <div className="container-x relative z-10 pt-36 pb-14 lg:pt-44 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-            {/* Left — copy */}
-            <div className="text-center lg:text-start">
-              <TypedHeading
-                text={p.hero.title}
-                cursorClassName="bg-brand-green"
-                className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-ink text-balance leading-[1.05]"
-              />
-              <p className="mt-5 sm:mt-6 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed text-pretty text-brand-ink/70">
-                {p.hero.subtitle}
-              </p>
-            </div>
-
-            {/* Right — creative 3D scene: canted planetary ring + glowing core + nebula */}
-            <div
-              className="relative h-[260px] sm:h-[320px] lg:h-[360px] flex items-center justify-center logo-scene"
-              style={{ perspective: '1600px' }}
-            >
-              {/* Background nebula glow — soft, low-opacity */}
-              <div aria-hidden className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full
-                  bg-[radial-gradient(circle,rgba(98,188,84,0.10)_0%,rgba(4,121,62,0.05)_45%,transparent_70%)]
-                  blur-2xl animate-nebula-pulse" />
-              </div>
-
-              {/* Counter-rotating outer orbit ring (decorative line + dots) */}
-              <div
-                aria-hidden
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div
-                  className="orbit-counter relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full
-                    border border-dashed border-brand-green/10
-                    [--orbit-r:112px] sm:[--orbit-r:128px] lg:[--orbit-r:144px]"
-                  style={{ transform: 'rotateX(72deg)' }}
-                >
-                  {/* Three sparkle dots traveling along the orbit */}
-                  {[0, 120, 240].map((deg) => (
-                    <span
-                      key={deg}
-                      className="absolute top-1/2 left-1/2 w-2 h-2 -ms-1 -mt-1 rounded-full
-                        bg-brand-green/40 shadow-[0_0_10px_rgba(98,188,84,0.25)]"
-                      style={{
-                        transform: `rotate(${deg}deg) translateX(var(--orbit-r))`,
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Canted stage — tilts the whole ring like Saturn */}
-              <div
-                className="relative w-full h-full flex items-center justify-center"
-                style={{ transformStyle: 'preserve-3d', transform: 'rotateX(18deg)' }}
-              >
-                {/* Central glowing core (stays fixed inside canted stage) */}
-                <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
-                  <div
-                    className="relative w-20 h-20 lg:w-24 lg:h-24 rounded-full
-                      bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.5),rgba(98,188,84,0.10)_55%,rgba(4,121,62,0.10)_100%)]
-                      backdrop-blur-md
-                      border border-brand-green/15
-                      flex items-center justify-center
-                      shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_25px_70px_rgba(4,121,62,0.10)]
-                      animate-core-pulse"
-                    style={{ transform: 'rotateX(-18deg)' }}
-                  >
-                    {/* Inner gloss */}
-                    <span aria-hidden className="absolute inset-1 rounded-full bg-gradient-to-br from-white/35 via-transparent to-transparent" />
-                    {/* Brand mark — gentle in-place breathe + glow + wobble */}
-                    <img
-                      src="/logos/dakahlia-vertical.png"
-                      alt="Dakahlia"
-                      className="relative w-12 h-12 lg:w-14 lg:h-14 object-contain animate-logo-breathe"
-                    />
-                    {/* Halo ring */}
-                    <span aria-hidden className="absolute -inset-2 rounded-full border border-brand-green/10 animate-halo-pulse" />
-                  </div>
-                </div>
-
-                {/* Rotating ring of logo cards */}
-                <div
-                  className="logo-ring relative w-40 h-40 sm:w-44 sm:h-44 lg:w-52 lg:h-52 [--ring-z:170px] sm:[--ring-z:210px] lg:[--ring-z:250px]"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  {[
-                    { src: '/images/Poultry.png',        label: 'Dakahlia Poultry' },
-                    { src: '/images/Agriculture.png',    label: 'Dakahlia Agriculture' },
-                    { src: '/images/Slaughterhouse.png', label: 'Dakahlia Slaughterhouses' },
-                    { src: '/images/Shams.png',          label: 'Shams Chemicals' },
-                    { src: '/images/Foundation.png',     label: 'Al Anani Foundation' },
-                  ].map((logo, i, arr) => {
-                    const angle = (360 / arr.length) * i
-                    return (
-                      <div
-                        key={logo.src}
-                        className="absolute inset-0 flex items-center justify-center"
-                        style={{
-                          transform: `rotateY(${angle}deg) translateZ(var(--ring-z))`,
-                          transformStyle: 'preserve-3d',
-                          backfaceVisibility: 'hidden',
-                        }}
-                      >
-                        {/* Per-card float sway with phase offset */}
-                        <div
-                          className="card-float"
-                          style={{
-                            animationDelay: `${-i * 1.1}s`,
-                            transform: 'rotateX(-18deg)',
-                          }}
-                        >
-                          <TiltLogoCard src={logo.src} label={logo.label} />
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-
-              <style>{`
-                @keyframes logoRingSpin {
-                  from { transform: rotateY(0deg); }
-                  to   { transform: rotateY(360deg); }
-                }
-                .logo-ring {
-                  animation: logoRingSpin 26s linear infinite;
-                  will-change: transform;
-                }
-                .logo-scene:hover .logo-ring { animation-play-state: paused; }
-
-                @keyframes orbit-counter {
-                  from { transform: rotateX(72deg) rotateZ(0deg); }
-                  to   { transform: rotateX(72deg) rotateZ(-360deg); }
-                }
-                .orbit-counter {
-                  animation: orbit-counter 30s linear infinite;
-                  will-change: transform;
-                }
-
-                @keyframes nebula-pulse {
-                  0%, 100% { opacity: 0.65; transform: scale(1); }
-                  50%      { opacity: 1;    transform: scale(1.08); }
-                }
-                .animate-nebula-pulse {
-                  animation: nebula-pulse 6s ease-in-out infinite;
-                }
-
-                @keyframes core-pulse {
-                  0%, 100% {
-                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 25px 70px rgba(4,121,62,0.10);
-                  }
-                  50% {
-                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 35px 90px rgba(98,188,84,0.15);
-                  }
-                }
-                .animate-core-pulse {
-                  animation: core-pulse 3.5s ease-in-out infinite;
-                }
-
-                @keyframes logo-breathe {
-                  0%, 100% {
-                    transform: scale(1) rotateY(-8deg);
-                    filter: drop-shadow(0 0 6px rgba(98,188,84,0.35));
-                  }
-                  50% {
-                    transform: scale(1.08) rotateY(8deg);
-                    filter: drop-shadow(0 0 16px rgba(98,188,84,0.7));
-                  }
-                }
-                .animate-logo-breathe {
-                  animation: logo-breathe 4s ease-in-out infinite;
-                  will-change: transform, filter;
-                }
-
-                @keyframes halo-pulse {
-                  0%, 100% { transform: scale(1);    opacity: 0.4; }
-                  50%      { transform: scale(1.25); opacity: 0;   }
-                }
-                .animate-halo-pulse {
-                  animation: halo-pulse 2.6s ease-out infinite;
-                }
-
-                @keyframes card-float {
-                  0%, 100% { transform: rotateX(-18deg) translateY(0px); }
-                  50%      { transform: rotateX(-18deg) translateY(-10px); }
-                }
-                .card-float {
-                  animation: card-float 4.5s ease-in-out infinite;
-                  will-change: transform;
-                }
-
-                @media (prefers-reduced-motion: reduce) {
-                  .logo-ring, .orbit-counter, .animate-nebula-pulse,
-                  .animate-core-pulse, .animate-halo-pulse, .card-float,
-                  .animate-logo-breathe {
-                    animation: none;
-                  }
-                }
-              `}</style>
-            </div>
-
-          </div>
+        <div className="container-x relative z-10 pt-44 pb-14">
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl whitespace-pre-line leading-[1.05]">{p.hero.title}</h1>
+          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+            {p.hero.subtitle}
+          </p>
         </div>
       </section>
 
-      <section id="companies-list" className="py-16 lg:py-24 bg-white scroll-mt-24">
+      <section id="companies-list" className="py-16 lg:py-24 scroll-mt-24">
         <div className="container-x">
           <div className="space-y-16 lg:space-y-24">
             {p.items.map((item, i) => {
               const reversed = i % 2 === 1
-              const offsets = ['lg:mt-0', 'lg:mt-14', 'lg:-mt-4', 'lg:mt-10', 'lg:mt-4']
-              const offset = offsets[i % offsets.length]
               return (
                 <article key={item.index} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-                  <div className={`${offset} ${reversed ? 'lg:order-2' : ''}`}>
+                  <div className={reversed ? 'lg:order-2' : ''}>
                     <ParallaxImageCard
                       imageSrc={companyImages[i].src}
                       logoSrc={companyLogos[i]}
                       alt={item.name}
-                      index={item.index}
-                      total={p.items.length}
                     />
                   </div>
-                  <div>
-                    <p className="eyebrow mb-4">{item.tagline}</p>
-                    <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink mb-6 text-balance">{item.name}</h3>
-                    <p className="text-base sm:text-lg text-brand-ink/70 leading-relaxed text-pretty mb-8">{item.body}</p>
+                  <div className="flex flex-col gap-6 self-start">
+                    <div>
+                      <p className="eyebrow mb-3">{item.tagline}</p>
+                      <img
+                        src={companyLogos[i]}
+                        alt=""
+                        className="h-16 sm:h-20 lg:h-24 w-auto object-contain mb-3"
+                      />
+                      <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink text-balance">{item.name}</h3>
+                    </div>
+                    <p className="text-base sm:text-lg text-brand-ink/70 leading-relaxed text-pretty">{item.body}</p>
                     <ul className="space-y-3">
                       {item.bullets.map((b, idx) => (
                         <li key={idx} className="flex items-start gap-3">
@@ -509,15 +297,17 @@ export default function Companies() {
                       ))}
                     </ul>
                     {companyWebsites[i] && (
-                      <a
-                        href={companyWebsites[i]!}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group btn-outline mt-8"
-                      >
-                        {t.nav.visitWebsite}
-                        <ExternalLink size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </a>
+                      <div>
+                        <a
+                          href={companyWebsites[i]!}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group btn-outline"
+                        >
+                          {t.nav.visitWebsite}
+                          <ExternalLink size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      </div>
                     )}
                   </div>
                 </article>

@@ -4,15 +4,6 @@ import { useI18n } from '../../lib/i18n'
 import { articles } from '../../lib/news'
 import Reveal from '../Reveal'
 
-const glassChip = 'backdrop-blur-xl backdrop-saturate-200 border shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]'
-const categoryColors: Record<string, string> = {
-  Sustainability: `bg-brand-green/25 text-white border-brand-green/50 ${glassChip}`,
-  Products:       `bg-brand-yellow/25 text-white border-brand-yellow/50 ${glassChip}`,
-  Operations:     `bg-white/10 text-white border-white/30 ${glassChip}`,
-  Launch:         `bg-brand-green-light/25 text-white border-brand-green-light/50 ${glassChip}`,
-  Community:      `bg-brand-yellow/25 text-white border-brand-yellow/50 ${glassChip}`,
-  Partnerships:   `bg-white/10 text-white border-white/30 ${glassChip}`,
-}
 
 export default function NewsTeaser() {
   const { t, locale, dir } = useI18n()
@@ -76,25 +67,10 @@ export default function NewsTeaser() {
             {/* Animated bottom accent bar */}
             <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[3px] bg-brand-yellow scale-x-0 group-hover:scale-x-100 origin-start transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
 
-            {/* Vertical decorative numeral (visible when narrow, fades when expanded) */}
-            <div className="absolute top-7 end-7 font-display text-5xl text-white/15 leading-none select-none
-              transition-all duration-[700ms]
-              group-hover:opacity-0 group-hover:-translate-y-2">
-              {String(i + 1).padStart(2, '0')}
-            </div>
+
 
             {/* Always-visible compact title (vertical orientation when narrow) */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-7">
-
-              {/* Category pill — slides in on expand */}
-              <span
-                className={`self-start text-[9px] font-black uppercase tracking-[0.25em] px-3 py-1.5 rounded-full mb-4 whitespace-nowrap
-                  opacity-0 -translate-y-3 group-hover:opacity-100 group-hover:translate-y-0
-                  transition-all duration-[700ms] delay-[120ms] ease-[cubic-bezier(0.22,1,0.36,1)]
-                  ${categoryColors[article.category] ?? 'bg-white/20 text-white'}`}
-              >
-                {locale === 'ar' ? article.categoryAr : article.category}
-              </span>
 
               {/* Title — slides up subtly when expanded */}
               <h3 className="font-display text-lg lg:text-xl text-white leading-tight text-balance

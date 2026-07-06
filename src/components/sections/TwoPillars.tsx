@@ -1,78 +1,75 @@
 import { useI18n } from '../../lib/i18n'
 import Reveal from '../Reveal'
-import Blob from '../Blob'
 
 export default function TwoPillars() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
 
   const pillars = [
     {
+      number: '01',
       title: t.pillars.integration.title,
       body: t.pillars.integration.body,
       accent: 'var(--brand-green-light)',
-      icon: (
-        <path d="M4 12 L9 12 M15 12 L20 12 M12 4 L12 9 M12 15 L12 20 M12 12 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"
-          stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-      ),
     },
     {
+      number: '02',
       title: t.pillars.sustainability.title,
       body: t.pillars.sustainability.body,
       accent: 'var(--brand-yellow)',
-      icon: (
-        <path d="M12 2 L12 22 M12 8 C 8 8, 6 12, 8 16 M12 8 C 16 8, 18 12, 16 16"
-          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      ),
     },
   ]
 
   return (
     <section className="relative py-28 lg:py-40 bg-brand-ink text-white overflow-hidden">
-      {/* Organic floating shapes */}
-      <Blob variant={2} float color="var(--brand-green)" opacity={0.18}
-        className="absolute -top-40 -start-40 w-[44rem] h-[44rem]" />
-      <Blob variant={4} float color="var(--brand-green-light)" opacity={0.1}
-        className="absolute -bottom-48 -end-40 w-[40rem] h-[40rem]" />
-
-      {/* Slow rotating ring accent */}
-      <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-[0.04] animate-slow-spin"
-        viewBox="0 0 200 200" aria-hidden="true">
-        <circle cx="100" cy="100" r="90" fill="none" stroke="#e2e01b" strokeWidth="0.5" />
-        <circle cx="100" cy="100" r="65" fill="none" stroke="#e2e01b" strokeWidth="0.5" />
-        <circle cx="100" cy="100" r="40" fill="none" stroke="#e2e01b" strokeWidth="0.5" />
-      </svg>
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute -top-48 -start-48 w-[56rem] h-[56rem] rounded-full bg-brand-green/7 blur-[140px]" />
+        <div className="absolute -bottom-48 -end-32 w-[48rem] h-[48rem] rounded-full bg-brand-yellow/5 blur-[140px]" />
+      </div>
 
       <div className="container-x relative">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-28">
+
+        {/* Eyebrow + rule */}
+        <Reveal className="mb-20 lg:mb-28">
+          <p className="text-[10px] uppercase tracking-[0.38em] text-white/30 font-semibold mb-6">
+            {locale === 'ar' ? 'منظوران، غاية واحدة' : 'Two perspectives, one purpose'}
+          </p>
+          <div className="h-px w-full bg-white/8" />
+        </Reveal>
+
+        {/* Pillars */}
+        <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-white/8">
           {pillars.map((p, i) => (
             <Reveal
               key={p.title}
               direction={i === 0 ? 'right' : 'left'}
-              delay={i * 120}
-              className="relative"
+              delay={i * 140}
+              className={`py-12 lg:py-0 ${i === 0 ? 'lg:pe-20 xl:pe-28' : 'lg:ps-20 xl:ps-28'}`}
             >
-              {/* Floating icon orb */}
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mb-8 animate-soft-bob"
-                style={{ background: `color-mix(in srgb, ${p.accent} 18%, transparent)`, animationDelay: `${i * 1.5}s` }}
-              >
-                <svg viewBox="0 0 24 24" className="w-8 h-8" style={{ color: p.accent }}>
-                  {p.icon}
-                </svg>
-              </div>
+              {/* Number */}
+              <span className="block font-mono text-[11px] tracking-[0.3em] text-white/20 mb-10 select-none">
+                {p.number}
+              </span>
 
-              <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight">
+              {/* Heading */}
+              <h3 className="display-text text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.2rem] leading-[1.08] text-white mb-8 text-balance">
                 {p.title}
               </h3>
-              <p className="text-lg text-white/65 leading-relaxed text-pretty max-w-md">
+
+              {/* Body */}
+              <p className="text-base lg:text-lg text-white/50 leading-relaxed text-pretty max-w-lg">
                 {p.body}
               </p>
 
-              {/* Organic underline accent */}
-              <div className="mt-8 h-1 w-24 rounded-full" style={{ background: p.accent, opacity: 0.5 }} />
+              {/* Accent line */}
+              <div
+                className="mt-12 h-px w-14 rounded-full"
+                style={{ background: p.accent, opacity: 0.55 }}
+              />
             </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   )

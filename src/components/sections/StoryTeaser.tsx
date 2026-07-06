@@ -7,7 +7,7 @@ export default function StoryTeaser() {
   const { t, dir } = useI18n()
 
   return (
-    <section className="relative bg-brand-cream overflow-hidden">
+    <section className="relative overflow-hidden">
 
       {/* Mobile: stacked layout */}
       <div className="block lg:hidden">

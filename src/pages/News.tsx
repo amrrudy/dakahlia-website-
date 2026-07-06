@@ -2,17 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import { articles } from '../lib/news'
-import TypedHeading from '../components/TypedHeading'
 
-const glassChip = 'backdrop-blur-xl backdrop-saturate-200 border shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]'
-const categoryColors: Record<string, string> = {
-  Sustainability: `bg-brand-green/[0.08] text-brand-green border-brand-green/25 ${glassChip}`,
-  Products:       `bg-brand-yellow/[0.15] text-brand-ink border-brand-yellow/30 ${glassChip}`,
-  Operations:     `bg-brand-ink/[0.06] text-brand-ink border-brand-ink/15 ${glassChip}`,
-  Launch:         `bg-brand-green-light/[0.15] text-brand-green border-brand-green-light/30 ${glassChip}`,
-  Community:      `bg-brand-yellow/[0.15] text-brand-ink border-brand-yellow/30 ${glassChip}`,
-  Partnerships:   `bg-brand-ink/[0.06] text-brand-ink border-brand-ink/15 ${glassChip}`,
-}
 
 export default function News() {
   const { t, locale, dir } = useI18n()
@@ -34,17 +24,14 @@ export default function News() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
         <div className="container-x relative z-10 pt-44 pb-14">
-          <TypedHeading
-            text={p.hero.title}
-            className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl"
-          />
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>
         </div>
       </section>
 
-      <section className="relative py-16 lg:py-24 bg-gradient-to-b from-white via-white to-brand-cream overflow-hidden">
+      <section className="relative py-16 lg:py-24 overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 -start-24 w-[26rem] h-[26rem] rounded-full bg-brand-green/15 blur-3xl animate-blob-float" />
           <div className="absolute top-1/3 -end-32 w-[28rem] h-[28rem] rounded-full bg-brand-yellow/15 blur-3xl animate-blob-float" style={{ animationDelay: '5s' }} />
@@ -75,9 +62,6 @@ export default function News() {
             </div>
             <div className="p-8 lg:p-12 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-5">
-                <span className={`text-[10px] font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full ${categoryColors[articles[0].category] ?? `bg-brand-green/[0.08] text-brand-green border-brand-green/25 ${glassChip}`}`}>
-                  {locale === 'ar' ? articles[0].categoryAr : articles[0].category}
-                </span>
                 <span className="text-xs text-brand-ink/55">
                   {locale === 'ar' ? articles[0].dateAr : articles[0].date}
                 </span>
@@ -122,9 +106,6 @@ export default function News() {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className={`text-[10px] font-bold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full ${categoryColors[article.category] ?? `bg-brand-green/[0.08] text-brand-green border-brand-green/25 ${glassChip}`}`}>
-                      {locale === 'ar' ? article.categoryAr : article.category}
-                    </span>
                     <span className="text-xs text-brand-ink/45">
                       {locale === 'ar' ? article.dateAr : article.date}
                     </span>
