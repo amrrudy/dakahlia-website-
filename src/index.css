@@ -28,11 +28,11 @@
   }
 
   html[dir='rtl'] .font-display {
-    font-family: 'Noto Sans Arabic', sans-serif !important;
+    font-family: 'Tajawal', sans-serif !important;
   }
 
   html[dir='rtl'] .font-sans {
-    font-family: 'Noto Sans Arabic', sans-serif !important;
+    font-family: 'Tajawal', sans-serif !important;
   }
 
   ::selection {
@@ -52,15 +52,11 @@
 
   /* Eyebrow: glass pill above section headings */
   .eyebrow {
-    @apply inline-flex items-center px-3.5 py-1 rounded-full
-      text-[11px] uppercase tracking-[0.22em] font-semibold text-brand-green
-      bg-brand-green/[0.06] backdrop-blur-xl backdrop-saturate-200
-      border border-brand-green/20
-      shadow-[inset_0_1px_0_rgba(255,255,255,0.5)];
+    display: none !important;
   }
 
   html[dir='rtl'] .eyebrow {
-    letter-spacing: 0.15em;
+    display: none !important;
   }
 
   /* Glass label: subtle frosted pill for form labels & micro labels */

@@ -75,10 +75,10 @@ export default function Sustainability() {
 
                 {/* Content */}
                 <div>
-                  <div className={`inline-flex items-center gap-3 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase mb-6 backdrop-blur-xl backdrop-saturate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] ${
-                    i === 0 ? 'bg-brand-green/15 text-brand-green border border-brand-green/35' :
-                    i === 1 ? 'bg-brand-yellow/15 text-brand-ink border border-brand-yellow/40' :
-                    'bg-brand-ink/10 text-brand-ink border border-brand-ink/25'
+                  <div className={`inline-flex items-center gap-3 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase mb-6 backdrop-blur-2xl backdrop-saturate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_8px_24px_-6px_rgba(0,0,0,0.12)] ${
+                    i === 0 ? 'bg-brand-green/20 text-brand-green border border-brand-green/30' :
+                    i === 1 ? 'bg-brand-yellow/20 text-brand-ink border border-brand-yellow/30' :
+                    'bg-white/40 text-brand-ink border border-white/60'
                   }`}>
                     <span className="font-display text-lg">{String(i + 1).padStart(2, '0')}</span>
                     {pillar.title}
@@ -102,31 +102,47 @@ export default function Sustainability() {
       </section>
       </LazySection>
 
-      {/* Dark CTA strip */}
+      {/* Al Anani Foundation */}
       <LazySection>
-      <section className="py-20 lg:py-24 bg-brand-ink text-white relative overflow-hidden">
-        <svg className="absolute -top-20 -right-20 w-[500px] h-[500px] opacity-5" viewBox="0 0 100 100">
-          <path d="M50 5 C25 25, 25 60, 50 95 C75 60, 75 25, 50 5 Z" fill="white" />
-        </svg>
+      <section className="py-14 lg:py-20 bg-brand-ink text-white relative overflow-hidden">
+        {/* Ambient glows */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-40 -start-40 w-[50rem] h-[50rem] rounded-full bg-brand-green/10 blur-[120px]" />
+          <div className="absolute -bottom-40 -end-20 w-[40rem] h-[40rem] rounded-full bg-brand-yellow/8 blur-[100px]" />
+        </div>
+
         <div className="container-x relative">
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-20 items-center">
-            <div>
-              <p className="eyebrow !text-brand-yellow mb-5">{p.foundation.eyebrow}</p>
-              <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-balance">
+          {/* Header */}
+          <div className="mb-8 lg:mb-10">
+            <p className="text-[10px] uppercase tracking-[0.38em] text-brand-yellow/70 font-semibold mb-4">{p.foundation.eyebrow}</p>
+            <div className="h-px w-full bg-white/8 mb-7" />
+            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-16 items-end">
+              <h2 className="display-text text-xl sm:text-2xl md:text-3xl lg:text-[2rem] leading-[1.15] text-white whitespace-pre-line">
                 {p.foundation.title}
               </h2>
+              <p className="text-sm lg:text-base text-white/55 leading-relaxed text-pretty">{p.foundation.body}</p>
             </div>
-            <div className="space-y-4 text-white/75 text-lg leading-relaxed">
-              <p>{p.foundation.body}</p>
-              <ul className="space-y-2 mt-6">
-                {p.foundation.programs.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-brand-yellow mt-1">→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          </div>
+
+          {/* Program cards */}
+          <div className="grid sm:grid-cols-3 gap-3">
+            {p.foundation.programs.map((item, i) => (
+              <div
+                key={item}
+                className="group relative rounded-xl p-4 lg:p-5 overflow-hidden
+                  bg-white/5 backdrop-blur-xl backdrop-saturate-150
+                  border border-white/10
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]
+                  hover:bg-white/10 hover:border-white/20 hover:-translate-y-1
+                  transition-all duration-300"
+              >
+                <span className="block font-mono text-[10px] tracking-[0.3em] text-white/20 mb-3 select-none">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p className="text-white/85 text-sm leading-relaxed">{item}</p>
+                <div className="mt-4 h-px w-8 rounded-full bg-brand-yellow/40 group-hover:w-14 transition-all duration-500" />
+              </div>
+            ))}
           </div>
         </div>
       </section>

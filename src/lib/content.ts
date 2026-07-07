@@ -370,8 +370,7 @@ const en: Dict = {
         eyebrow: 'Our Story',
         title: 'From 1981 to today',
         paragraphs: [
-          'Every success story begins with a challenge. From the very beginning, we understood that true quality is not measured by the product alone, but by the ability to deliver it consistently and at the same high standard. That is why integration and control across every stage of production have been at the heart of our vision since day one.',
-          'Our journey began in 1981 when the founders acquired their first broiler farm in the Nile Delta. With a clear vision of delivering consistent quality and ensuring reliable supply, the Group built on its deep expertise in feed production and animal health, investing in its own feed manufacturing and nutritional solutions to support flock performance and enhance product quality for both local and international markets.',
+          'Every success story begins with a challenge. From the very beginning, we understood that true quality is not measured by the product alone, but by the ability to deliver it consistently and at the same high standard. That is why integration and control across every stage of production have been at the heart of our vision since day one. Our journey began in 1981 when the founders acquired their first broiler farm in the Nile Delta. With a clear vision of delivering consistent quality and ensuring reliable supply, the Group built on its deep expertise in feed production and animal health, investing in its own feed manufacturing and nutritional solutions to support flock performance and enhance product quality for both local and international markets.',
           'As demand grew, Dakahlia Group adopted a long-term expansion strategy focused on developing facilities, increasing production capacity, and investing in advanced technologies. Today, the Group operates one of the largest feed mills in Africa, helping establish its position as a leader in Egypt’s poultry and feed industries while building trusted partnerships with customers across Egypt and beyond for more than four decades.',
           'In 1997, Dakahlia Group set out with a clear vision: to establish a modern poultry processing facility that would support the growing needs of the Egyptian market while strengthening quality, food safety, and supply reliability. That vision took shape with the construction of Dakahlia Slaughterhouse in 2012 and the launch of its first production cycle in 2017. This investment represented a major step in completing the Group’s integrated production system and led to the creation of Temry, a poultry brand offering fresh, marinated, frozen, and fully cooked products. Today, Temry is a trusted name among consumers and a key driver of the Group’s continued growth in both local and international markets.',
           'In 1999, the Group expanded into agriculture with the establishment of Dakahlia Agricultural Development, driven by a clear vision to serve global markets. Starting with 700 feddans, the company now manages more than 20,000 feddans and exports premium Egyptian grapes, citrus, potatoes, dates, olives, and olive products to more than 50 countries worldwide.',
@@ -587,7 +586,7 @@ const en: Dict = {
       ],
       foundation: {
         eyebrow: 'Al Anani Foundation',
-        title: 'Sustainable social impact for Egyptian communities.',
+        title: 'Sustainable social impact\nfor Egyptian communities.',
         body: 'Al Anani Foundation for Social Development is the CSR arm of Dakahlia Group, creating lasting change through education, healthcare, and community empowerment.',
         programs: [
           'Al Anani Handicrafts & Handmade Kilim Center',
@@ -982,7 +981,7 @@ const ar: Dict = {
   },
   storyTeaser: {
     eyebrow: 'قصتنا',
-    title: 'مصري الجذور. متكامل.\nبُني للتوسع.',
+    title: 'مصري الجذور. متكامل. بُني للتوسع.',
     body: 'انطلاقاً من أساس راسخ في قطاع الدواجن، تطورت مجموعة الدقهلية لتصبح منصة زراعية غذائية متكاملة بالكامل، تربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة.',
     cta: 'اقرأ قصتنا',
   },

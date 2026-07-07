@@ -17,8 +17,8 @@ export default {
       fontFamily: {
         display: ['"Fraunces"', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        ar: ['"Noto Sans Arabic"', 'sans-serif'],
-        'ar-display': ['"Noto Sans Arabic"', 'sans-serif'],
+        ar: ['"Tajawal"', 'sans-serif'],
+        'ar-display': ['"Tajawal"', 'sans-serif'],
       },
       maxWidth: {
         container: '1280px',
