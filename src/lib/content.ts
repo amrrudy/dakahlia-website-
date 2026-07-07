@@ -364,7 +364,7 @@ const en: Dict = {
       hero: {
         eyebrow: 'Our Story',
         title: 'Diverse Sectors.\nUnified Vision.\nLeading the Future.',
-        subtitle: 'Leading the way toward a more sustainable future.',
+        subtitle: 'We\'re not only ready for tomorrow, we\'re leading the way.',
       },
       intro: {
         eyebrow: 'Our Story',
@@ -981,9 +981,9 @@ const ar: Dict = {
   },
   storyTeaser: {
     eyebrow: 'قصتنا',
-    title: 'مصري الجذور. متكامل. بُني للتوسع.',
-    body: 'انطلاقاً من أساس راسخ في قطاع الدواجن، تطورت مجموعة الدقهلية لتصبح منصة زراعية غذائية متكاملة بالكامل، تربط كل مرحلة من سلسلة القيمة ضمن منظومة واحدة منسقة.',
-    cta: 'اقرأ قصتنا',
+    title: 'منظومة متكاملة. بأيدٍ مصرية. مصممة للنمو.',
+    body: 'انطلاقًا من أساس قوي وراسخ في قطاع الدواجن، تطورت مجموعة الدقهلية لتصبح منصة زراعية وغذائية متكاملة بالكامل، تربط بين مختلف مراحل الدورة الإنتاجية داخل نظام تشغيلي واحد ومترابط، مدعوم بإدارة منضبطة وبنية تحتية تشغيلية متطورة.',
+    cta: 'اكتشف قصتنا',
   },
   careersTeaser: {
     eyebrow: 'الوظائف',
@@ -1017,7 +1017,7 @@ const ar: Dict = {
       hero: {
         eyebrow: 'قصتنا',
         title: 'تنوع في القطاعات.\nرؤية موحدة.\nريادة للمستقبل.',
-        subtitle: 'نقود الطريق نحو مستقبل أكثر استدامة.',
+        subtitle: 'لسنا مستعدين للغد فحسب، بل نقود الطريق إليه',
       },
       intro: {
         eyebrow: 'قصتنا',

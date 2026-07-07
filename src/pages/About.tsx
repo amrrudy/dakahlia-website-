@@ -15,7 +15,7 @@ function TimelineStep({
 }) {
   const ref = useRef<HTMLLIElement>(null)
   const [visible, setVisible] = useState(false)
-  const isLeft = index % 2 === 0
+  const isLeft = index % 2 !== 0
 
   useEffect(() => {
     if (!ref.current || visible) return
@@ -104,7 +104,7 @@ function TimelineStep({
             <div className="flex items-center gap-3 mb-3">
               <span className="h-px flex-1 bg-brand-green/15" />
             </div>
-            <p className="text-[15px] lg:text-base text-brand-ink/75 leading-relaxed text-pretty">{text}</p>
+            <p dir="auto" className="text-[15px] lg:text-base text-brand-ink/75 leading-relaxed text-pretty">{text}</p>
           </div>
         </div>
       </li>
@@ -156,7 +156,7 @@ function TimelineStep({
             shadow-[0_22px_46px_-14px_rgba(13,31,23,0.30),0_4px_12px_-2px_rgba(13,31,23,0.18),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(255,255,255,0.2)]
             transition-transform duration-500 ease-out
             hover:rotate-0 hover:-translate-y-0.5
-            ${index % 2 === 0 ? '-rotate-[0.7deg]' : 'rotate-[0.7deg]'}`}
+            ${index % 2 !== 0 ? '-rotate-[0.7deg]' : 'rotate-[0.7deg]'}`}
           style={{
             transformOrigin: 'top center',
             backgroundImage:
@@ -200,7 +200,7 @@ function TimelineStep({
             <span className="h-px flex-1 bg-brand-green/15" />
           </div>
 
-          <p className="text-[15px] lg:text-base text-brand-ink/75 leading-relaxed text-pretty">{text}</p>
+          <p dir="auto" className="text-[15px] lg:text-base text-brand-ink/75 leading-relaxed text-pretty">{text}</p>
         </div>
       </div>
     </li>
@@ -305,8 +305,8 @@ export default function About() {
             <p className="eyebrow">{p.intro.eyebrow}</p>
           </div>
 
-          {/* Zigzag timeline */}
-          <div className="relative max-w-5xl mx-auto">
+          {/* Zigzag timeline — locked to LTR so image positions match English */}
+          <div className="relative max-w-5xl mx-auto" dir="ltr">
 
             <ol className="relative">
               {p.intro.paragraphs.map((para, idx) => (
@@ -360,9 +360,9 @@ export default function About() {
           </div>
 
           {/* Vision — text left, images right */}
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-center -mt-8">
+          <div dir="ltr" className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-center -mt-8">
             {/* Content */}
-            <div>
+            <div dir="auto">
               <span className="block text-[10px] uppercase tracking-[0.38em] text-brand-green font-bold mb-5">
                 {p.visionMission.visionLabel}
               </span>
@@ -379,13 +379,13 @@ export default function About() {
           </div>
 
           {/* Mission — images left, text right */}
-          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20 items-center">
+          <div dir="ltr" className="grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20 items-center">
             <div className="order-2 lg:order-1">
-              <CircleCluster accent="yellow" images={['/images/hero-4-broiler-interior.jpg', '/images/mission-temry-wc.png', '/images/mission-citrus.jpg']} video="/videos/mission-loop.mov" />
+              <CircleCluster accent="yellow" images={['/images/hero-4-broiler-interior.jpg', '/images/mission-temry-wc.png', '/images/mission-citrus.jpg']} video="/videos/mission-loop.mp4" />
             </div>
 
             {/* Content */}
-            <div className="order-1 lg:order-2">
+            <div dir="auto" className="order-1 lg:order-2">
               <span className="block text-[10px] uppercase tracking-[0.38em] text-brand-yellow font-bold mb-5">
                 {p.visionMission.missionLabel}
               </span>
