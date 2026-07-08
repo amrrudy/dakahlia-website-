@@ -21,7 +21,7 @@ export default function Sustainability() {
   return (
     <>
       {/* Custom Sustainability Hero — full-bleed background image */}
-      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+      <section className="relative overflow-hidden min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
           <img
             src="/images/solar-panels-real.jpg"
@@ -33,8 +33,8 @@ export default function Sustainability() {
         {/* Dark gradient overlay — heavy at bottom for legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
-        <div className="container-x relative z-10 pt-44 pb-14">
-          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white max-w-4xl whitespace-nowrap">{p.hero.title}</h1>
+        <div className="container-x relative z-10 pt-32 sm:pt-44 pb-10 sm:pb-14">
+          <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
           </p>

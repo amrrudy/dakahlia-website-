@@ -1,4 +1,4 @@
-import { type ReactNode, type ElementType } from 'react'
+import { memo, type ReactNode, type ElementType } from 'react'
 import { useReveal } from '../lib/useReveal'
 
 type Direction = 'up' | 'down' | 'left' | 'right' | 'scale' | 'fade'
@@ -23,11 +23,7 @@ interface RevealProps {
   once?: boolean
 }
 
-/**
- * Wraps children and animates them into view on scroll.
- * Organic easing, configurable direction + stagger delay.
- */
-export default function Reveal({
+const Reveal = memo(function Reveal({
   children,
   as: Tag = 'div',
   direction = 'up',
@@ -47,10 +43,13 @@ export default function Reveal({
         opacity: shown ? 1 : 0,
         transform: shown ? 'none' : offsets[direction],
         transition: `opacity ${duration}ms cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-        willChange: 'opacity, transform',
+        // Release willChange after animation completes to free GPU layers
+        willChange: shown ? 'auto' : 'opacity, transform',
       }}
     >
       {children}
     </Tag>
   )
-}
+})
+
+export default Reveal

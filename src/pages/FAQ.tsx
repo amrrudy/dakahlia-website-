@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Plus, ArrowRight } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import PageHero from '../components/PageHero'
+import Magnifier from '../components/Magnifier'
 
 export default function FAQ() {
   const { t, dir } = useI18n()
@@ -15,7 +16,7 @@ export default function FAQ() {
     setOpenKey((current) => (current === key ? null : key))
 
   return (
-    <>
+    <Magnifier>
       <PageHero title={p.hero.title} subtitle={p.hero.subtitle} />
 
       <section className="relative py-16 lg:py-24 bg-brand-cream overflow-hidden">
@@ -29,7 +30,7 @@ export default function FAQ() {
           {p.groups.map((group, gi) => (
             <div key={group.eyebrow} className={gi > 0 ? 'mt-14 lg:mt-20' : ''}>
               {/* Group eyebrow */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="eyebrow flex items-center gap-3 mb-6">
                 <span className="h-px w-10 bg-brand-green" />
                 <span className="text-[10px] uppercase tracking-[0.32em] text-brand-green font-bold">
                   {group.eyebrow}
@@ -112,6 +113,6 @@ export default function FAQ() {
           </div>
         </div>
       </section>
-    </>
+    </Magnifier>
   )
 }

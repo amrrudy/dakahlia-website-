@@ -2,9 +2,7 @@ import { useRef, useState, useEffect, ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
-  /** Approx height to reserve before mount — avoids layout shift */
   minHeight?: number | string
-  /** How early to start mounting before scrolling into view */
   rootMargin?: string
 }
 
@@ -38,7 +36,19 @@ export default function LazySection({
   }, [visible, rootMargin])
 
   return (
-    <div ref={ref} style={visible ? undefined : { minHeight }}>
+    <div
+      ref={ref}
+      // content-visibility:auto lets the browser skip paint/layout for off-screen content
+      // contain-intrinsic-size provides a size hint so scroll position is stable
+      style={visible
+        ? { contentVisibility: 'visible' }
+        : {
+            minHeight,
+            contentVisibility: 'auto',
+            containIntrinsicSize: `0 ${typeof minHeight === 'number' ? `${minHeight}px` : minHeight}`,
+          }
+      }
+    >
       {visible && children}
     </div>
   )

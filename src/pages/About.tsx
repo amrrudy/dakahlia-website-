@@ -40,7 +40,7 @@ function TimelineStep({
       <li ref={ref} className="relative mb-12 lg:mb-20">
         {/* Image — top, centered */}
         {image && (
-          <div className="flex ps-14 mb-5 items-center justify-center">
+          <div className="flex ps-8 sm:ps-14 mb-4 sm:mb-5 items-center justify-center">
             <div className="relative inline-block">
               <img
                 aria-hidden
@@ -69,7 +69,7 @@ function TimelineStep({
 
         {/* Card — full width below the image */}
         <div
-          className={`ps-14 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+          className={`ps-8 sm:ps-14 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: visible ? '200ms' : '0ms' }}
         >
@@ -114,7 +114,7 @@ function TimelineStep({
   return (
     <li ref={ref} className="relative lg:grid lg:grid-cols-2 lg:gap-12 mb-12 lg:mb-20">
       {/* Opposite cell — empty space across from the card; hosts the optional illustration */}
-      <div className={`${image ? 'flex ps-14 mb-5 lg:ps-0 lg:mb-0' : 'hidden'} lg:flex items-center justify-center ${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+      <div className={`${image ? 'flex ps-8 sm:ps-14 mb-4 sm:mb-5 lg:ps-0 lg:mb-0' : 'hidden'} lg:flex items-center justify-center ${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
         {image && (
           <div className="relative inline-block">
             <img
@@ -144,7 +144,7 @@ function TimelineStep({
 
       {/* Card */}
       <div
-        className={`ps-14 lg:ps-0 ${isLeft ? 'lg:order-1 lg:pe-14' : 'lg:order-2 lg:ps-14'}
+        className={`ps-8 sm:ps-14 lg:ps-0 ${isLeft ? 'lg:order-1 lg:pe-14' : 'lg:order-2 lg:ps-14'}
           transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
           ${visible ? 'opacity-100 translate-x-0' : `opacity-0 ${isLeft ? '-translate-x-6' : 'translate-x-6'}`}`}
         style={{ transitionDelay: visible ? '120ms' : '0ms' }}
@@ -226,7 +226,7 @@ function CircleCluster({ accent, images, video }: { accent: 'green' | 'yellow', 
   const dot2 = accent === 'green' ? 'bg-brand-yellow/40' : 'bg-brand-green/30'
   const v = visible
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[340px] lg:max-w-none" style={{ height: '420px' }}>
+    <div ref={ref} className="relative mx-auto w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none" style={{ height: '380px' }}>
 
       {/* Outer ring — positioned wrapper + animated inner */}
       <div aria-hidden className="absolute pointer-events-none" style={{ width: '308px', height: '308px', top: '-14px', left: '50%', transform: 'translateX(-50%)' }}>
@@ -277,7 +277,7 @@ export default function About() {
   return (
     <>
       {/* Custom About Hero — full-bleed background image */}
-      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+      <section className="relative overflow-hidden min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
           <img
             src="/images/about-hero-cinematic.jpg"
@@ -289,7 +289,7 @@ export default function About() {
         {/* Dark gradient overlay — heavy at bottom for legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
-        <div className="container-x relative z-10 pt-44 pb-14">
+        <div className="container-x relative z-10 pt-32 sm:pt-44 pb-10 sm:pb-14">
           <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl whitespace-pre-line leading-[1.05]">{p.hero.title}</h1>
           <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
@@ -360,7 +360,7 @@ export default function About() {
           </div>
 
           {/* Vision — text left, images right */}
-          <div dir="ltr" className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-center -mt-8">
+          <div dir="ltr" className="grid lg:grid-cols-[1.1fr_1fr] gap-10 sm:gap-16 lg:gap-20 items-center -mt-8">
             {/* Content */}
             <div dir="auto">
               <span className="block text-[10px] uppercase tracking-[0.38em] text-brand-green font-bold mb-5">
@@ -379,7 +379,7 @@ export default function About() {
           </div>
 
           {/* Mission — images left, text right */}
-          <div dir="ltr" className="grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20 items-center">
+          <div dir="ltr" className="grid lg:grid-cols-[1fr_1.1fr] gap-10 sm:gap-16 lg:gap-20 items-center">
             <div className="order-2 lg:order-1">
               <CircleCluster accent="yellow" images={['/images/hero-4-broiler-interior.jpg', '/images/mission-temry-wc.png', '/images/mission-citrus.jpg']} video="/videos/mission-loop.mp4" />
             </div>

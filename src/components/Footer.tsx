@@ -36,12 +36,12 @@ export default function Footer() {
           </div>
 
           {/* ── Columns ─────────────────────────────────────────────── */}
-          <div className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8 lg:gap-10 pt-8 lg:pt-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8 lg:gap-10 pt-8 lg:pt-10">
 
             {/* Brand block */}
             <div>
               <div className="mb-4 -ms-4">
-                <Logo variant="horizontal" tone="light" className="block h-28 w-auto" />
+                <Logo variant="horizontal" tone="light" className="block h-20 lg:h-28 w-auto" />
               </div>
               <p className="text-white/65 text-xs leading-relaxed max-w-xs">
                 {t.footer.tagline}
@@ -117,7 +117,7 @@ export default function Footer() {
 
         {/* Legal bar — minimal hairline */}
         <div className="border-t border-white/10">
-          <div className="container-x py-3.5 flex flex-col md:flex-row items-center justify-between gap-2 text-[9px] uppercase tracking-[0.24em] text-white/40">
+          <div className="container-x py-4 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-[10px] uppercase tracking-[0.22em] text-white/40">
             <p>{t.footer.rights}</p>
             <div className="flex items-center gap-5">
               <Link to="/faq" className="hover:text-white transition-colors">{FAQ_LABEL[locale] ?? 'FAQ'}</Link>

@@ -25,14 +25,14 @@ const items = [...logos, ...logos]
 
 export default function LogoStrip() {
   return (
-    <div className="relative overflow-hidden select-none py-4 lg:py-8">
+    <div className="relative overflow-hidden select-none py-3 sm:py-4 lg:py-8">
       <div className="flex items-center gap-10 logo-strip-track">
         {items.map((logo, i) => (
           <div key={i} className="flex-shrink-0 flex items-center gap-10">
             <img loading="lazy" decoding="async"
               src={logo.src}
               alt={logo.alt}
-              className="h-16 sm:h-24 lg:h-[12.3rem] w-auto object-contain"
+              className="h-12 sm:h-16 md:h-24 lg:h-[12.3rem] w-auto object-contain"
             />
             <span className="w-1.5 h-1.5 rounded-full bg-brand-ink/15 flex-shrink-0" />
           </div>

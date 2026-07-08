@@ -434,8 +434,14 @@
   .animate-drift-b,
   .animate-drift-c,
   .animate-leaf-sway,
-  .animate-leaf-image-drift {
+  .animate-leaf-image-drift,
+  .animate-idle-bob,
+  .animate-pulse-halo,
+  .animate-cursor-blink,
+  .animate-rail-pulse-halo,
+  .animate-fade-up {
     animation: none !important;
+    opacity: 1 !important;
   }
   .animate-sketch-in {
     animation: none !important;
@@ -446,8 +452,7 @@
   .animate-pen-track,
   .animate-pen-wiggle,
   .animate-glass-sweep,
-  .animate-rail-pulse,
-  .animate-rail-pulse-halo {
+  .animate-rail-pulse {
     animation: none !important;
     opacity: 0 !important;
   }

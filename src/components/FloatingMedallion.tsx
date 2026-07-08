@@ -1,12 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState, useMemo } from 'react'
 
-/**
- * FloatingMedallion — a real-photo centerpiece for the hero.
- * An organic-masked photo that gently floats, tilts on scroll (parallax),
- * ringed by a soft halo with drifting golden particles.
- * Pure CSS/React — no WebGL, lightweight, always smooth.
- */
-export default function FloatingMedallion({
+const FloatingMedallion = memo(function FloatingMedallion({
   image = '/images/chick-medallion.jpg',
   className = '',
 }: { image?: string; className?: string }) {
@@ -18,10 +12,7 @@ export default function FloatingMedallion({
     let raf = 0
     const onScroll = () => {
       cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => {
-        const y = window.scrollY
-        setOffset(y)
-      })
+      raf = requestAnimationFrame(() => setOffset(window.scrollY))
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -31,12 +22,11 @@ export default function FloatingMedallion({
     }
   }, [])
 
-  // gentle parallax: medallion drifts up and tilts slightly as you scroll
   const translateY = offset * -0.08
   const rotate = Math.min(offset * 0.01, 8)
 
-  // 14 golden particles at fixed polar positions
-  const particles = Array.from({ length: 14 }, (_, i) => {
+  // Particles are static — compute once, never on re-render
+  const particles = useMemo(() => Array.from({ length: 14 }, (_, i) => {
     const angle = (i / 14) * Math.PI * 2
     const radius = 48 + (i % 3) * 6
     return {
@@ -46,7 +36,7 @@ export default function FloatingMedallion({
       delay: (i % 7) * 0.6,
       dur: 5 + (i % 4),
     }
-  })
+  }), [])
 
   return (
     <div ref={ref} className={className} aria-hidden="true">
@@ -54,26 +44,21 @@ export default function FloatingMedallion({
         className="relative w-full h-full flex items-center justify-center"
         style={{ transform: `translateY(${translateY}px)` }}
       >
-        {/* Soft halo glow behind */}
         <div className="absolute w-[88%] h-[88%] rounded-full bg-brand-yellow/20 blur-3xl animate-soft-bob" />
 
-        {/* Rotating dashed ring accent */}
         <svg className="absolute w-[108%] h-[108%] animate-slow-spin opacity-40" viewBox="0 0 200 200">
           <circle cx="100" cy="100" r="96" fill="none" stroke="var(--brand-yellow)"
             strokeWidth="0.6" strokeDasharray="2 8" />
         </svg>
 
-        {/* The photo medallion — organic mask, floating */}
         <div
           className="relative w-[78%] aspect-square organic-mask-1 overflow-hidden shadow-2xl ring-1 ring-white/20 animate-soft-bob"
           style={{ transform: `rotate(${rotate}deg)`, transition: 'transform 0.3s ease-out' }}
         >
-          <img src={image} alt="" className="w-full h-full object-cover scale-105" />
-          {/* warm gradient sheen */}
+          <img src={image} alt="" className="w-full h-full object-cover scale-105" loading="eager" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-green/10 via-transparent to-brand-yellow/15" />
         </div>
 
-        {/* Floating golden particles */}
         {particles.map((p, i) => (
           <span
             key={i}
@@ -93,4 +78,6 @@ export default function FloatingMedallion({
       </div>
     </div>
   )
-}
+})
+
+export default FloatingMedallion

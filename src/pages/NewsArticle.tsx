@@ -35,7 +35,7 @@ export default function NewsArticle() {
   return (
     <>
       {/* ── Hero — matches PageHero proportions ── */}
-      <section className="relative pt-44 pb-16 lg:pt-52 lg:pb-20 overflow-hidden leaf-bg">
+      <section className="relative pt-32 sm:pt-44 pb-12 sm:pb-16 lg:pt-52 lg:pb-20 overflow-hidden leaf-bg">
         <div className="absolute -top-20 -right-32 w-[600px] h-[600px] rounded-full bg-brand-green/5 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -left-20 w-[500px] h-[500px] rounded-full bg-brand-yellow/8 blur-3xl pointer-events-none" />
 

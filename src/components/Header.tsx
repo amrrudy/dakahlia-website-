@@ -509,7 +509,7 @@ export default function Header() {
               <NavLink
                 to={item.to}
                 className={({ isActive }) =>
-                  `flex items-center justify-between py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] ${
+                  `flex items-center justify-between py-4 min-h-[48px] text-[11px] font-bold uppercase tracking-[0.15em] ${
                     isActive ? 'text-brand-green' : 'text-brand-ink'
                   }`
                 }
@@ -518,12 +518,12 @@ export default function Header() {
                 {item.mega && <ChevronDown size={13} />}
               </NavLink>
               {item.mega && (
-                <div className="pb-4 ps-3 grid grid-cols-2 gap-2">
+                <div className="pb-4 ps-3 grid grid-cols-1 xs:grid-cols-2 gap-1">
                   {item.mega.map((panel) => (
                     <Link
                       key={panel.label}
                       to={panel.to}
-                      className="text-[10px] font-semibold uppercase tracking-wider text-brand-ink/60 hover:text-brand-green transition-colors py-1"
+                      className="text-[10px] font-semibold uppercase tracking-wider text-brand-ink/60 hover:text-brand-green transition-colors py-2"
                     >
                       {panel.label}
                     </Link>

@@ -13,7 +13,7 @@ export default function NewsTeaser() {
     <section className="relative bg-brand-ink overflow-hidden">
 
       {/* ── Section header ── */}
-      <div className="container-x pt-20 pb-12 flex flex-wrap items-end justify-between gap-6">
+      <div className="container-x pt-14 sm:pt-20 pb-8 sm:pb-12 flex flex-wrap items-end justify-between gap-4 sm:gap-6">
         <Reveal>
           <p className="eyebrow !text-brand-green-light mb-4">{t.newsTeaser.title}</p>
           <h2 className="display-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
@@ -35,7 +35,7 @@ export default function NewsTeaser() {
       </div>
 
       {/* ── Expanding-panel strip — narrow by default, premium expand on hover ── */}
-      <div className="flex flex-col md:flex-row h-[600px] md:h-[560px]">
+      <div className="flex flex-col md:flex-row h-[440px] sm:h-[500px] md:h-[520px] lg:h-[560px]">
         {latest.map((article, i) => (
           <Link
             key={article.id}
@@ -95,7 +95,7 @@ export default function NewsTeaser() {
                     text-brand-yellow text-[10px] font-bold uppercase tracking-[0.22em] whitespace-nowrap
                     shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]
                     transition-all duration-300
-                    group-hover:bg-brand-yellow group-hover:text-brand-ink">
+                    group-hover:bg-brand-yellow/25 group-hover:border-brand-yellow/60">
                     {locale === 'ar' ? 'اقرأ' : 'Read'}
                     <ArrowRight
                       size={13}

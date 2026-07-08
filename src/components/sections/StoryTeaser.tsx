@@ -12,7 +12,7 @@ export default function StoryTeaser() {
       {/* Mobile: stacked layout */}
       <div className="block lg:hidden">
         {/* Video top */}
-        <div className="relative w-full h-44 sm:h-56 overflow-hidden">
+        <div className="relative w-full h-44 sm:h-56 overflow-hidden bg-brand-ink">
           <video
             src="/videos/story-teaser.mp4"
             autoPlay
@@ -50,9 +50,9 @@ export default function StoryTeaser() {
       </div>
 
       {/* Desktop: side-by-side layout */}
-      <div className="hidden lg:flex min-h-[680px] items-stretch">
+      <div className="hidden lg:flex min-h-[560px] xl:min-h-[680px] items-stretch">
         {/* Left — video bleeding from edge */}
-        <div className="relative w-[28%] flex-shrink-0">
+        <div className="relative w-[32%] xl:w-[28%] flex-shrink-0 bg-brand-ink">
           <video
             src="/videos/story-teaser.mp4"
             autoPlay
@@ -65,7 +65,7 @@ export default function StoryTeaser() {
           <div className={`absolute inset-y-0 end-0 w-32 ${dir === 'rtl' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-transparent to-brand-cream`} />
         </div>
         {/* Right — content */}
-        <div className="relative flex-1 flex flex-col justify-center py-20 ps-12 pe-16">
+        <div className="relative flex-1 flex flex-col justify-center py-14 ps-8 pe-10 xl:py-20 xl:ps-12 xl:pe-16">
           <Reveal direction="left">
             <p className="eyebrow mb-5">
               {t.storyTeaser.eyebrow}

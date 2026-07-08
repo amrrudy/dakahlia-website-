@@ -176,7 +176,7 @@ export default function ValueChain() {
           {/* Header row */}
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 mb-14 lg:mb-16">
             <div>
-              <div className="inline-flex items-center gap-3 mb-5">
+              <div className="eyebrow inline-flex items-center gap-3 mb-5">
                 <span className="h-px w-10 bg-brand-yellow" />
                 <span className="text-[11px] uppercase tracking-[0.32em] text-brand-yellow font-bold">{p.strength.eyebrow}</span>
               </div>

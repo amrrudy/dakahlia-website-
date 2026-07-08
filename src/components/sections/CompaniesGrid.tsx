@@ -26,7 +26,7 @@ export default function CompaniesGrid() {
   const { t, dir } = useI18n()
 
   return (
-    <section className="relative pt-28 lg:pt-40 pb-14 lg:pb-20 overflow-hidden">
+    <section className="relative pt-20 sm:pt-28 lg:pt-40 pb-10 sm:pb-14 lg:pb-20 overflow-hidden">
       {/* Floating organic background shapes */}
       <Blob variant={1} float color="var(--brand-green-light)" opacity={0.08}
         className="absolute -top-32 -end-40 w-[36rem] h-[36rem]" />
@@ -35,7 +35,7 @@ export default function CompaniesGrid() {
 
       <div className="container-x relative">
         {/* Section header — asymmetric, no box */}
-        <div className="max-w-4xl mb-24 lg:mb-32">
+        <div className="max-w-4xl mb-16 sm:mb-24 lg:mb-32">
           <Reveal as="p" className="eyebrow mb-6">{t.whoWeAre.eyebrow}</Reveal>
           <Reveal as="h2" delay={80}
             className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl text-brand-ink">
@@ -50,14 +50,14 @@ export default function CompaniesGrid() {
         </div>
 
         {/* Alternating organic rows — no card grid */}
-        <div className="space-y-28 lg:space-y-40">
+        <div className="space-y-20 sm:space-y-28 lg:space-y-40">
           {t.whoWeAre.companies.map((c, i) => {
             const reversed = i % 2 === 1
             const isLogo = companyImages[i].includes('logo')
             return (
               <div
                 key={c.number}
-                className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center"
+                className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
               >
                 {/* Image side — organic mask, floating */}
                 <Reveal
@@ -73,9 +73,9 @@ export default function CompaniesGrid() {
                       className={`relative ${masks[i % 3]} overflow-hidden aspect-[4/3] shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]`}
                     >
                       {isLogo ? (
-                        <div className="w-full h-full bg-brand-ink flex items-center justify-center p-14">
+                        <div className="w-full h-full bg-brand-ink flex items-center justify-center p-8">
                           <img loading="lazy" decoding="async" src={companyImages[i]} alt={c.name}
-                            className="max-w-[65%] max-h-[60%] object-contain" />
+                            className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 object-contain" />
                         </div>
                       ) : (
                         <img loading="lazy" decoding="async" src={companyImages[i]} alt={c.name}

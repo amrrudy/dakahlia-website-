@@ -1,6 +1,9 @@
-const words = ['Poultry', 'Agriculture', 'Sustainability', 'Processing', 'Chemicals', 'Community', 'Export']
+import { useI18n } from '../../lib/i18n'
 
 export default function TextStrip() {
+  const { t } = useI18n()
+  const words = t.textStrip.words
+
   return (
     <div className="bg-brand-ink border-y border-white/8 py-5 overflow-hidden">
       <div className="flex animate-marquee whitespace-nowrap">

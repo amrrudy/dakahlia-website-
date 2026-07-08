@@ -62,6 +62,9 @@ export interface Dict {
     cta: string
     employees: Array<{ name: string; location: string }>
   }
+  textStrip: {
+    words: string[]
+  }
   newsTeaser: {
     title: string
     cta: string
@@ -342,6 +345,9 @@ const en: Dict = {
       { name: 'Youssef', location: 'Wadi El Natroun, EG' },
       { name: 'Mona', location: 'Dakahlia, EG' },
     ],
+  },
+  textStrip: {
+    words: ['Poultry', 'Agriculture', 'Sustainability', 'Processing', 'Chemicals', 'Community', 'Export'],
   },
   newsTeaser: {
     title: 'Latest News',
@@ -996,6 +1002,9 @@ const ar: Dict = {
       { name: 'منى', location: 'الدقهلية' },
     ],
   },
+  textStrip: {
+    words: ['الدواجن', 'الزراعة', 'الاستدامة', 'التصنيع', 'الكيماويات', 'المجتمع', 'التصدير'],
+  },
   newsTeaser: {
     title: 'آخر الأخبار',
     cta: 'عرض كل الأخبار',
@@ -1264,8 +1273,8 @@ const ar: Dict = {
       },
       culture: {
         eyebrow: 'انمُ معنا',
-        title: 'ابنِ مسيرتك في مجموعة الدقهلية',
-        intro: 'نلتزم بتطوير المواهب عبر أعمالنا الزراعية الغذائية المتكاملة، مع توفير فرص للتعلم المستمر وتنمية المهارات والنمو الوظيفي في بيئة عمل منظمة وديناميكية.',
+        title: 'انضم إلى فريقنا',
+        intro: 'في مجموعة الدقهلية، نوفر بيئة عمل احترافية تدعم التطور والتعلم المستمر، وتُشجع على العمل الجماعي والنمو المهني داخل قطاعاتنا المتكاملة.',
         items: [
           { title: 'المساءلة', body: 'تحمل المسؤولية عن الأفعال والنتائج مع تواصل شفاف على جميع المستويات.' },
           { title: 'العمل الجماعي', body: 'بيئة تعاونية تجمع وجهات نظر متنوعة لدفع الابتكار وتحقيق النتائج.' },

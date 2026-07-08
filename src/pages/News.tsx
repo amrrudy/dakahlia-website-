@@ -11,7 +11,7 @@ export default function News() {
   return (
     <>
       {/* Custom News Hero — full-bleed background image */}
-      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+      <section className="relative overflow-hidden min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
           <img
             src="/images/agriculture-citrus.jpg"
@@ -23,7 +23,7 @@ export default function News() {
         {/* Dark gradient overlay — heavy at bottom for legibility, fades to top */}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
-        <div className="container-x relative z-10 pt-44 pb-14">
+        <div className="container-x relative z-10 pt-32 sm:pt-44 pb-10 sm:pb-14">
           <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
@@ -52,7 +52,7 @@ export default function News() {
               hover:border-brand-green/40
               hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_35px_80px_-20px_rgba(4,121,62,0.3)]"
           >
-            <div className="relative overflow-hidden aspect-[16/9] lg:aspect-auto min-h-[300px]">
+            <div className="relative overflow-hidden aspect-[16/9] lg:aspect-auto lg:min-h-[260px]">
               <img loading="lazy" decoding="async"
                 src={articles[0].image}
                 alt={locale === 'ar' ? articles[0].titleAr : articles[0].title}
@@ -60,7 +60,7 @@ export default function News() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/40 to-transparent" />
             </div>
-            <div className="p-8 lg:p-12 flex flex-col justify-center">
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-xs text-brand-ink/55">
                   {locale === 'ar' ? articles[0].dateAr : articles[0].date}
@@ -80,7 +80,7 @@ export default function News() {
           </Link>
 
           {/* Grid of remaining articles — glass cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {articles.slice(1).map((article) => (
               <Link
                 key={article.id}

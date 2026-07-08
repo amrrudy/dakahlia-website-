@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <>
       {/* Hero — full-bleed Google Maps background */}
-      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+      <section className="relative overflow-hidden min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
           <iframe
             title="Dakahlia Group Location"
@@ -23,7 +23,7 @@ export default function Contact() {
           <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
         </div>
 
-        <div className="container-x relative z-10 pt-44 pb-14">
+        <div className="container-x relative z-10 pt-32 sm:pt-44 pb-10 sm:pb-14">
           <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl">{p.hero.title}</h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
             {p.hero.subtitle}
@@ -49,7 +49,7 @@ export default function Contact() {
         </div>
 
         <div className="container-x relative">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-8 sm:gap-12 lg:gap-16">
             {/* Info side — white glass card with nested glass tiles */}
             <div>
               <div className="relative rounded-3xl p-6 lg:p-7 overflow-hidden
@@ -99,7 +99,7 @@ export default function Contact() {
             <div>
               <p className="eyebrow mb-4">{p.form.eyebrow}</p>
               <h2 className="display-text text-2xl sm:text-3xl md:text-4xl text-brand-ink mb-8">{p.form.title}</h2>
-              <form className="relative space-y-5 rounded-3xl p-8 lg:p-10
+              <form className="relative space-y-5 rounded-3xl p-6 sm:p-8 lg:p-10
                 bg-white/45 backdrop-blur-2xl backdrop-saturate-200
                 border border-white/70
                 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_30px_60px_-20px_rgba(13,31,23,0.15)]">

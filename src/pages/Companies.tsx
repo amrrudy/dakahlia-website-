@@ -93,14 +93,12 @@ const companyLogos: string[] = [
   '/images/Foundation.png',
 ]
 
-/** Large parallax tilt card with depth layers: photo, index ribbon, floating logo badge */
+/** Large parallax tilt card with depth layers: photo, index ribbon */
 function ParallaxImageCard({
   imageSrc,
-  logoSrc,
   alt,
 }: {
   imageSrc: string
-  logoSrc: string
   alt: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -130,10 +128,8 @@ function ParallaxImageCard({
   }
 
   // Parallax shifts per layer (px)
-  const photoShiftX = -tilt.dx * 18   // image pans opposite to cursor (depth illusion)
+  const photoShiftX = -tilt.dx * 18
   const photoShiftY = -tilt.dy * 18
-  const logoShiftX = tilt.dx * 26     // logo (deepest) drifts more
-  const logoShiftY = tilt.dy * 26
 
   return (
     <div className="relative" style={{ perspective: '1200px' }}>
@@ -192,23 +188,6 @@ function ParallaxImageCard({
 
 
 
-        {/* Floating logo — bottom-right, deepest depth, biggest parallax shift */}
-        <div
-          className="absolute bottom-5 right-5 w-28 h-28 lg:w-32 lg:h-32
-            flex items-center justify-center"
-          style={{
-            transform: `translate3d(${logoShiftX}px, ${logoShiftY}px, 120px)`,
-            transition: 'transform 250ms cubic-bezier(0.22,1,0.36,1)',
-          }}
-        >
-          <img
-            src={logoSrc}
-            alt=""
-            loading="lazy"
-            decoding="async"
-            className="max-w-full max-h-full object-contain drop-shadow-[0_6px_14px_rgba(0,0,0,0.55)]"
-          />
-        </div>
       </div>
 
       {/* Floor shadow — shifts opposite to tilt for grounded feel */}
@@ -241,7 +220,7 @@ export default function Companies() {
   return (
     <>
       {/* Hero — same style as About/Story page */}
-      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[540px] flex items-end">
+      <section className="relative overflow-hidden min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
           <img
             src="/images/companies-hero.jpg"
@@ -253,9 +232,9 @@ export default function Companies() {
         {/* Dark gradient overlay — heavy at bottom for legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />
 
-        <div className="container-x relative z-10 pt-44 pb-14">
+        <div className="container-x relative z-10 pt-32 sm:pt-44 pb-10 sm:pb-14">
           <h1 className="display-text text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white text-balance max-w-3xl whitespace-pre-line leading-[1.05]">{p.hero.title}</h1>
-          <p className="mt-6 text-lg max-w-2xl leading-relaxed text-white/75 text-pretty">
+          <p className="mt-6 text-lg leading-relaxed text-white/75 whitespace-nowrap">
             {p.hero.subtitle}
           </p>
         </div>
@@ -268,20 +247,19 @@ export default function Companies() {
               const reversed = i % 2 === 1
               return (
                 <article key={item.index} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-                  <div className={reversed ? 'lg:order-2' : ''}>
+                  <div className={`self-start ${reversed ? 'lg:order-2' : ''}`}>
                     <ParallaxImageCard
                       imageSrc={companyImages[i].src}
-                      logoSrc={companyLogos[i]}
                       alt={item.name}
                     />
                   </div>
-                  <div className="flex flex-col gap-6 self-start">
+                  <div className="flex flex-col gap-6 self-start pt-0">
                     <div>
                       <p className="eyebrow mb-3">{item.tagline}</p>
                       <img
                         src={companyLogos[i]}
                         alt=""
-                        className="h-16 sm:h-20 lg:h-24 w-auto object-contain mb-3"
+                        className="h-40 sm:h-48 lg:h-56 w-auto object-contain mb-1"
                       />
                       <h3 className="display-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-ink text-balance">{item.name}</h3>
                     </div>

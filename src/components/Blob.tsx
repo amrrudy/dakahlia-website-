@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 interface BlobProps {
   className?: string
   color?: string
@@ -6,7 +8,6 @@ interface BlobProps {
   opacity?: number
 }
 
-// A library of soft organic blob paths (all within a 200×200 viewBox)
 const paths: Record<number, string> = {
   1: 'M48.8,-58.2C62.3,-47.4,71.6,-31.6,74.9,-14.4C78.2,2.7,75.5,21.2,66.3,35.7C57.1,50.2,41.4,60.7,24.3,66.8C7.2,72.9,-11.3,74.6,-28.1,69.4C-44.9,64.2,-60,52.1,-68.4,36.3C-76.8,20.5,-78.5,1,-74.1,-16.6C-69.7,-34.2,-59.2,-49.9,-45.3,-60.6C-31.4,-71.3,-14.1,-77,1.9,-79.3C17.9,-81.6,35.3,-69,48.8,-58.2Z',
   2: 'M42.7,-52.1C54.9,-42.6,64,-28.3,68.4,-12.1C72.8,4.1,72.5,22.2,64.3,35.8C56.1,49.4,40,58.5,22.6,64.3C5.2,70.1,-13.5,72.6,-29.8,66.9C-46.1,61.2,-60,47.3,-67.4,30.5C-74.8,13.7,-75.7,-6,-69.4,-22.8C-63.1,-39.6,-49.6,-53.5,-34.4,-62.4C-19.2,-71.3,-2.3,-75.2,12.7,-72.1C27.7,-69,30.5,-61.6,42.7,-52.1Z',
@@ -14,11 +15,7 @@ const paths: Record<number, string> = {
   4: 'M44.1,-54.6C56.3,-44.4,64.6,-29.7,67.8,-13.8C71,2.1,69.1,19.2,61.1,33.1C53.1,47,39,57.7,23.2,63.4C7.4,69.1,-10.1,69.8,-26.5,64.5C-42.9,59.2,-58.2,47.9,-66.3,32.7C-74.4,17.5,-75.3,-1.6,-69.8,-18.2C-64.3,-34.8,-52.4,-48.9,-38.4,-58.6C-24.4,-68.3,-8.3,-73.6,4.8,-79.4C17.9,-85.2,31.9,-64.8,44.1,-54.6Z',
 }
 
-/**
- * Soft organic blob — decorative background element.
- * Used in layers behind sections for the "organic & soft" aesthetic.
- */
-export default function Blob({
+const Blob = memo(function Blob({
   className = '',
   color = 'var(--brand-green-light)',
   variant = 1,
@@ -35,4 +32,6 @@ export default function Blob({
       <path d={paths[variant]} fill={color} />
     </svg>
   )
-}
+})
+
+export default Blob

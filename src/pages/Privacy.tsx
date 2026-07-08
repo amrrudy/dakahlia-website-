@@ -1,12 +1,13 @@
 import { useI18n } from '../lib/i18n'
 import PageHero from '../components/PageHero'
+import Magnifier from '../components/Magnifier'
 
 export default function Privacy() {
   const { t } = useI18n()
   const p = t.pages.privacy
 
   return (
-    <>
+    <Magnifier>
       <PageHero title={p.hero.title} subtitle={p.hero.subtitle} />
 
       <section className="relative py-16 lg:py-24 bg-brand-cream overflow-hidden">
@@ -49,6 +50,6 @@ export default function Privacy() {
           </article>
         </div>
       </section>
-    </>
+    </Magnifier>
   )
 }
