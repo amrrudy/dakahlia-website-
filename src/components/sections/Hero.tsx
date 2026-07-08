@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowLeft, ArrowDown } from 'lucide-react'
 import { useI18n } from '../../lib/i18n'
+import ProgressiveImg from '../ProgressiveImg'
 
 const slides = [
   {
@@ -87,7 +88,7 @@ export default function Hero() {
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           aria-hidden={i !== current}
         >
-          <img
+          <ProgressiveImg
             src={slide.src}
             alt={slide.alt}
             className="w-full h-full object-cover"

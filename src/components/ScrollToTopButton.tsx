@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
+import debounce from 'lodash/debounce'
 
 const SIZE = 44       // px — wrapper dimension
 const CENTER = SIZE / 2
@@ -17,15 +18,16 @@ export default function ScrollToTopButton() {
       const y = window.scrollY
       const pct = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0
       setProgress(pct)
-      // Reveal after scrolling 35% of the page (smart trigger)
       setVisible(pct > 0.35)
     }
+    const onResize = debounce(update, 150)
     update()
     window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
+    window.addEventListener('resize', onResize)
     return () => {
       window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
+      onResize.cancel()
+      window.removeEventListener('resize', onResize)
     }
   }, [])
 

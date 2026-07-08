@@ -424,6 +424,22 @@
   animation: pen-wiggle 0.18s ease-in-out infinite;
 }
 
+/* Skeleton shimmer — soft light sweep for loading placeholders */
+@keyframes shimmer {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(13,31,23,0.055) 25%,
+    rgba(13,31,23,0.10)  50%,
+    rgba(13,31,23,0.055) 75%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
 /* Reduced-motion: kill all decorative loops */
 @media (prefers-reduced-motion: reduce) {
   .animate-blob-float,
@@ -442,6 +458,10 @@
   .animate-fade-up {
     animation: none !important;
     opacity: 1 !important;
+  }
+  .skeleton-shimmer {
+    animation: none !important;
+    background: rgba(13,31,23,0.07) !important;
   }
   .animate-sketch-in {
     animation: none !important;

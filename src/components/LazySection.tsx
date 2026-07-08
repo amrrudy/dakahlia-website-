@@ -38,8 +38,6 @@ export default function LazySection({
   return (
     <div
       ref={ref}
-      // content-visibility:auto lets the browser skip paint/layout for off-screen content
-      // contain-intrinsic-size provides a size hint so scroll position is stable
       style={visible
         ? { contentVisibility: 'visible' }
         : {
@@ -49,7 +47,16 @@ export default function LazySection({
           }
       }
     >
-      {visible && children}
+      {visible
+        ? children
+        : (
+          <div
+            className="skeleton-shimmer w-full h-full rounded-none"
+            style={{ minHeight }}
+            aria-hidden
+          />
+        )
+      }
     </div>
   )
 }

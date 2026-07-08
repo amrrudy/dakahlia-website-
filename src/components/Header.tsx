@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, useRef } from 'react'
+import debounce from 'lodash/debounce'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import {
   Search, ChevronDown, Menu, X, ArrowRight,
@@ -180,12 +181,15 @@ export default function Header() {
   const [isLargeScreen, setIsLargeScreen] = useState(false)
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = debounce(() => {
       setIsLargeScreen(window.innerWidth >= 1024)
-    }
+    }, 150)
     handleResize()
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      handleResize.cancel()
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   const NAV_GAP = 10 // px — gap from top of viewport

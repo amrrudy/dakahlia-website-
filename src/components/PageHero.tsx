@@ -1,3 +1,5 @@
+import ProgressiveImg from './ProgressiveImg'
+
 interface PageHeroProps {
   eyebrow?: string
   title: string
@@ -24,8 +26,14 @@ export default function PageHero({ eyebrow, title, subtitle, imageUrl }: PageHer
         </div>
 
         {imageUrl && (
-          <div className="mt-16 rounded-2xl overflow-hidden">
-            <img src={imageUrl} alt="" className="w-full h-[52vw] max-h-[400px] object-cover" />
+          <div className="mt-16 rounded-2xl overflow-hidden bg-brand-ink/8">
+            <ProgressiveImg
+              src={imageUrl}
+              alt=""
+              className="w-full h-[52vw] max-h-[400px] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         )}
       </div>

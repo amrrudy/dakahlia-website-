@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
+import PageSkeleton from './components/PageSkeleton'
 import Home from './pages/Home'
 
 // Code-split the rest of the pages — each becomes its own chunk loaded on demand
@@ -25,7 +26,7 @@ export default function App() {
       <ScrollToTop />
       <Header />
       <main>
-        <Suspense fallback={<div className="min-h-screen" />}>
+        <Suspense fallback={<PageSkeleton />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

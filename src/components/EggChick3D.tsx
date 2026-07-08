@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import debounce from 'lodash/debounce'
 import * as THREE from 'three'
 
 /**
@@ -199,18 +200,19 @@ export default function EggChick3D({ className = '' }: { className?: string }) {
     window.addEventListener('scroll', onScroll, { passive: true })
 
     // ── Resize ──
-    const onResize = () => {
+    const onResize = debounce(() => {
       if (!mount) return
       camera.aspect = mount.clientWidth / mount.clientHeight
       camera.updateProjectionMatrix()
       renderer.setSize(mount.clientWidth, mount.clientHeight)
-    }
+    }, 150)
     window.addEventListener('resize', onResize)
 
     // ── Cleanup ──
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', onScroll)
+      onResize.cancel()
       window.removeEventListener('resize', onResize)
       renderer.dispose()
       eggGeo.dispose(); crackGeo.dispose(); pGeo.dispose()
