@@ -15,14 +15,17 @@ export default function StoryTeaser() {
         {/* Video top */}
         <div className="relative w-full h-44 sm:h-56 overflow-hidden bg-brand-ink">
           <ProgressiveVideo
-            src="/videos/story-teaser.mp4"
+            poster="/videos/story-teaser-poster.jpg"
             autoPlay
             loop
             muted
             playsInline
             preload="metadata"
             className="w-full h-full object-cover object-center"
-          />
+          >
+            <source src="/videos/story-teaser-mobile.webm" type="video/webm" />
+            <source src="/videos/story-teaser-mobile.mp4"  type="video/mp4"  />
+          </ProgressiveVideo>
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-brand-cream to-transparent" />
         </div>
         {/* Content below */}
@@ -55,14 +58,17 @@ export default function StoryTeaser() {
         {/* Left — video bleeding from edge */}
         <div className="relative w-[32%] xl:w-[28%] flex-shrink-0 bg-brand-ink">
           <ProgressiveVideo
-            src="/videos/story-teaser.mp4"
+            poster="/videos/story-teaser-poster.jpg"
             autoPlay
             loop
             muted
             playsInline
             preload="metadata"
             className="absolute inset-0 w-full h-full object-cover object-center"
-          />
+          >
+            <source src="/videos/story-teaser.webm"     type="video/webm" />
+            <source src="/videos/story-teaser-opt.mp4"  type="video/mp4"  />
+          </ProgressiveVideo>
           <div className={`absolute inset-y-0 end-0 w-32 ${dir === 'rtl' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-transparent to-brand-cream`} />
         </div>
         {/* Right — content */}
