@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { Pencil } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import LazySection from '../components/LazySection'
+import ProgressiveVideo from '../components/ProgressiveVideo'
 
 /** Single timeline step — alternates side on desktop, slides in on scroll */
 function TimelineStep({
@@ -236,10 +237,10 @@ function CircleCluster({ accent, images, video }: { accent: 'green' | 'yellow', 
 
       {/* Large circle — position wrapper keeps translateX(-50%) stable; inner animates scale */}
       <div className="absolute" style={{ width: '284px', height: '284px', top: 0, left: '50%', transform: 'translateX(-50%)' }}>
-        <div className={`w-full h-full rounded-full overflow-hidden ring-2 ${largeRing} transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${v ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
+        <div className={`relative w-full h-full rounded-full overflow-hidden ring-2 ${largeRing} transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${v ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
           style={{ transitionDelay: '100ms' }}>
           {video ? (
-            <video src={video} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <ProgressiveVideo src={video} autoPlay loop muted playsInline className="w-full h-full object-cover" />
           ) : (
             <img src={images[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
           )}

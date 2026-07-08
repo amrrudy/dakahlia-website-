@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useI18n } from '../../lib/i18n'
 import Reveal from '../Reveal'
+import ProgressiveVideo from '../ProgressiveVideo'
 
 export default function StoryTeaser() {
   const { t, dir } = useI18n()
@@ -13,7 +14,7 @@ export default function StoryTeaser() {
       <div className="block lg:hidden">
         {/* Video top */}
         <div className="relative w-full h-44 sm:h-56 overflow-hidden bg-brand-ink">
-          <video
+          <ProgressiveVideo
             src="/videos/story-teaser.mp4"
             autoPlay
             loop
@@ -53,7 +54,7 @@ export default function StoryTeaser() {
       <div className="hidden lg:flex min-h-[560px] xl:min-h-[680px] items-stretch">
         {/* Left — video bleeding from edge */}
         <div className="relative w-[32%] xl:w-[28%] flex-shrink-0 bg-brand-ink">
-          <video
+          <ProgressiveVideo
             src="/videos/story-teaser.mp4"
             autoPlay
             loop
