@@ -3,11 +3,30 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
     plugins: [react()],
     server: {
-        port: 5174,
+        port: 5173,
         strictPort: true,
     },
     preview: {
-        port: 5174,
+        port: 4173,
         strictPort: true,
+    },
+    build: {
+        chunkSizeWarningLimit: 600,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+                    'vendor-icons': ['lucide-react'],
+                    'vendor-lodash': ['lodash'],
+                },
+            },
+        },
+        cssMinify: true,
+        minify: 'esbuild',
+        sourcemap: false,
+        assetsInlineLimit: 4096,
+    },
+    optimizeDeps: {
+        include: ['react', 'react-dom', 'react-router-dom', 'lucide-react', 'lodash'],
     },
 });
