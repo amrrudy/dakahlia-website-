@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.gitignore
+.mcp.json
+npm-debug.log*
+Dockerfile
+docker-compose.yml
+DOCKER.md
+dakahlia-website-dist.zip
+**/.DS_Store
+**/Thumbs.db

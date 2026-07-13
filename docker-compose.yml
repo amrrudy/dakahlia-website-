@@ -1,0 +1,12 @@
+services:
+  dakahlia-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dakahlia-website:latest
+    container_name: dakahlia-website
+    environment:
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

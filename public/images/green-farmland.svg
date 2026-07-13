@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1400" viewBox="0 0 2400 1400">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7ec8a0"/>
+      <stop offset="55%" stop-color="#62bc54"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#04793e"/>
+      <stop offset="100%" stop-color="#035a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="2400" height="1400" fill="url(#sky)"/>
+  <rect y="780" width="2400" height="620" fill="url(#land)"/>
+  <!-- horizon tree line -->
+  <ellipse cx="300" cy="780" rx="180" ry="120" fill="#035a2e" opacity="0.6"/>
+  <ellipse cx="700" cy="780" rx="220" ry="130" fill="#035a2e" opacity="0.5"/>
+  <ellipse cx="1800" cy="780" rx="200" ry="110" fill="#035a2e" opacity="0.6"/>
+  <ellipse cx="2200" cy="780" rx="180" ry="100" fill="#035a2e" opacity="0.5"/>
+  <!-- crop rows -->
+  <line x1="0" y1="860" x2="2400" y2="860" stroke="#035a2e" stroke-width="10" opacity="0.45"/>
+  <line x1="0" y1="960" x2="2400" y2="960" stroke="#035a2e" stroke-width="10" opacity="0.45"/>
+  <line x1="0" y1="1060" x2="2400" y2="1060" stroke="#035a2e" stroke-width="10" opacity="0.4"/>
+  <line x1="0" y1="1160" x2="2400" y2="1160" stroke="#035a2e" stroke-width="8" opacity="0.35"/>
+  <!-- sun -->
+  <circle cx="450" cy="280" r="130" fill="#e2e01b" opacity="0.65"/>
+  <circle cx="450" cy="280" r="160" fill="#e2e01b" opacity="0.15"/>
+</svg>
