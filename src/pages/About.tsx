@@ -280,12 +280,18 @@ export default function About() {
       {/* Custom About Hero — full-bleed background image */}
       <section className="relative overflow-hidden min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-end">
         <div className="absolute inset-0">
-          <img
-            src="/images/about-hero-cinematic.jpg"
-            alt=""
-            className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 50%' }}
-          />
+          <picture>
+            <source srcSet="/images/about-hero-cinematic.webp" type="image/webp" />
+            <img
+              src="/images/about-hero-cinematic.jpg"
+              alt=""
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'center 50%' }}
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
+            />
+          </picture>
         </div>
         {/* Dark gradient overlay — heavy at bottom for legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/55 to-brand-ink/15 pointer-events-none" />

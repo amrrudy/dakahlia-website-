@@ -3,9 +3,10 @@ import { useRef, useState, useEffect } from 'react'
 type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
   src: string
   alt: string
+  webpSrc?: string
 }
 
-export default function ProgressiveImg({ src, alt, className = '', style, ...props }: Props) {
+export default function ProgressiveImg({ src, alt, webpSrc, className = '', style, ...props }: Props) {
   const ref = useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = useState(false)
 
@@ -14,7 +15,7 @@ export default function ProgressiveImg({ src, alt, className = '', style, ...pro
     if (ref.current?.complete && ref.current.naturalWidth > 0) setLoaded(true)
   }, [])
 
-  return (
+  const img = (
     <img
       ref={ref}
       src={src}
@@ -28,5 +29,14 @@ export default function ProgressiveImg({ src, alt, className = '', style, ...pro
       onLoad={() => setLoaded(true)}
       {...props}
     />
+  )
+
+  if (!webpSrc) return img
+
+  return (
+    <picture>
+      <source srcSet={webpSrc} type="image/webp" />
+      {img}
+    </picture>
   )
 }

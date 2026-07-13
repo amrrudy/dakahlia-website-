@@ -4,9 +4,10 @@ import { ArrowRight, ArrowLeft, ArrowDown } from 'lucide-react'
 import { useI18n } from '../../lib/i18n'
 import ProgressiveImg from '../ProgressiveImg'
 
-const slides = [
+const slides: { src: string; alt: string; webpSrc?: string }[] = [
   {
     src: '/images/hero-1-farm-exterior.jpg',
+    webpSrc: '/images/hero-1-farm-exterior.webp',
     alt: 'Dakahlia poultry farm exterior at sunset',
   },
   {
@@ -90,6 +91,7 @@ export default function Hero() {
         >
           <ProgressiveImg
             src={slide.src}
+            webpSrc={slide.webpSrc}
             alt={slide.alt}
             className="w-full h-full object-cover"
             loading={i === 0 ? 'eager' : 'lazy'}
