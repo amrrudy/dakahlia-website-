@@ -193,14 +193,14 @@ export default function Contact() {
                   style={{ left: '54.5%', top: '38%' }}
                 >
                   <div
-                    className="absolute inline-flex items-center gap-2 px-3 py-1.5 rounded-full whitespace-nowrap
+                    className="absolute inline-flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full whitespace-nowrap
                       bg-white/55 backdrop-blur-2xl backdrop-saturate-200
                       border border-white/60
                       shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_10px_24px_-8px_rgba(4,121,62,0.35)]"
-                    style={{ left: '18px', top: '-28px' }}
+                    style={{ left: '10px', top: '-22px' }}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-green" />
-                    <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-brand-ink">{p.global.marker}</span>
+                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-brand-green flex-shrink-0" />
+                    <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.22em] font-bold text-brand-ink">{p.global.marker}</span>
                   </div>
                 </div>
               </div>
